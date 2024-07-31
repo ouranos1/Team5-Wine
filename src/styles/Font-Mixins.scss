@@ -1,0 +1,41 @@
+$font-sizes: (
+    32 : 32px,
+    24 : 24px,
+    20 : 20px,
+    18 : 18px,
+    16 : 16px,
+    14 : 14px,
+    13 : 13px,
+    12 : 12px,
+);
+
+$font-heights: (
+    42 : 42px,
+    32 : 32px,
+    26 : 26px,
+    24 : 24px,
+    22 : 22px,
+    20 : 20px,
+    18 : 18px
+);
+
+$font-weights: (
+    'bold' : 700,
+    'semibold' : 600,
+    'medium' : 500,
+    'regular' : 400
+);
+
+@mixin font-settings($size, $weight, $line-height) {
+    font-size: map-get($font-sizes, $size);
+    line-height: map-get($font-heights, $weight);
+    font-weight: map-get($font-weights, $weight);    
+}
+
+// @include font-settings(32, bold, 42)
+
+// bold
+// semibold
+// medium
+// regular
+
