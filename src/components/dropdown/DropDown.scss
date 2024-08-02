@@ -6,13 +6,19 @@
     position: relative;
     display: inline-block;
 
-    .toggle-button {
-        cursor: pointer;
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .toggle-button {
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
     }
 
     .dropdown {
         width: 126px;
-        height: 104px;
         background-color: $Grayscale-50;
         border-radius: 16px;
         display: flex;
@@ -45,7 +51,6 @@
 
         .dropdown {
             width: 101px;
-            height: 92px;
 
             .dropdown-item {
                 width: 90px;
