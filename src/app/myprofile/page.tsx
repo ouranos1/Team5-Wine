@@ -25,8 +25,8 @@ function MyProfile() {
     };
 
     const test:UserProps = {
-        email : "test2@test2.com",
-        nickname : "test2",
+        email : "test4@test4.com",
+        nickname : "test4",
         password : "12345678",
         passwordConfirmation : "12345678"
     }
@@ -42,6 +42,8 @@ function MyProfile() {
 
     useEffect(() => {
         async function tt() { 
+            // await signUpAPI(test);
+            await signInAPI(test2);
             // await refreshToken(refreshtest);
         }
         tt();
