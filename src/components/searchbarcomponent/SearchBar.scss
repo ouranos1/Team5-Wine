@@ -1,3 +1,6 @@
+@import '@/app/globals.scss';
+@import '@/styles/Font-Mixins.scss';
+
 .search-bar-container {
   position: relative;
 }
@@ -6,23 +9,23 @@
   position: absolute;
   background-color: transparent;
   border: none;
-  top: 12px;
+  top: 11px;
   left: 15px;
   cursor: pointer;
 }
 
 .input-search {
-  width: 400px;
+  width: 800px;
   height: 48px;
   border-radius: 50px;
   padding: 14px 0px 14px 60px;
-  background-color: #ffffff;
-  border: 1px solid #cfdbea;
-  font: 400 16px/24px Pretendard;
+  background-color: $White;
+  border: 1px solid $Grayscale-200;
+  @include font-settings(16, 'regular', 26);
 
   &::placeholder {
-    font: 400 16px/19.09px Pretendard;
-    color: #9facbd;
+    @include font-settings(16, 'regular', 26);
+    color: $Grayscale-300;
   }
 
   &:focus {
