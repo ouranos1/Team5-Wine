@@ -17,7 +17,10 @@ function SlideComponent(props: SildeOptionProps) {
         <div className="slidebar-layer">
             <p className="option-title">{props.SlideOptionTitle}</p>
             <p className="option">{props.LeftOption}</p>
-            <input type="range" onChange={handleSliderChange} min="0" max="100" className="slider" value={props.value}/>
+            <input type="range" onChange={handleSliderChange} min="0" max="100" className="slider" 
+                value={props.value !== undefined  ? props.value : siledValue}
+                disabled={props.value !== undefined }
+            />
             <p className="option">{props.RightOption}</p>
         </div>
     );
