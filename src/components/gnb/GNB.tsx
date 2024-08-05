@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './GNB.scss';
-import Logo from '@/assets/logo_wine.svg';
+import Logo from '@/assets/icon/logo_wine.svg';
 
 const GNB: React.FC = ({}) => {
   return (
