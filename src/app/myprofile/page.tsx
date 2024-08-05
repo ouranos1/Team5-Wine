@@ -5,12 +5,12 @@ import { SildeOptionProps } from "@/types/SlideOption";
 import "@/components/slidecomponent/SlideComponent.scss";
 
 import {signUpAPI, signInAPI, refreshToken} from "@/api/Auth";
-import { UserProps } from "@/types/UserProps";
 import { useEffect } from "react";
-import { LoginProps } from "@/types/LoginProps";
+import { signUpRequestBody, signInRequestBody } from "@/types/AuthProps";
 
 function MyProfile() {
 
+    //api 테스트용
     const testoption:SildeOptionProps = {
         SlideOptionTitle : "test옵션타이틀",
         LeftOption : "test레프트옵션",
@@ -24,14 +24,15 @@ function MyProfile() {
         RightOption : "test라이트옵션",
     };
 
-    const test:UserProps = {
+    const test:signUpRequestBody = {
+        image : null,
         email : "test4@test4.com",
         nickname : "test4",
         password : "12345678",
         passwordConfirmation : "12345678"
     }
 
-    const test2:LoginProps = {
+    const test2:signInRequestBody = {
         email : "gwangho@gwangho.com",
         password : "12345678",
     }
@@ -42,12 +43,14 @@ function MyProfile() {
 
     useEffect(() => {
         async function tt() { 
-            // await signUpAPI(test);
-            await signInAPI(test2);
+            await signUpAPI(test);
+            // await signInAPI(test2);
             // await refreshToken(refreshtest);
         }
         tt();
     }, []);
+    //
+
 
     return (
         <div>
