@@ -6,7 +6,7 @@
 
 // interface ApiResponse {
 //     imageUrl: string;
-//     rating: number;
+//     avgRating: number;
 //     description: string;
 // }
 
@@ -21,7 +21,7 @@
 //             {data && (
 //                 <Card
 //                     imageUrl={data.imageUrl}
-//                     rating={data.rating}
+//                     avgRating={data.rating}
 //                     description={data.description}
 //                 />
 //             )}
@@ -33,16 +33,25 @@
 
 
 import React from 'react';
-import Card from '../../components/cardSoohyun/Card';
+import Cardmonthly from '../../components/cardmonthly/Card';
+import Cardmy from '../../components/cardmy/Card';
 
 const App: React.FC = () => {
     return (
         <div>
-            <Card
-                imageUrl="/wine.png"
-                rating={3.2}
-                description="Ciel du Cheval Vineyard Collaboration Series II 2012"
+            <Cardmonthly
+                image="/wine.png"
+                avgRating={1.8}
+                name="Ciel du Cheval Vineyard Collaboration Series II 2012"
             />
+            <br />
+            <Cardmy
+                avgRating={5.0}
+                time="10시간 전"
+                name="Sentinal Carbernet Sauvignon 2016"
+                content="Deep maroon color, tasting notes of blackberry, dark chocolate, plum. Super jammy and bold with some smoky after notes. Big flavor. Amazing value (would pay three times the price for it), well balanced flavor. Could drink all day everyday with or without food. I need more immediately."
+            />
+
         </div>
     );
 };

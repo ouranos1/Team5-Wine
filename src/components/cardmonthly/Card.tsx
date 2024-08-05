@@ -4,26 +4,26 @@ import React from 'react';
 import './Card.scss';
 
 interface CardProps {
-    imageUrl: string;
-    rating: number;
-    description: string;
+    image: string;
+    avgRating: number;
+    name: string;
 }
 
-const Card: React.FC<CardProps> = ({ imageUrl, rating, description }) => {
-    const stars = Math.round(rating);
+const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name }) => {
+    const stars = Math.round(avgRating);
     return (
         <div className="card">
-            <img src={imageUrl} alt="Wine bottle" className="card-image" />
+            <img src={image} alt="Wine bottle" className="card-image" />
             <div className="card-content">
-                <div className="rating">{rating.toFixed(1)}</div>
+                <div className="rating">{avgRating.toFixed(1)}</div>
                 <div className="stars">
                     <span>{'★'.repeat(stars)}</span>
                     <span className="empty-stars">{'★'.repeat(5 - stars)}</span>
                 </div>
-                <div className="description">{description}</div>
+                <div className="description">{name}</div>
             </div>
         </div>
     );
 };
 
-export default Card;
+export default Cardmonthly;
