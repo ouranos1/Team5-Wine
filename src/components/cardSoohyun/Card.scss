@@ -1,0 +1,63 @@
+@import "../../styles/ColorList.scss";
+@import "../../styles//Font-Mixins.scss";
+@import "../../app/globals.scss";
+
+// 사이즈가 L 일 때랑 S 일 때로 나눌 것
+
+.card {
+    width: 232px;
+    height: 185px;
+    border-radius: 12px;
+    // background-color: $Grayscale-50;
+    background-color: rgb(235, 253, 222);
+    padding: 24px 30px 0 30px;
+    display: flex;
+    gap: 28px;
+
+    .card-content {
+
+        .rating {
+            @include font-settings(36, heavy, 42);
+        }
+
+        .stars {
+            color: $Primary-Purple-100;
+            margin: 5px auto;
+
+            .empty-stars {
+                color: $Grayscale-200;
+            }
+        }
+
+        .description {
+            @include font-settings(12, regular, 18);
+            color: $Grayscale-300;
+            line-height: 18px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 193px;
+        height: 160px;
+        padding: 24px 25px 0 25px;
+        gap: 25px;
+
+        .card-content {
+
+            .rating {
+                @include font-settings(28, heavy, 32);
+            }
+
+            .stars {
+                font-size: 12px;
+            }
+
+            .description {
+                @include font-settings(10, regular, 18);
+                line-height: 14px;
+            }
+        }
+    }
+}

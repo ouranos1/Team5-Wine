@@ -1,3 +1,5 @@
+//App 의 page.tsx 에서
+
 import React from 'react';
 import Dropdown from '../../components/dropdown/DropDown';
 
