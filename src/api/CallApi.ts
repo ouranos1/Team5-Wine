@@ -27,7 +27,7 @@ async function CallAPI({method, query, body = null, apiName}:ApiCallProps) {
             url: order,
             data: body !== null ? body : undefined,
         });
-        // console.log(response);
+        console.log(response.data);
         return response.data;
     }
     catch (error) {

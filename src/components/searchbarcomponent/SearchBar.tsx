@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import './SearchBar.scss';
-import searchIcon from '@/assets/search.svg';
+import searchIcon from '@/assets/icon/search.svg';
 import Image from 'next/image';
 
 interface SearchBarProps {
