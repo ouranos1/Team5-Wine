@@ -1,4 +1,5 @@
 .gnb {
+  display: flex;
   background-color: #101318;
   width: 1140px;
   height: 70px;
@@ -6,9 +7,14 @@
   left: 20px;
   padding: 11px 60px;
   border-radius: 16px;
+  justify-content: space-between;
 }
 
 .logo {
   width: 52px;
   height: auto;
+}
+
+.gnb-login {
+  color: white;
 }

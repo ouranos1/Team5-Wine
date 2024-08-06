@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from '@/components/button/Button';
 import GNB from '@/components/gnb/GNB';
+import LoginForm from '@/components/loginform/loginform';
 
 const Home: React.FC = () => {
   const handleClick = () => {
