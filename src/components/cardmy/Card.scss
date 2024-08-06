@@ -1,11 +1,9 @@
 @import "../../styles/ColorList.scss";
-@import "../../styles//Font-Mixins.scss";
+@import "../../styles/Font-Mixins.scss";
 @import "../../app/globals.scss";
 
 .review-card {
-    width: 100%;
-    max-width: 800px;
-    padding: 24px 40px 18px 40px;
+    padding: 24px 40px 30px 40px;
     border-radius: 16px;
     background-color: $Grayscale-50;
     border: 1px solid $Grayscale-200;
@@ -13,11 +11,49 @@
     flex-direction: column;
     gap: 20px;
 
+    &.review-card-L {
+        width: 800px;
+    }
+
+    &.review-card-M {
+        width: 704px;
+    }
+
+    &.review-card-S {
+        width: 343px;
+        padding: 16px 20px;
+        gap: 17px;
+
+        .review-header .rating-container {
+            .rating {
+                @include font-settings(14, bold, 24);
+                width: 60px;
+                height: 32px;
+            }
+
+            .time {
+                @include font-settings(14, regular, 24);
+            }
+        }
+
+        .review-header .options {
+            font-size: 24px;
+        }
+
+        .review-body .title {
+            @include font-settings(14, medium, 24);
+        }
+
+        .review-body .description {
+            @include font-settings(14, regular, 24);
+            line-height: 24px;
+        }
+    }
+
     .review-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
 
         .rating-container {
             display: flex;
@@ -60,42 +96,6 @@
             @include font-settings(16, regular, 26);
             color: $Grayscale-400;
             line-height: 26px;
-        }
-    }
-}
-
-
-
-@media (max-width: 768px) {
-    .review-header {
-
-        .rating-container {
-
-            .rating {
-                @include font-settings(14, bold, 24);
-                width: 60px;
-                height: 32px;
-            }
-        }
-
-        .time {
-            @include font-settings(14, regular, 24);
-
-        }
-
-        .options {
-            font-size: 24px;
-        }
-    }
-
-    .review-body {
-        .title {
-            @include font-settings(14, medium, 24);
-        }
-
-        .description {
-            @include font-settings(14, regular, 24);
-            line-height: 24px;
         }
     }
 }

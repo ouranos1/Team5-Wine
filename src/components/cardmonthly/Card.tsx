@@ -7,12 +7,13 @@ interface CardProps {
     image: string;
     avgRating: number;
     name: string;
+    size: 'L' | 'S';
 }
 
-const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name }) => {
+const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name, size }) => {
     const stars = Math.round(avgRating);
     return (
-        <div className="card">
+        <div className={`card card-${size}`}>
             <img src={image} alt="Wine bottle" className="card-image" />
             <div className="card-content">
                 <div className="rating">{avgRating.toFixed(1)}</div>
