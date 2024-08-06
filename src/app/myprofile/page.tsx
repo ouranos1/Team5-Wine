@@ -6,7 +6,7 @@ import "@/components/slidecomponent/SlideComponent.scss";
 
 import {signUpAPI, signInAPI, refreshToken} from "@/api/Auth";
 import { useEffect } from "react";
-import { signUpRequestBody, signInRequestBody } from "@/types/AuthProps";
+import { signUpRequestBody, signInRequestBody, signResponse } from "@/types/AuthProps";
 
 function MyProfile() {
 
@@ -43,8 +43,8 @@ function MyProfile() {
 
     useEffect(() => {
         async function tt() { 
-            await signUpAPI(test);
-            // await signInAPI(test2);
+            // await signUpAPI(test);
+        //    const test:signResponse = await signInAPI(test2);
             // await refreshToken(refreshtest);
         }
         tt();
