@@ -1,4 +1,6 @@
 @import '../../styles/ColorList.scss';
+@import '../../styles/Font-Mixins.scss';
+
 .form {
   gap: 10px;
   opacity: 1;
@@ -35,16 +37,17 @@
   width: 100%;
   padding: 14px 20px;
   border: 1px solid Grayscale-200;
-
+  &:hover,
+  &:active,
+  &:focus {
+    border: 2px solid Grayscale-300;
+  }
   &[data-size='L'] {
     height: 48px;
     border-radius: 16px;
 
     &::placeholder {
-      font-family: Pretendard;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 26px;
+      @include font-settings(16, regular, 26);
       text-align: left;
       color: Grayscale-300;
     }
@@ -55,10 +58,7 @@
     border-radius: 12px;
 
     &::placeholder {
-      font-family: Pretendard;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 24px;
+      @include font-settings(14, regular, 24);
       text-align: left;
       color: Grayscale-300;
     }
@@ -66,20 +66,14 @@
 }
 .inputname {
   &[data-size='L'] {
-    font-family: Pretendard;
     height: 16px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
+    @include font-settings(16, medium, 26);
     text-align: left;
     color: Grayscale-400;
   }
   &[data-size='S'] {
-    font-family: Pretendard;
     height: 14px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
+    @include font-settings(14, regular, 24);
     text-align: left;
     color: Grayscale-400;
   }
