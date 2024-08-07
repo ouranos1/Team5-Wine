@@ -13,7 +13,7 @@ const App: React.FC = () => {
     useEffect(() => {
         const fetchWineList = async () => {
             try {
-                const response = await wineListAPI(10);
+                const response = await wineListAPI(999999);
                 setWineList(response.list); // API 응답에서 wine 리스트를 설정
                 console.log(response.list);
             } catch (error) {
