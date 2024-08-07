@@ -33,7 +33,7 @@ export async function wineListAPI(limit: number|null = null, cursor: number|null
     // let query = `/wines?limit=${count}&cursor=${}&minPrice=${}&maxPrice=${}&rating=${}`;
     const apiName = "winelist";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }
 
 export async function bestWine() {
@@ -43,7 +43,7 @@ export async function bestWine() {
     let query = `/wines/recommended?limit=${limit}`;
     const apiName = "bestwine";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }
 
 export async function wineDetail(wineId: id) {
@@ -51,7 +51,7 @@ export async function wineDetail(wineId: id) {
     let query = `/wines/${wineId}`;
     const apiName = "winedetail";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }
 
 export async function editWine(props: createWineBody, wineId: id) {

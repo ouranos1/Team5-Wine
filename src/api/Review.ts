@@ -15,7 +15,7 @@ export async function searchReviewsAPI(reviewId: id) {
     let query = `/reviews/${reviewId}`;
     const apiName = "searchreview";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }
 
 export async function editReviewsAPI(prop: editReview, reviewId: id) {
