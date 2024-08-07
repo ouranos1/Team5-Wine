@@ -1,6 +1,5 @@
-import { user } from '@/types/UserProps';
 import CallAPI from './CallApi';
-import { signUpRequestBody, signInRequestBody, signUpResponse, signResponse, oauthRequestBody  } from '@/types/AuthProps';
+import { signUpRequestBody, signInRequestBody, oauthRequestBody  } from '@/types/AuthProps';
 
 export async function signUpAPI(user :signUpRequestBody) {
     const method = "post";

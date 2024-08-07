@@ -1,0 +1,26 @@
+@import '../../../styles/Font-Mixins.scss';
+
+.review-content {
+  .review-title {
+    div {
+      div {
+        display: flex;
+        .wine-icon {
+          width: 68px;
+          height: 68px;
+        }
+        div {
+          display: flex;
+          flex-direction: column;
+          p {
+            @include font-settings(18, 'semibold', 26);
+          }
+        }
+      }
+    }
+  }
+  .wine-taste {
+  }
+  .wine-aroma {
+  }
+}
