@@ -6,21 +6,16 @@ import './Input.scss';
 interface Props {
   type: 'email' | 'password';
   size: 'S' | 'L';
-  onSubmit: (value: string) => void;
+
   placeholder?: string;
   inputname?: string;
 }
 
-const Input: React.FC<Props> = ({ type, size, onSubmit, placeholder = '입력하시오.', inputname = '' }) => {
+const Input: React.FC<Props> = ({ type, size, placeholder = '입력하시오.', inputname = '' }) => {
   const [inputvalue, setInputvalue] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(inputvalue);
-  };
-
   return (
-    <form className="form" data-size={size} data-type={type} onSubmit={handleSubmit}>
+    <form className="form" data-size={size} data-type={type}>
       <label className="inputname" data-size={size}>
         {inputname}
       </label>

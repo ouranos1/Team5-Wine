@@ -32,7 +32,7 @@ $font-weights: (
 
 @mixin font-settings($size, $weight, $line-height) {
   font-size: map-get($font-sizes, $size);
-  line-height: map-get($font-heights, $weight);
+  line-height: map-get($font-heights, $line-height);
   font-weight: map-get($font-weights, $weight);
 }
 
