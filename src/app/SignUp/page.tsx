@@ -6,8 +6,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 import googleLogo from '@/assets/icon/googleLogo.svg';
 import kakaoLogo from '@/assets/icon/kakaoLogo.svg';
-import naverLogo from '@/assets/icon/naverLogo.svg';
 import { ModalFilter } from '@/components/modal/modalfilter/ModalFilter';
+import '../globals.scss';
+import WineAdd from '@/components/modal/wineadd/WineAdd';
 
 export default function SignUp() {
   const { data: session } = useSession();
@@ -23,6 +24,7 @@ export default function SignUp() {
       <OAuthButton logo={kakaoLogo} text={session ? '로그아웃' : 'kakao로 시작하기'} onClick={session ? signOut : () => signIn('kakao')} />
       <button onClick={openModal}>모달열기</button>
       <ModalFilter isModalOpen={isModalOpen} closeModal={closeModal} />
+      {/* <WineAdd isModalOpen={isModalOpen} closeModal={closeModal} /> */}
     </>
   );
 }
