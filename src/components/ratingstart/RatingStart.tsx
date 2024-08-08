@@ -7,8 +7,8 @@ import Stars from '../stars/StarsComponent';
 interface CardProps {
     avgRating: number;
     reviewCount: number;
-    size: 'L' | 'S';
     starSize: 22 | 17 | 12 | 9 | 8;
+    size: 'L' | 'S';
 }
 
 const RatingStart: React.FC<CardProps> = ({ avgRating, reviewCount, starSize, size }) => {
