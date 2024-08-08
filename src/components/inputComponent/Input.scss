@@ -3,40 +3,19 @@
 @import '../../app/globals.scss';
 
 .form {
-  gap: 10px;
-  opacity: 1;
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: space-between;
-  //라벨과 인풋의 간격 설정이 figma에서 정확히 명시되어있지않아 주석처리하였습니다.
   &[data-size='S'] {
     width: 303px;
+    height: 76px;
     @media (max-width: 303px) {
       width: 100%;
-    }
-
-    &[data-type='email'],
-    &[data-type='text'] {
-      height: 69px;
-    }
-
-    &[data-type='password'] {
-      height: 76px;
     }
   }
 
   &[data-size='L'] {
     width: 400px;
+    height: 84px;
     @media (max-width: 400px) {
       width: 100%;
-    }
-    &[data-type='email'],
-    &[data-type='text'] {
-      height: 77px;
-    }
-
-    &[data-type='password'] {
-      height: 84px;
     }
   }
 }
@@ -73,14 +52,16 @@
   }
 }
 .inputname {
+  margin-bottom: 10px;
+  width: fit-content;
   &[data-size='L'] {
-    height: 16px;
+    height: 26px;
     @include font-settings(16, medium, 26);
     text-align: left;
     color: $Grayscale-400;
   }
   &[data-size='S'] {
-    height: 14px;
+    height: 24px;
     @include font-settings(14, regular, 24);
     text-align: left;
     color: $Grayscale-400;

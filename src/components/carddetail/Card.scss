@@ -1,0 +1,159 @@
+@import '@/styles/ColorList.scss';
+@import '@/styles/Font-Mixins.scss';
+@import '../../app/globals.scss';
+
+.hiddenCard {
+  &[data-size='S'] {
+    width: 343px;
+    height: 209px;
+  }
+  &[data-size='M'] {
+    width: 704px;
+    height: 302px;
+  }
+  &[data-size='L'] {
+    width: 1140px;
+    height: 302px;
+  }
+}
+.card {
+  border: 1px;
+  background: $white;
+  border: 1px solid $Grayscale-200;
+
+  &[data-size='S'] {
+    width: 343px;
+    height: 190px;
+    border-radius: 12px;
+  }
+  &[data-size='M'] {
+    width: 704px;
+    height: 260px;
+    border-radius: 16px;
+  }
+  &[data-size='L'] {
+    width: 1140px;
+    height: 260px;
+    border-radius: 16px;
+  }
+}
+.cardImage {
+  box-shadow: 0px 2px 20px 0px #0000000a;
+  &[data-size='S'] {
+    width: 58px;
+    height: 209px;
+    left: 20px;
+  }
+  &[data-size='M'] {
+    width: 84px;
+    height: 302px;
+    left: 60px;
+  }
+  &[data-size='L'] {
+    width: 58px;
+    height: 209px;
+    top: 93px;
+    left: 100px;
+  }
+}
+.wine {
+  width: 300px;
+  height: 111px;
+  top: 94px;
+  left: 244px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.wineName {
+  &[data-size='S'] {
+    width: 200px;
+    height: 48px;
+    top: 52px;
+    left: 98px;
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 23.87px;
+    text-align: left;
+    color: $Grayscale-400;
+  }
+  &[data-size='M'] {
+    width: 200px;
+    height: 48px;
+    top: 52px;
+    left: 98px;
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 23.87px;
+    text-align: left;
+    color: $Grayscale-400;
+  }
+  &[data-size='L'] {
+    width: 300px;
+    height: 72px;
+    font-family: Pretendard;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 35.8px;
+    text-align: left;
+    color: $Grayscale-400;
+  }
+}
+
+.wineDesc {
+  text-align: left;
+  color: $Grayscale-300;
+  &[data-size='S'] {
+    width: 173px;
+    height: 24px;
+    top: 115px;
+    left: 98px;
+    @include font-settings(14, regular, 24);
+  }
+  &[data-size='M'] {
+    width: 198px;
+    height: 26px;
+    @include font-settings(16, regular, 26);
+  }
+  &[data-size='L'] {
+    width: 198px;
+    height: 26px;
+    @include font-settings(16, regular, 26);
+  }
+}
+.winePrice {
+  color: $Primary-Purple-100;
+  background-color: $Primary-Purple-10;
+  text-align: center;
+  gap: 10px;
+  &[data-size='S'] {
+    width: 86px;
+    height: 36px;
+    top: 143.5px;
+    left: 98px;
+    padding: 6px 10px 6px 10px;
+    border-radius: 10px;
+    @include font-settings(14, bold, 24);
+  }
+  &[data-size='M'] {
+    width: 114px;
+    height: 37px;
+    top: 225px;
+    left: 204px;
+    padding: 8px 15px 8px 15px;
+    border-radius: 12px;
+    @include font-settings(18, bold, 26);
+  }
+  &[data-size='L'] {
+    width: 114px;
+    height: 37px;
+    top: 225px;
+    left: 244px;
+    padding: 8px 15px 8px 15px;
+    border-radius: 12px;
+    @include font-settings(18, bold, 26);
+  }
+}
