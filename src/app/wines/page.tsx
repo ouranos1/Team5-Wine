@@ -1,56 +1,46 @@
+//app 에서 사용한다고 가정
+
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import GNB from '@/components/gnb/GNB';
-import Card from '@/components/cardComponent/CardDetail'; // Card 컴포넌트가 임포트되어야 합니다.
-import { wineDetail } from "@/api/Wine";
-import { wineDetailType } from "@/types/WineProps";
-import RatingStart from "@/components/ratingstart/RatingStart";
+import Cardmonthly from '../../components/cardmonthly/Card';
+import Cardmy from '../../components/cardmy/Card';
+import { wineListAPI } from "@/api/Wine";
+import { winListType } from "@/types/WineProps";
+
 
 const App: React.FC = () => {
-    const [detail, setDetail] = useState<wineDetailType>();
-    const [size, setSize] = useState<'L' | 'S'>('L');
+    const [wineList, setWineList] = useState<winListType[]>([]);
 
     useEffect(() => {
-        const fetchWineMy = async () => {
+        const fetchWineList = async () => {
             try {
-                const response = await wineDetail(35);
-                setDetail(response);
-                console.log(response);
+                const response = await wineListAPI(999999);
+                setWineList(response.list);
+                console.log(response.list);
             } catch (error) {
                 console.error("Error fetching wine list:", error);
             }
         };
 
-        fetchWineMy();
-
-        const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setSize('S');
-            } else {
-                setSize('L');
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        fetchWineList();
     }, []);
 
+    //const whiteWineList = wineList.filter(wine => wine.type === 'WHITE'); ->??? 이 부분은 나중에 바꾸겠음
+
     return (
-        <>
-            <GNB />
-            {detail && (
-                <>
-                    {/* <Card size="L" image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} /> */}
-                    <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={detail.avgRating} reviewCount={detail.reviewCount} />
-                </>
-            )}
-        </>
+        <div>
+            {wineList.map((wine) => (
+                <Cardmonthly key={wine.id}
+                    starSize={17}
+                    image={wine.image}
+                    avgRating={wine.avgRating}
+                    name={wine.name}
+                    size="L" />
+            ))}
+        </div>
     );
 };
 
 export default App;
+
