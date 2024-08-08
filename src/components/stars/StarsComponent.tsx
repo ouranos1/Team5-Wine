@@ -9,11 +9,11 @@ import star_filled from '@/assets/icon/star_filled.svg';
 interface StarsProps {
     stars: number;
     isEvent?: boolean;
-    size: number;
+    starSize: number;
 }
 
 // isEvent가 true인 경우: 클릭 별로 star 조정 가능
-const Stars: React.FC<StarsProps> = ({ stars, isEvent = false, size }) => {
+const Stars: React.FC<StarsProps> = ({ stars, isEvent = false, starSize }) => {
     const [rating, setRating] = useState(stars);
 
     const handleStarClick = (index: number) => {
@@ -23,7 +23,7 @@ const Stars: React.FC<StarsProps> = ({ stars, isEvent = false, size }) => {
     };
 
     return (
-        <div className={`stars stars-${size}`}>
+        <div className={`stars stars-${starSize}`}>
             {[...Array(5)].map((_, index) => (
                 <span
                     key={index}
@@ -33,8 +33,8 @@ const Stars: React.FC<StarsProps> = ({ stars, isEvent = false, size }) => {
                     <Image
                         src={index < rating ? star_filled : star_empty}
                         alt="star"
-                        width={size} // 사이즈에 따른 너비 설정
-                        height={size} // 사이즈에 따른 높이 설정
+                        width={starSize}
+                        height={starSize}
                     />
                 </span>
             ))}

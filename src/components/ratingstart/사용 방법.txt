@@ -1,0 +1,21 @@
+"use client";
+
+import React from 'react';
+import './RatingStart.scss';
+import Stars from '../stars/StarsComponent';
+
+interface CardProps {
+    avgRating: number;
+    size: 'L' | 'S';
+}
+
+const RatingStart: React.FC<CardProps> = ({ avgRating, size }) => {
+    
+    //알아서 숫자 넣어서 사용
+    const starSize = size === 'L' ? 17 : 14;
+
+    //필요하면 isEvent={true}로 만들어서 사용 (입력받고 싶을 때)
+    return <Stars starSize={starSize} stars={avgRating} isEvent={false} />;
+};
+
+export default RatingStart;

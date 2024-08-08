@@ -5,7 +5,7 @@ import GNB from '@/components/gnb/GNB';
 import Card from '@/components/cardComponent/CardDetail'
 import { wineDetail } from "@/api/Wine";
 import { wineDetailType } from "@/types/WineProps";
-import RatingStart from "@/components/detailcomponent/detailSH";
+import RatingStart from "@/components/ratingstart/RatingStart";
 
 const App: React.FC = () => {
     const [detail, setDetail] = useState<wineDetailType>();
@@ -28,7 +28,7 @@ const App: React.FC = () => {
         <>
             <GNB />
             {/* {detail !== undefined ? <Card size={'L'} image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} /> : ""} */}
-            {detail !== undefined ? <RatingStart size={30} avgRating={detail.avgRating} reviewCount={detail.reviewCount} /> : ""}
+            {detail !== undefined ? <RatingStart size={'L'} starSize={17} avgRating={detail.avgRating} reviewCount={detail.reviewCount} /> : ""}
         </>
     );
 };
