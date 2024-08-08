@@ -9,7 +9,7 @@ import star_filled from '@/assets/icon/star_filled.svg';
 interface StarsProps {
     stars: number;
     isEvent?: boolean;
-    starSize: number;
+    starSize: 22 | 17 | 12 | 9 | 8;
 }
 
 // isEvent가 true인 경우: 클릭 별로 star 조정 가능

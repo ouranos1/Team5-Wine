@@ -8,21 +8,19 @@ interface CardProps {
     avgRating: number;
     reviewCount: number;
     size: 'L' | 'S';
+    starSize: 22 | 17 | 12 | 9 | 8;
 }
 
-const RatingStart: React.FC<CardProps> = ({ avgRating, reviewCount, size }) => {
-    const starSize = size === 'L' ? 17 : 14;
-
+const RatingStart: React.FC<CardProps> = ({ avgRating, reviewCount, starSize, size }) => {
     return (
         <div className={`card card-${size}`}>
             <div className="rating">{avgRating.toFixed(1)}</div>
             <div className="card-content">
                 <Stars starSize={starSize} stars={avgRating} isEvent={false} />
-                <span>{reviewCount}개의 후기</span>
+                <span>{reviewCount.toLocaleString()}개의 후기</span>
             </div>
         </div>
     );
 };
 
 export default RatingStart;
-
