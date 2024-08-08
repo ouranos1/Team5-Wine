@@ -15,12 +15,12 @@ function ErrorCheck(method:string, apiName:string) {
   }
 
 async function CallAPI({method, query, body = null, apiName}:ApiCallProps) {
-
+//인스턴스로 변경 부분
     console.log(method, query, body, apiName);
-
     let order = API_KEY + query;
     console.log(order);
-
+    //여기까지
+    // axios인터셉터?
     try {
         const response = await axios({
             method,

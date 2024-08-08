@@ -49,12 +49,12 @@ export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: M
           </div>
           <div className="wine-taste">
             {/* <p>와인 맛 슬라이더</p> */}
-            <p>와인의 맛은 어땠나요?</p>
+            <p className="taste-title">와인의 맛은 어땠나요?</p>
             <WineTasteSlide />
           </div>
           <div className="wine-aroma">
             {/* <p>와인 향 선택</p> */}
-            <p>기억에 남는 향이 있나요?</p>
+            <p className="wine-aroma-title">기억에 남는 향이 있나요?</p>
             <AromaTag option="edit" list={aromaList} />
           </div>
         </div>
