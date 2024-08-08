@@ -12,11 +12,11 @@
   .radio-type {
     display: inline-block;
     position: relative;
-    padding-left: 25px;
+    padding-left: 10px;
     cursor: pointer;
     font-size: 16px;
     color: #333;
-    margin: 40px 0px;
+    margin: 30px 0px;
 
     span {
       @include font-settings(16, 'medium', 26);
@@ -30,7 +30,7 @@
   }
 
   .radio-type input[type='radio'] {
-    display: none; /* 버튼을 완전히 숨김 */
+    display: none;
   }
 
   .radio-type input[type='radio']:checked + span {
