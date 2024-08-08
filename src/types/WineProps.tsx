@@ -23,7 +23,7 @@ export interface wineDetailType {
   recentReview: recentReview | null;
   userId: id;
   reviews: [ReviewListType];
-  avgRations: number;
+  avgRatings: number;
 }
 
 export interface winListType {

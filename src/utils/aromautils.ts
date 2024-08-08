@@ -1,16 +1,20 @@
-import { Aroma, AromaLabels, AromaName } from '@/types/Aroma';
+import { AromaProps, AromaLabels, AromaName } from '@/types/Aroma';
 
-export const createAromaObjects = (): Aroma[] => {
-  return Object.keys(AromaLabels).map((key) => {
-    const aromaName = key as AromaName;
-    return {
-      name: {
-        eng: aromaName,
-        kor: AromaLabels[aromaName],
-      },
-      selected: false, // 초기에는 선택되지 않은 상태
-    };
-  });
-};
-
-export const aromaArray = createAromaObjects();
+export function createAromaList(selectedAromas: AromaName[] = []): AromaProps[] {
+  return Object.entries(AromaLabels).map(([eng, kor]) => ({
+    name: {
+      eng: eng as AromaName,
+      kor: kor,               
+    },
+    selected: selectedAromas.includes(eng as AromaName),
+  }));
+}
+/*
+{
+  name {
+    eng : "cherry",
+    kor : "체리",
+  }
+    selected : false,
+}
+*/

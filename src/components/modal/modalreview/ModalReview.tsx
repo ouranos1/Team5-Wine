@@ -9,6 +9,7 @@ import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { AromaTag } from '@/components/aromatag/AromaTag';
 import { responseReviewBody } from '@/types/ReviewProps';
 import { useState } from 'react';
+import { createAromaList } from '@/utils/AromaUtils';
 
 interface ModalReviewProps extends ModalProps {
   wineName: string;
@@ -16,93 +17,48 @@ interface ModalReviewProps extends ModalProps {
 }
 
 export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: ModalReviewProps) {
+  const aromaList = createAromaList(ReviewData?.aroma.name);
+
   return (
     <div className="modal-layer">
-      {ReviewData ? (
-        <BaseModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title="수정하기"
-          closeButton={true}
-          footerButtons={[
-            <button key="1" onClick={closeModal}>
-              수정하기
-            </button>,
-          ]}
-          role="review"
-        >
-          <div className="review-content">
-            <div className="review-title">
-              {/* <p>와인이름과 별점 후기용</p> */}
+      <BaseModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={ReviewData ? '수정하기' : '리뷰 등록'}
+        closeButton={true}
+        footerButtons={[
+          <button key="1" onClick={closeModal}>
+            {ReviewData ? '수정하기' : '리뷰 남기기'}
+          </button>,
+        ]}
+        role="review"
+      >
+        <div className="review-content">
+          <div className="review-title">
+            {/* <p>와인이름과 별점 후기용</p> */}
+            <div>
               <div>
+                <Image src={wineIcon} alt="와인아이콘" className="wine-icon" />
                 <div>
-                  <Image src={wineIcon} alt="와인아이콘" className="wine-icon" />
-                  <div>
-                    <p>{wineName}</p>
-                    <p>와인의 별점 추가</p>
-                  </div>
+                  <p>{wineName}</p>
+                  <p>와인의 별점 추가</p>
                 </div>
-                <Input type="email" size="L" placeholder="후기를 작성해 주세요" inputname="" />
               </div>
-            </div>
-            <div className="wine-taste">
-              {/* <p>와인 맛 슬라이더</p> */}
-              <p>와인의 맛은 어땠나요?</p>
-              <WineTasteSlide />
-            </div>
-            <div className="wine-aroma">
-              {/* <p>와인 향 선택</p> */}
-              {
-                // Aromas.map((Aroma)=> (
-                //   <AromaTag key={Aroma.name} Aroma={Aroma} />
-                // ))
-              }
+              <Input type="email" size="L" placeholder="후기를 작성해 주세요" inputname="" />
             </div>
           </div>
-        </BaseModal>
-      ) : (
-        <BaseModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title="리뷰 등록"
-          closeButton={true}
-          footerButtons={[
-            <button key="1" onClick={closeModal}>
-              리뷰 남기기
-            </button>,
-          ]}
-          role="review"
-        >
-          <div className="review-content">
-            <div className="review-title">
-              {/* <p>와인이름과 별점 후기용</p> */}
-              <div>
-                <div>
-                  <Image src={wineIcon} alt="와인아이콘" className="wine-icon" />
-                  <div>
-                    <p>{wineName}</p>
-                    <p>와인의 별점 추가</p>
-                  </div>
-                </div>
-                <Input type="email" size="L" placeholder="후기를 작성해 주세요" inputname="" />
-              </div>
-            </div>
-            <div className="wine-taste">
-              {/* <p>와인 맛 슬라이더</p> */}
-              <p>와인의 맛은 어땠나요?</p>
-              <WineTasteSlide />
-            </div>
-            <div className="wine-aroma">
-              {/* <p>와인 향 선택</p> */}
-              {
-                // Aromas.map((Aroma)=> (
-                //   <AromaTag key={Aroma.name} Aroma={Aroma} />
-                // ))
-              }
-            </div>
+          <div className="wine-taste">
+            {/* <p>와인 맛 슬라이더</p> */}
+            <p>와인의 맛은 어땠나요?</p>
+            <WineTasteSlide />
           </div>
-        </BaseModal>
-      )}
+          <div className="wine-aroma">
+            {/* <p>와인 향 선택</p> */}
+            <p>기억에 남는 향이 있나요?</p>
+            <AromaTag option="edit" list={aromaList} />
+          </div>
+        </div>
+      </BaseModal>
     </div>
   );
 }

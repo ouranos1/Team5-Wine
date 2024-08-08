@@ -1,6 +1,10 @@
 export type AromaName = 'CHERRY' | 'BERRY' | 'OAK' | 'VANILLA' | 'PEPPER' | 'BAKING' | 'GRASS' | 'APPLE' | 'PEACH' | 'CITRUS' | 'TROPICAL' | 'MINERAL' | 'FLOWER' | 'TOBACCO' | 'EARTH' | 'CHOCOLATE' | 'SPICE' | 'CARAMEL' | 'LEATHER';
 
-export interface Aroma {
+export type Aroma = {
+  name: AromaName[];
+};
+
+export interface AromaProps {
   name: {
     eng: AromaName;
     kor: string;

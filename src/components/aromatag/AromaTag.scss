@@ -1,16 +1,21 @@
 @import '../../styles/Font-Mixins.scss';
 @import '../../styles/ColorList.scss';
 
-.aroma-tag {
-  @include font-settings(16, medium, 26);
-  border-radius: 100px;
-  padding: 10px 18px;
-  border: 1px solid $White;
-  .on {
-    color: $White;
-    background-color: $Primary-Purple-100;
-  }
-  .off {
-    color: $Black;
+.aroma-tag-layer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  .aroma-tag {
+    @include font-settings(16, medium, 26);
+    border-radius: 100px;
+    padding: 10px 18px;
+    border: 1px solid $Grayscale-200;
+    .on {
+      color: $White;
+      background-color: $Primary-Purple-100;
+    }
+    .off {
+      color: $Black;
+    }
   }
 }
