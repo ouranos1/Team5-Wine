@@ -1,0 +1,11 @@
+@import "../../styles/ColorList.scss";
+@import "../../app/globals.scss";
+
+.stars {
+    color: $Primary-Purple-100;
+    margin: 5px auto;
+
+    .empty-stars {
+        color: $Grayscale-200;
+    }
+}
