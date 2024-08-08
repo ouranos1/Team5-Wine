@@ -9,6 +9,7 @@ import star_filled from '@/assets/icon/star_filled.svg';
 interface StarsProps {
     stars: number;
     isEvent?: boolean;
+    size: 'L' | 'S';
     starSize: 22 | 17 | 12 | 9 | 8;
 }
 

@@ -16,7 +16,7 @@ const RatingStart: React.FC<CardProps> = ({ avgRating, reviewCount, starSize, si
         <div className={`card card-${size}`}>
             <div className="rating">{avgRating.toFixed(1)}</div>
             <div className="card-content">
-                <Stars starSize={starSize} stars={avgRating} isEvent={false} />
+                <Stars size={'L'} starSize={starSize} stars={avgRating} isEvent={false} />
                 <span>{reviewCount.toLocaleString()}개의 후기</span>
             </div>
         </div>
