@@ -1,9 +1,11 @@
+//app 에서 사용한다고 가정
+
 "use client";
 
 import React, { useEffect, useState } from 'react';
 import Cardmonthly from '../../components/cardmonthly/Card';
 import Cardmy from '../../components/cardmy/Card';
-import { wineListAPI, wineDetail } from "@/api/Wine";
+import { wineListAPI } from "@/api/Wine";
 import { winListType } from "@/types/WineProps";
 
 
@@ -21,23 +23,10 @@ const App: React.FC = () => {
             }
         };
 
-        const fetchWineMy = async () => {
-            try {
-                const response = await wineDetail(35);
-                // setWineList(response.list);
-                console.log(response.list);
-            } catch (error) {
-                console.error("Error fetching wine list:", error);
-            }
-        };
-
-
-
         fetchWineList();
-        fetchWineMy();
     }, []);
 
-    //const whiteWineList = wineList.filter(wine => wine.type === 'WHITE');
+    //const whiteWineList = wineList.filter(wine => wine.type === 'WHITE'); ->??? 이 부분은 나중에 바꾸겠음
 
     return (
         <div>
