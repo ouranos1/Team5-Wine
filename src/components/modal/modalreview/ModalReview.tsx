@@ -3,25 +3,32 @@ import { ModalProps } from '@/types/ModalProps';
 import Image from 'next/image';
 import wineIcon from '@/assets/icon/wineIcon.svg';
 import Input from '@/components/inputComponent/Input';
-import SlideComponent from '@/components/slidecomponent/SlideComponent';
 import '@/components/modal/modalreview/ModalReview.scss';
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
+// import { Aromas, toggleAromaSelection } from '@/utils/AromaUtils';
+import { AromaTag } from '@/components/aromatag/AromaTag';
+import { responseReviewBody } from '@/types/ReviewProps';
+import { useState } from 'react';
+import { createAromaList } from '@/utils/AromaUtils';
 
 interface ModalReviewProps extends ModalProps {
   wineName: string;
+  ReviewData?: responseReviewBody;
 }
 
-export function ModalReview({ isModalOpen, closeModal, wineName }: ModalReviewProps) {
+export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: ModalReviewProps) {
+  const aromaList = createAromaList(ReviewData?.aroma.name);
+
   return (
     <div className="modal-layer">
       <BaseModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        title="리뷰 등록"
+        title={ReviewData ? '수정하기' : '리뷰 등록'}
         closeButton={true}
         footerButtons={[
           <button key="1" onClick={closeModal}>
-            리뷰 남기기
+            {ReviewData ? '수정하기' : '리뷰 남기기'}
           </button>,
         ]}
         role="review"
@@ -37,7 +44,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName }: ModalReviewPr
                   <p>와인의 별점 추가</p>
                 </div>
               </div>
-              <Input type="email" size="L" placeholder="후기를 작성해 주세요" />
+              <Input type="email" size="L" placeholder="후기를 작성해 주세요" inputname="" />
             </div>
           </div>
           <div className="wine-taste">
@@ -45,7 +52,11 @@ export function ModalReview({ isModalOpen, closeModal, wineName }: ModalReviewPr
             <p>와인의 맛은 어땠나요?</p>
             <WineTasteSlide />
           </div>
-          <div className="wine-aroma">{/* <p>와인 향 선택</p> */}</div>
+          <div className="wine-aroma">
+            {/* <p>와인 향 선택</p> */}
+            <p>기억에 남는 향이 있나요?</p>
+            <AromaTag option="edit" list={aromaList} />
+          </div>
         </div>
       </BaseModal>
     </div>
