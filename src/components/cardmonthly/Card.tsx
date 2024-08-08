@@ -3,7 +3,7 @@
 import React from 'react';
 import './Card.scss';
 import wine_bottle from '@/assets/icon/wine_bottle.svg';
-import Stars from '../stars/stars'
+import Stars from '../stars/StarsComponent'
 
 interface CardProps {
     image: string | null;
@@ -19,7 +19,7 @@ const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name, size }) => {
             <img src={image !== null ? image : wine_bottle} alt="Wine bottle" className="card-image" />
             <div className="card-content">
                 <div className="rating">{avgRating.toFixed(1)}</div>
-                <Stars stars={avgRating} />
+                <Stars stars={avgRating} isEvent={true} />
                 <div className="description">{name}</div>
             </div>
         </div>

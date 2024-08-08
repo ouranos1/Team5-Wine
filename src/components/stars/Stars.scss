@@ -2,10 +2,15 @@
 @import "../../app/globals.scss";
 
 .stars {
-    color: $Primary-Purple-100;
+    cursor: pointer;
+    pointer-events: all;
     margin: 5px auto;
 
-    .empty-stars {
-        color: $Grayscale-200;
+    .star {
+        color: $Grayscale-200; // 기본 색상(empty 상태)
+
+        &.filled {
+            color: $Primary-Purple-100; // filled 상태 색상
+        }
     }
 }
