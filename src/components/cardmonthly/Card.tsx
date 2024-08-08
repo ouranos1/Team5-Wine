@@ -17,7 +17,7 @@ const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name, starSize, si
     const stars = Math.round(avgRating);
     return (
         <div className={`card card-${size}`}>
-            <img className="wine-img" src={image !== null ? image : wine_bottle} alt="Wine bottle" className="card-image" />
+            <img className="wine-img" src={image !== null ? image : wine_bottle} alt="Wine bottle" />
             <div className="card-content">
                 <div className="rating">{avgRating.toFixed(1)}</div>
                 <Stars size={'L'} starSize={starSize} stars={avgRating} isEvent={false} />

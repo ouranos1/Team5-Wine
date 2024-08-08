@@ -1,5 +1,3 @@
-//app 에서 사용한다고 가정
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -8,9 +6,9 @@ import Cardmy from '../../components/cardmy/Card';
 import { wineListAPI } from "@/api/Wine";
 import { winListType } from "@/types/WineProps";
 
-
 const App: React.FC = () => {
     const [wineList, setWineList] = useState<winListType[]>([]);
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
     useEffect(() => {
         const fetchWineList = async () => {
@@ -26,21 +24,41 @@ const App: React.FC = () => {
         fetchWineList();
     }, []);
 
-    //const whiteWineList = wineList.filter(wine => wine.type === 'WHITE'); ->??? 이 부분은 나중에 바꾸겠음
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    const getSize = () => {
+        return windowWidth < 768 ? "S" : "L";  // Assuming 768px as the breakpoint for mobile
+    };
+
+    const getStarSize = (size: string) => {
+        return size === "S" ? 17 : 22;
+    };
+
+    const size = getSize();
 
     return (
         <div>
             {wineList.map((wine) => (
                 <Cardmonthly key={wine.id}
-                    starSize={17}
+                    starSize={getStarSize(size)}
                     image={wine.image}
                     avgRating={wine.avgRating}
                     name={wine.name}
-                    size="L" />
+                    size={size} />
             ))}
         </div>
     );
 };
 
 export default App;
-
