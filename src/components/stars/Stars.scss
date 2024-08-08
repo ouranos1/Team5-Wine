@@ -2,15 +2,13 @@
 @import "../../app/globals.scss";
 
 .stars {
+    display: flex;
+    justify-content: space-between;
     cursor: pointer;
     pointer-events: all;
     margin: 5px auto;
 
     .star {
-        color: $Grayscale-200; // 기본 색상(empty 상태)
-
-        &.filled {
-            color: $Primary-Purple-100; // filled 상태 색상
-        }
+        cursor: pointer;
     }
 }

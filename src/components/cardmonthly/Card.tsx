@@ -19,7 +19,7 @@ const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name, size }) => {
             <img src={image !== null ? image : wine_bottle} alt="Wine bottle" className="card-image" />
             <div className="card-content">
                 <div className="rating">{avgRating.toFixed(1)}</div>
-                <Stars stars={avgRating} isEvent={false} />
+                <Stars size='L' stars={avgRating} isEvent={false} />
                 <div className="description">{name}</div>
             </div>
         </div>
