@@ -45,6 +45,7 @@ const App: React.FC = () => {
             {detail && (
                 <RatingStart
                     size={size}
+                    //여기에 필요한 값 알아서 입력해서 쓰면 됨 (미리 지정해놓은 값들 중에서)
                     starSize={size === 'L' ? 17 : 12}
                     avgRating={detail.avgRating}
                     reviewCount={detail.reviewCount}
