@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import './Input.scss';
 
 interface Props {
-  type: 'email' | 'password';
+  type: 'email' | 'password' | 'text';
   size: 'S' | 'L';
   placeholder?: string;
   inputname: string;

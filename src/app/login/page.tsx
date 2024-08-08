@@ -12,8 +12,8 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <GNB />
-      <Button text="가입하기" onClick={handleClick} />
+      <Button disable text="가입하기" onClick={handleClick} />
+      <LoginForm />
     </div>
   );
 };
