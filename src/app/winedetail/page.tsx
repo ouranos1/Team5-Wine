@@ -4,11 +4,12 @@ import React, { useEffect, useState } from 'react';
 import Cardmonthly from '../../components/cardmonthly/Card';
 import Cardmy from '../../components/cardmy/Card';
 import { wineListAPI, wineDetail } from "@/api/Wine";
-import { winListType } from "@/types/WineProps";
+import { winListType, wineDetailType } from "@/types/WineProps";
 
 
 const App: React.FC = () => {
     const [wineList, setWineList] = useState<winListType[]>([]);
+    const [detail, setDetail] = useState<wineDetailType>();
 
     useEffect(() => {
         const fetchWineList = async () => {
@@ -24,8 +25,8 @@ const App: React.FC = () => {
         const fetchWineMy = async () => {
             try {
                 const response = await wineDetail(35);
-                // setWineList(response.list);
-                console.log(response.list);
+                setDetail(response);
+                console.log(response);
             } catch (error) {
                 console.error("Error fetching wine list:", error);
             }
@@ -48,6 +49,14 @@ const App: React.FC = () => {
                     name={wine.name}
                     size="L" />
             ))}
+            {detail !== undefined ? detail.reviews.map((d) => (
+                <Cardmy key={d.id}
+                    rating={d.rating}
+                    createdAt={d.createdAt}
+                    name={detail.name}
+                    content={d.content}
+                    size="L" />
+            )) : ""}
         </div>
     );
 };
