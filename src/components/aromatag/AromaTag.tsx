@@ -1,6 +1,7 @@
 import { Aroma, AromaName, AromaProps } from '@/types/Aroma';
 import '@/components/aromatag/AromaTag.scss';
 import { createAromaList } from '@/utils/AromaUtils';
+import { useState } from 'react';
 
 interface AromaTagProps {
   list?: AromaProps[];
@@ -8,12 +9,24 @@ interface AromaTagProps {
 }
 
 export function AromaTag({ list = [], option }: AromaTagProps) {
-  // const aromaTagList = createAromaList(list);
+  // 태그의 선택 상태를 관리하는 로컬 상태 추가
+  const [selectedTags, setSelectedTags] = useState(() => {
+    return list.reduce((acc, aroma) => {
+      acc[aroma.name.eng] = aroma.selected;
+      return acc;
+    }, {} as Record<string, boolean>);
+  });
 
+  const handleTagClick = (engName: string) => {
+    setSelectedTags((prevSelectedTags) => ({
+      ...prevSelectedTags,
+      [engName]: !prevSelectedTags[engName],
+    }));
+  };
   const renderContent = () => {
     if (option === 'edit') {
       return list.map((aroma) => (
-        <p key={aroma.name.eng} className={`aroma-tag ${aroma.selected ? 'on' : 'off'}`}>
+        <p key={aroma.name.eng} className={`aroma-tag ${selectedTags[aroma.name.eng] ? 'on' : 'off'}`} onClick={() => handleTagClick(aroma.name.eng)}>
           {aroma.name.kor}
         </p>
       ));
