@@ -7,33 +7,33 @@ export async function addWineAPI(props: createWineBody) {
     let query = `/wines`;
     const apiName = "addwine";
     const body = props;
-    await CallAPI({method, query, body, apiName});
+    await CallAPI({ method, query, body, apiName });
 }
 
-export async function wineListAPI(limit: number|null = null, cursor: number|null = null, minPrice: number|null = null, maxPrice: number|null = null, rating:number|null = null) {
+export async function wineListAPI(limit: number | null = null, cursor: number | null = null, minPrice: number | null = null, maxPrice: number | null = null, rating: number | null = null) {
     //여기도 리미트 값을 설정하기 위한 방식이 필요
     // let count = 5;
     const method = "get";
     let query = `/wines`;
-    if(limit) {
-        query = query+`?limit=${limit}`;
+    if (limit) {
+        query = query + `?limit=${limit}`;
     }
-    else if(cursor) {
-        query = query+`&cursor=${cursor}`;
+    else if (cursor) {
+        query = query + `&cursor=${cursor}`;
     }
-    else if(minPrice) {
-        query = query+`&minPrice=${minPrice}`;
+    else if (minPrice) {
+        query = query + `&minPrice=${minPrice}`;
     }
-    else if(maxPrice) {
-        query = query+`&maxPrice=${maxPrice}`;
-    }   
-    else if(rating) {
-        query = query+`&rating=${rating}`;
+    else if (maxPrice) {
+        query = query + `&maxPrice=${maxPrice}`;
+    }
+    else if (rating) {
+        query = query + `&rating=${rating}`;
     }
     // let query = `/wines?limit=${count}&cursor=${}&minPrice=${}&maxPrice=${}&rating=${}`;
     const apiName = "winelist";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({ method, query, body, apiName });
 }
 
 export async function bestWine() {
@@ -43,7 +43,7 @@ export async function bestWine() {
     let query = `/wines/recommended?limit=${limit}`;
     const apiName = "bestwine";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({ method, query, body, apiName });
 }
 
 export async function wineDetail(wineId: id) {
@@ -51,7 +51,7 @@ export async function wineDetail(wineId: id) {
     let query = `/wines/${wineId}`;
     const apiName = "winedetail";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({ method, query, body, apiName });
 }
 
 export async function editWine(props: createWineBody, wineId: id) {
@@ -59,7 +59,7 @@ export async function editWine(props: createWineBody, wineId: id) {
     let query = `/wines/${wineId}`;
     const apiName = "editwine";
     const body = props;
-    await CallAPI({method, query, body, apiName});
+    await CallAPI({ method, query, body, apiName });
 }
 
 export async function deleteWine(wineId: id) {
@@ -67,5 +67,5 @@ export async function deleteWine(wineId: id) {
     let query = `/wines/${wineId}`;
     const apiName = "deletewine";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    await CallAPI({ method, query, body, apiName });
 }

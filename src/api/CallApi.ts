@@ -14,18 +14,21 @@ function ErrorCheck(method:string, apiName:string) {
     return errorMessage[method] || `알 수 없는 에러가 발생하였습니다.;`;
   }
 
-async function CallAPI({method, query, body = null, apiName}:ApiCallProps) {
-
+async function CallAPI({method, query, body = null, apiName, token}:ApiCallProps) {
+//인스턴스로 변경 부분
     console.log(method, query, body, apiName);
-
     let order = API_KEY + query;
     console.log(order);
-
+    //여기까지
+    // axios인터셉터?
     try {
         const response = await axios({
             method,
             url: order,
             data: body !== null ? body : undefined,
+            // headers: {
+            //     "Authorization" : `Bearer ${token}`,
+            // }
         });
         console.log(response.data);
         return response.data;

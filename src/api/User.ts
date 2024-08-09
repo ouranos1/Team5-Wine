@@ -5,7 +5,7 @@ export async function myDataAPI() {
     let query = "/users/me";
     const apiName = "mydata";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }
 
 export async function editmyDataAPI() {
@@ -25,7 +25,7 @@ export async function myReviewsAPI() {
     let query = `/users/me/reviews?limit=${count}`;
     const apiName = "myreview";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }
 
 export async function myWineAPI() {
@@ -34,5 +34,5 @@ export async function myWineAPI() {
     let query = `/users/me/wines?limit${count}`;
     const apiName = "mywine";
     const body = null;
-    await CallAPI({method, query, body, apiName});
+    return await CallAPI({method, query, body, apiName});
 }

@@ -1,4 +1,5 @@
 $font-sizes: (
+  54: 54px,
   36: 36px,
   32: 32px,
   28: 28px,
@@ -13,7 +14,9 @@ $font-sizes: (
 );
 
 $font-heights: (
+  64: 64px,
   42: 42px,
+  36: 36px,
   32: 32px,
   26: 26px,
   24: 24px,
@@ -32,7 +35,7 @@ $font-weights: (
 
 @mixin font-settings($size, $weight, $line-height) {
   font-size: map-get($font-sizes, $size);
-  line-height: map-get($font-heights, $weight);
+  line-height: map-get($font-heights, $line-height);
   font-weight: map-get($font-weights, $weight);
 }
 
