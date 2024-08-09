@@ -1,4 +1,6 @@
+import { SlideMode } from '@/types/SlideOption';
 import SlideComponent from '../slidecomponent/SlideComponent';
+import '@/components/wineTaste/WineTasteSlide.scss';
 
 const wineTaste = {
   lightBold: {
@@ -25,13 +27,14 @@ const wineTaste = {
 
 interface WineTasteSlideProps {
   tasteValue?: number[];
+  SlideMode: SlideMode;
 }
 
-export function wineTasteSlide({ tasteValue }: WineTasteSlideProps) {
+export function wineTasteSlide({ tasteValue, SlideMode }: WineTasteSlideProps) {
   return (
-    <div>
+    <div className="taste-slide-layer">
       {Object.entries(wineTaste).map(([tasteKey, tasteOptions], index) => (
-        <SlideComponent key={tasteKey} SlideOptionTitle={tasteOptions.title} LeftOption={tasteOptions.leftOption} RightOption={tasteOptions.rightOption} value={tasteValue ? tasteValue[index] : undefined} />
+        <SlideComponent key={tasteKey} mode={SlideMode} SlideOptionTitle={tasteOptions.title} LeftOption={tasteOptions.leftOption} RightOption={tasteOptions.rightOption} value={tasteValue ? tasteValue[index] : undefined} />
       ))}
     </div>
   );
