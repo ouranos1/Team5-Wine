@@ -1,63 +1,55 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import Cardmonthly from '../../components/cardmonthly/Card';
-import Cardmy from '../../components/cardmy/Card';
-import { wineListAPI } from "@/api/Wine";
-import { winListType } from "@/types/WineProps";
+import GNB from '@/components/gnb/GNB';
+import Card from '@/components/cardComponent/CardDetail'; // Card 컴포넌트가 임포트되어야 합니다.
+import { wineDetail } from "@/api/Wine";
+import { wineDetailType } from "@/types/WineProps";
+import RatingStart from "@/components/ratingstart/RatingStart";
 
 const App: React.FC = () => {
-    const [wineList, setWineList] = useState<winListType[]>([]);
-    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    const [detail, setDetail] = useState<wineDetailType>();
+    const [size, setSize] = useState<'L' | 'S'>('L');
 
     useEffect(() => {
-        const fetchWineList = async () => {
+        const fetchWineMy = async () => {
             try {
-                const response = await wineListAPI(999999);
-                setWineList(response.list);
-                console.log(response.list);
+                const response = await wineDetail(35);
+                setDetail(response);
+                console.log(response);
             } catch (error) {
                 console.error("Error fetching wine list:", error);
             }
         };
 
-        fetchWineList();
-    }, []);
+        fetchWineMy();
 
-    useEffect(() => {
         const handleResize = () => {
-            setWindowWidth(window.innerWidth);
+            if (window.innerWidth <= 768) {
+                setSize('S');
+            } else {
+                setSize('L');
+            }
         };
 
         window.addEventListener('resize', handleResize);
+        handleResize();
 
-        // Cleanup event listener on component unmount
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
 
-    const getSize = () => {
-        return windowWidth < 768 ? "S" : "L";  // Assuming 768px as the breakpoint for mobile
-    };
-
-    const getStarSize = (size: string) => {
-        return size === "S" ? 17 : 22;
-    };
-
-    const size = getSize();
-
     return (
-        <div>
-            {wineList.map((wine) => (
-                <Cardmonthly key={wine.id}
-                    starSize={getStarSize(size)}
-                    image={wine.image}
-                    avgRating={wine.avgRating}
-                    name={wine.name}
-                    size={size} />
-            ))}
-        </div>
+        <>
+            <GNB />
+            {detail && (
+                <>
+                    {/* <Card size="L" image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} /> */}
+                    <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={detail.avgRating} reviewCount={detail.reviewCount} />
+                </>
+            )}
+        </>
     );
 };
 
