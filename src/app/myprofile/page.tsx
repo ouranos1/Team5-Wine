@@ -56,8 +56,6 @@ function MyProfile() {
 
   return (
     <div>
-      <SlideComponent {...testoption} />
-      <SlideComponent {...testoption2} />
       <button onClick={openModal}>test</button>
       <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
     </div>

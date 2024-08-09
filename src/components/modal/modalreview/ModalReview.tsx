@@ -10,6 +10,7 @@ import { AromaTag } from '@/components/aromatag/AromaTag';
 import { responseReviewBody } from '@/types/ReviewProps';
 import { useState } from 'react';
 import { createAromaList } from '@/utils/AromaUtils';
+import { AromaName } from '@/types/Aroma';
 
 interface ModalReviewProps extends ModalProps {
   wineName: string;
@@ -17,7 +18,13 @@ interface ModalReviewProps extends ModalProps {
 }
 
 export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: ModalReviewProps) {
-  const aromaList = createAromaList(ReviewData?.aroma.name);
+  // const aromaList = createAromaList(ReviewData?.aroma.name);
+
+  const aromatest: AromaName[] = ['CHERRY', 'OAK'];
+
+  const aromaList = createAromaList(aromatest);
+
+  console.log(aromaList);
 
   return (
     <div className="modal-layer">
