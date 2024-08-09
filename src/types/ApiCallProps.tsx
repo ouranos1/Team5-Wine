@@ -3,5 +3,4 @@ export interface ApiCallProps {
   query: string;
   body: any | null;
   apiName: string;
-  token?: string;
 }

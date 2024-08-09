@@ -1,6 +1,8 @@
 import CallAPI from './CallApi';
 import { signUpRequestBody, signInRequestBody, oauthRequestBody } from '@/types/AuthProps';
 
+
+
 export async function signUpAPI(user: signUpRequestBody) {
   const method = 'post';
   let query = '/auth/signUp';

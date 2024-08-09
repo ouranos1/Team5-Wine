@@ -1,42 +1,122 @@
+// import axios from 'axios';
+// import { ApiCallProps } from '@/types/ApiCallProps';
+
+// const API_KEY = process.env.NEXT_PUBLIC_API_URL;
+
+// function ErrorCheck(method:string, apiName:string) {
+//     const errorMessage: { [key: string]: string } = {
+//       get: `${apiName}의 데이터를 받아오는데 실패하였습니다.`,
+//       put: `${apiName}의 데이터 수정에 실패하였습니다.`,
+//       post: `${apiName}에 데이터를 전송하는데 실패하였습니다.`,
+//       patch: `${apiName}의 데이터 수정에 실패하였습니다.`,
+//       delete: `${apiName}의 데이터 삭제에 실패하였습니다.`,
+//     };
+//     return errorMessage[method] || `알 수 없는 에러가 발생하였습니다.;`;
+//   }
+
+// async function CallAPI({method, query, body = null, apiName, token = null}:ApiCallProps) {
+// //인스턴스로 변경 부분
+//     // console.log(method, query, body, apiName);
+//     let order = API_KEY + query;
+//     // console.log(order);
+//     //여기까지
+//     // axios인터셉터?
+//     try {
+//         const response = await axios({
+//             method,
+//             url: order,
+//             data: body !== null ? body : undefined,
+//             headers: token !== null ? {
+//                 "Authorization" : `Bearer ${token}`,
+//             } : undefined
+//         });
+//         // console.log(response.data);
+//         return response.data;
+//     }
+//     catch (error) {
+//         console.log(ErrorCheck(method, apiName));
+//         throw error;
+//     }
+// }
+
+// export default CallAPI;
+
+
 import axios from 'axios';
 import { ApiCallProps } from '@/types/ApiCallProps';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_URL;
 
-function ErrorCheck(method:string, apiName:string) {
-    const errorMessage: { [key: string]: string } = {
-      get: `${apiName}의 데이터를 받아오는데 실패하였습니다.`,
-      put: `${apiName}의 데이터 수정에 실패하였습니다.`,
-      post: `${apiName}에 데이터를 전송하는데 실패하였습니다.`,
-      patch: `${apiName}의 데이터 수정에 실패하였습니다.`,
-      delete: `${apiName}의 데이터 삭제에 실패하였습니다.`,
-    };
-    return errorMessage[method] || `알 수 없는 에러가 발생하였습니다.;`;
-  }
+// Axios 인스턴스 생성
+const apiInstance = axios.create({
+  baseURL: API_KEY,
+});
 
-async function CallAPI({method, query, body = null, apiName, token}:ApiCallProps) {
-//인스턴스로 변경 부분
-    console.log(method, query, body, apiName);
-    let order = API_KEY + query;
-    console.log(order);
-    //여기까지
-    // axios인터셉터?
-    try {
-        const response = await axios({
-            method,
-            url: order,
-            data: body !== null ? body : undefined,
-            // headers: {
-            //     "Authorization" : `Bearer ${token}`,
-            // }
-        });
-        console.log(response.data);
-        return response.data;
+// 요청 인터셉터 설정
+apiInstance.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
-    catch (error) {
-        console.log(ErrorCheck(method, apiName));
-        throw error;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// 응답 인터셉터 설정
+apiInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
+        const refreshToken = localStorage.getItem('refreshToken');
+        const response = await axios.post(`${API_KEY}/refresh-token`, { refreshToken });
+        const newAccessToken = response.data.accessToken;
+        localStorage.setItem('accessToken', newAccessToken);
+        apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+        originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+        return apiInstance(originalRequest);
+      } catch (refreshError) {
+        console.error('토큰 갱신에 실패하였습니다.');
+        return Promise.reject(refreshError);
+      }
     }
+    return Promise.reject(error);
+  }
+);
+
+function ErrorCheck(method: string, apiName: string) {
+  const errorMessage: { [key: string]: string } = {
+    get: `${apiName}의 데이터를 받아오는데 실패하였습니다.`,
+    put: `${apiName}의 데이터 수정에 실패하였습니다.`,
+    post: `${apiName}에 데이터를 전송하는데 실패하였습니다.`,
+    patch: `${apiName}의 데이터 수정에 실패하였습니다.`,
+    delete: `${apiName}의 데이터 삭제에 실패하였습니다.`,
+  };
+  return errorMessage[method] || `알 수 없는 에러가 발생하였습니다.;`;
+}
+
+async function CallAPI({ method, query, body = null, apiName }: ApiCallProps) {
+  // 인스턴스로 변경 부분
+  let order = query; // baseURL이 설정되어 있으므로 API_KEY를 제외합니다.
+  try {
+    const response = await apiInstance({
+      method,
+      url: order,
+      data: body !== null ? body : undefined,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(ErrorCheck(method, apiName));
+    throw error;
+  }
 }
 
 export default CallAPI;
