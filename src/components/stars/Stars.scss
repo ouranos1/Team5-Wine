@@ -2,10 +2,13 @@
 @import "../../app/globals.scss";
 
 .stars {
-    color: $Primary-Purple-100;
-    margin: 5px auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    pointer-events: all;
 
-    .empty-stars {
-        color: $Grayscale-200;
+    .star {
+        cursor: pointer;
     }
 }
