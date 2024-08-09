@@ -13,7 +13,7 @@ interface Props {
 const Card: React.FC<Props> = ({ size, image, wineName, wineDesc, winePrice }) => {
   return (
     <div className="card" data-size={size}>
-      <img src={image !== null ? image : ""} alt="Card Image" className="cardImage" data-size={size} />
+      <img src={image !== null ? image : ''} alt="Card Image" className="cardImage" data-size={size} />
       {/*imageProp 으로 바꿔서 null 체크를 해줘야함*/}
       <div className="wine">
         <div className="wineName" data-size={size}>

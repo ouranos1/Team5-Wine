@@ -1,24 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import './Input.scss';
+import { InputProps } from '@/types/Input';
 
-interface Props {
-  type: 'email' | 'password' | 'text';
-  size: 'S' | 'L';
-  placeholder?: string;
-  inputname: string;
-}
-
-const Input: React.FC<Props> = ({ type, size, placeholder = '입력하시오.', inputname = '입력하시오.' }) => {
+const Input: React.FC<InputProps> = ({ size, placeholder = '입력하시오.', inputname = '입력하시오.', defaultValue = '', ...rest }) => {
   return (
-    <div className="form" data-size={size} data-type={type}>
-      {inputname != '' && (
-        <label className="inputname" data-size={size}>
+    <div className="form" data-size={size}>
+      {inputname && (
+        <p className="inputname" data-size={size}>
           {inputname}
-        </label>
+        </p>
       )}
-      <input className="input" data-size={size} type={type} placeholder={placeholder} />
+      <input className="input" data-size={size} placeholder={placeholder} defaultValue={defaultValue} {...rest} />
     </div>
   );
 };
