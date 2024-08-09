@@ -13,11 +13,11 @@ interface CardProps {
 
 const RatingStart: React.FC<CardProps> = ({ avgRating, reviewCount, starSize, size }) => {
     return (
-        <div className={`card card-${size}`}>
-            <div className="rating">{avgRating.toFixed(1)}</div>
-            <div className="card-content">
+        <div className={`start-card start-card-${size}`}>
+            <div className="start-rating">{avgRating.toFixed(1)}</div>
+            <div className="start-card-content">
                 <Stars size={'L'} starSize={starSize} stars={avgRating} isEvent={false} />
-                <span>{reviewCount.toLocaleString()}개의 후기</span>
+                <span className="start-review">{reviewCount.toLocaleString()}개의 후기</span>
             </div>
         </div>
     );

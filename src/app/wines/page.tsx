@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import GNB from '@/components/gnb/GNB';
-import Card from '@/components/cardComponent/CardDetail'; // Card 컴포넌트가 임포트되어야 합니다.
+import Card from '@/components/cardComponent/CardDetail';
 import { wineDetail } from "@/api/Wine";
 import { wineDetailType } from "@/types/WineProps";
 import RatingStart from "@/components/ratingstart/RatingStart";
@@ -21,7 +21,6 @@ const App: React.FC = () => {
                 console.error("Error fetching wine list:", error);
             }
         };
-
         fetchWineMy();
 
         const handleResize = () => {
@@ -31,7 +30,6 @@ const App: React.FC = () => {
                 setSize('L');
             }
         };
-
         window.addEventListener('resize', handleResize);
         handleResize();
 
@@ -45,7 +43,8 @@ const App: React.FC = () => {
             <GNB />
             {detail && (
                 <>
-                    {/* <Card size="L" image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} /> */}
+                    <Card size={size} image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
+                    <br />
                     <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={detail.avgRating} reviewCount={detail.reviewCount} />
                 </>
             )}

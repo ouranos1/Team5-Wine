@@ -1,0 +1,29 @@
+@import "../../styles/ColorList.scss";
+@import "../../styles/Font-Mixins.scss";
+@import "../../app/globals.scss";
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #5A5A5A; // 텍스트 색상
+}
+
+.progressBar {
+    flex: 1;
+    background-color: #f2f2f2; // 진행 바의 배경색
+    border-radius: 5px;
+    overflow: hidden;
+    height: 8px; // 진행 바의 높이
+}
+
+.progress {
+    background-color: #6c4dd9; // 진행 상태의 색상 (보라색)
+    height: 100%;
+    transition: width 0.3s ease; // 진행 바의 애니메이션
+}
