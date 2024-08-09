@@ -11,6 +11,7 @@ import { responseReviewBody } from '@/types/ReviewProps';
 import { useState } from 'react';
 import { createAromaList } from '@/utils/AromaUtils';
 import { AromaName } from '@/types/Aroma';
+import { SlideMode } from '@/types/SlideOption';
 
 interface ModalReviewProps extends ModalProps {
   wineName: string;
@@ -23,8 +24,6 @@ export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: M
   const aromatest: AromaName[] = ['CHERRY', 'OAK'];
 
   const aromaList = createAromaList(aromatest);
-
-  console.log(aromaList);
 
   return (
     <div className="modal-layer">
@@ -57,7 +56,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: M
           <div className="wine-taste">
             {/* <p>와인 맛 슬라이더</p> */}
             <p className="taste-title">와인의 맛은 어땠나요?</p>
-            <WineTasteSlide />
+            <WineTasteSlide SlideMode={ReviewData ? SlideMode.CREATE : SlideMode.EDIT} />
           </div>
           <div className="wine-aroma">
             {/* <p>와인 향 선택</p> */}
