@@ -47,8 +47,8 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
       role="wine"
     >
       <Input type="text" size="L" placeholder="와인 이름 입력" inputname="와인 이름" value={wineName} onChange={handleWineNameChange} />
-      <Input type="text" size="L" placeholder="가격 입력" inputname="가격" value={price} onChange={handleOriginChange} />
-      <Input type="text" size="L" placeholder="원산지 입력" inputname="원산지" value={origin} onChange={handlePriceChange} />
+      <Input type="text" size="L" placeholder="가격 입력" inputname="가격" value={price} onChange={handlePriceChange} />
+      <Input type="text" size="L" placeholder="원산지 입력" inputname="원산지" value={origin} onChange={handleOriginChange} />
       <ImageUpload onImageUpload={setImageUrl} />
     </BaseModal>
   );

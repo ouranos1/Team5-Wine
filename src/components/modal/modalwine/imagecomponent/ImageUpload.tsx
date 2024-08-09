@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageAPI } from '@/api/Image';
+import { ImageAPI } from '@/api/Image'; // 서버에 이미지를 업로드하는 API
 import './ImageUpload.scss';
 import photo from '@/assets/icon/photo.svg';
 import Image from 'next/image';
@@ -10,14 +10,19 @@ function ImageUpload({ onImageUpload }: { onImageUpload: (url: string | null) =>
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        const imgUrl = reader.result as string;
+      const formData = new FormData();
+      formData.append('image', file);
+
+      try {
+        // 이미지 파일을 서버에 업로드하고 URL을 받아옴
+        const response = await ImageAPI(formData);
+        const imgUrl = response.data.url; // 서버에서 반환된 이미지 URL
+
         setImage(imgUrl);
-        await ImageAPI(imgUrl);
         onImageUpload(imgUrl);
-      };
-      reader.readAsDataURL(file);
+      } catch (error) {
+        alert('이미지 업로드에 실패했습니다.');
+      }
     }
   };
 
