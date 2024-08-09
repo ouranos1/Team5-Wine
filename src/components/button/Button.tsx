@@ -6,7 +6,7 @@ import { ButtonProps } from '@/types/ButtonProps';
 
 const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
   return (
-    <button disabled className="button" onClick={onClick}>
+    <button className="button" onClick={onClick}>
       {text}
     </button>
   );

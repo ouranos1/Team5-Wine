@@ -1,15 +1,22 @@
+'use client';
+
 import Image from 'next/image';
 import wineLogo from '@/assets/icon/wineLogo.svg';
 import Input from '@/components/inputComponent/Input';
 import Button from '@/components/button/Button';
+import { signUpAPI, signInAPI } from '@/api/Auth';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import './SignUpForm.scss';
 
 export default function SignupForm() {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validateEmail = (value: string) => {
@@ -39,60 +46,84 @@ export default function SignupForm() {
     return '';
   };
 
-  const handleChange = (field: string, value: string) => {
-    let errorMessage = '';
-    switch (field) {
-      case 'email':
-        errorMessage = validateEmail(value);
-        setEmail(value);
-        break;
-      case 'nickname':
-        errorMessage = validateNickname(value);
-        setNickname(value);
-        break;
-      case 'password':
-        errorMessage = validatePassword(value);
-        setPassword(value);
-        break;
-      case 'confirmPassword':
-        errorMessage = validateConfirmPassword(value);
-        setConfirmPassword(value);
-        break;
-      default:
-        break;
-    }
-    setErrors((prev) => ({ ...prev, [field]: errorMessage }));
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    const errorMessage = validateEmail(value);
+    setErrors((prev) => ({ ...prev, email: errorMessage }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleNicknameChange = (value: string) => {
+    setNickname(value);
+    const errorMessage = validateNickname(value);
+    setErrors((prev) => ({ ...prev, nickname: errorMessage }));
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    const errorMessage = validatePassword(value);
+    setErrors((prev) => ({ ...prev, password: errorMessage }));
+  };
+
+  const handleConfirmPasswordChange = (value: string) => {
+    setPasswordConfirmation(value);
+    const errorMessage = validateConfirmPassword(value);
+    setErrors((prev) => ({ ...prev, passwordConfirmation: errorMessage }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const hasErrors = Object.values(errors).some((error) => error);
     if (!hasErrors) {
-      console.log({ email, nickname, password });
-      alert('회원가입이 완료되었습니다.');
+      try {
+        const userData = {
+          email: email,
+          nickname: nickname,
+          password: password,
+          passwordConfirmation: passwordConfirmation,
+        };
+        console.log('전송할 데이터:', userData);
+
+        await signUpAPI(userData);
+        alert('회원가입이 완료되었습니다');
+
+        const loginData = {
+          email: email,
+          password: password,
+        };
+
+        const { accessToken, refreshToken } = await signInAPI(loginData);
+
+        localStorage.setItem('acceessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
+
+        router.push('/');
+      } catch (error) {
+        console.error('회원가입 중 오류가 발생했습니다:', error);
+      }
+    } else {
+      alert('입력값을 다시 확인해주세요');
     }
   };
 
   return (
-    <div className="signup-container">
+    <div className="signup-form-container">
       <form onSubmit={handleSubmit}>
-        <h1>
+        <div className="signup-header">
           <Image src={wineLogo} alt="와인 로고" width={104} height={30} />
-        </h1>
-        <Input type="email" size="L" placeholder="whyne@email.com" inputname="이메일" value={email} onChange={(e) => handleChange('email', e.target.value)} />
-        {errors.email && <p>{errors.email}</p>}
-
-        <Input type="text" size="L" placeholder="whyne" inputname="닉네임" value={nickname} onChange={(e) => handleChange('nickname', e.target.value)} />
-        {errors.nickname && <p>{errors.nickname}</p>}
-
-        <Input type="password" size="L" placeholder="비밀번호" inputname="비밀번호" value={password} onChange={(e) => handleChange('password', e.target.value)} />
-        {errors.password && <p>{errors.password}</p>}
-
-        <Input type="password" size="L" placeholder="비밀번호 확인" inputname="비밀번호 확인" value={confirmPassword} onChange={(e) => handleChange('confirmPassword', e.target.value)} />
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-
-        <Button text="가입하기" onClick={handleSubmit} />
+        </div>
+        <Input type="email" size="L" placeholder="whyne@email.com" inputname="이메일" value={email} onChange={(e) => handleEmailChange(e.target.value)} />
+        {errors.email && <p className="error-message">{errors.email}</p>}
+        <Input type="text" size="L" placeholder="whyne" inputname="닉네임" value={nickname} onChange={(e) => handleNicknameChange(e.target.value)} />
+        {errors.nickname && <p className="error-message">{errors.nickname}</p>}
+        <Input type="password" size="L" placeholder="비밀번호" inputname="비밀번호" value={password} onChange={(e) => handlePasswordChange(e.target.value)} />
+        {errors.password && <p className="error-message">{errors.password}</p>}
+        <Input type="password" size="L" placeholder="비밀번호 확인" inputname="비밀번호 확인" value={passwordConfirmation} onChange={(e) => handleConfirmPasswordChange(e.target.value)} />
+        {errors.passwordConfirmation && <p className="error-message">{errors.passwordConfirmation}</p>}
+        <Button text="가입하기" type="submit" />
       </form>
+      <p className="login-link">
+        계정이 이미 있으신가요? <Link href="/login">로그인하기</Link>
+      </p>
     </div>
   );
 }

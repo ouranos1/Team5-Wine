@@ -1,0 +1,64 @@
+@import "../../styles/ColorList.scss";
+@import "../../styles/Font-Mixins.scss";
+@import "../../app/globals.scss";
+
+.card {
+    display: flex;
+
+    &-L {
+        width: 218px;
+        height: 64px;
+        gap: 15px;
+
+        .rating {
+            width: 86px;
+            @include font-settings(54, heavy, 64);
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .stars {
+                width: 112px;
+                height: 24px;
+            }
+
+            span {
+                @include font-settings(14, regular, 24);
+                color: $Grayscale-300;
+                height: 24px;
+            }
+        }
+    }
+
+    &-S {
+        width: 162px;
+        height: 47px;
+        gap: 15px;
+
+        .rating {
+            width: 57px;
+            @include font-settings(36, heavy, 42);
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .stars {
+                width: 90px;
+                height: 18px;
+            }
+
+            span {
+                @include font-settings(14, regular, 24);
+                color: $Grayscale-300;
+                height: 24px;
+            }
+        }
+
+    }
+}
