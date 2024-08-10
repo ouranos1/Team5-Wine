@@ -1,8 +1,6 @@
 import CallAPI from './CallApi';
 import { signUpRequestBody, signInRequestBody, oauthRequestBody } from '@/types/AuthProps';
 
-
-
 export async function signUpAPI(user: signUpRequestBody) {
   const method = 'post';
   let query = '/auth/signUp';
@@ -24,7 +22,7 @@ export async function refreshToken(token: object) {
   let query = '/auth/refresh-token';
   const apiName = 'refreshToken';
   const body = token;
-  await CallAPI({ method, query, body, apiName });
+  return await CallAPI({ method, query, body, apiName });
 }
 
 export async function providerAPI(props: oauthRequestBody, provider: string) {
