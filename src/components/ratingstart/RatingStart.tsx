@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './RatingStart.scss';
-import Stars from '../stars/StarsComponent';
+import Stars from '@/components/stars/StarsComponent';
 
 interface CardProps {
     avgRating: number | null;

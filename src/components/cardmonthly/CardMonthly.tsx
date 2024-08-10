@@ -3,7 +3,7 @@
 import React from 'react';
 import './CardMonthly.scss';
 import wine_bottle from '@/assets/icon/wine_bottle.svg';
-import Stars from '../stars/StarsComponent'
+import Stars from '@/components/stars/StarsComponent'
 
 interface CardProps {
     image: string | null;

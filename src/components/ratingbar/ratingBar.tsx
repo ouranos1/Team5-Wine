@@ -17,7 +17,6 @@ interface RatingBarProps {
 
 const RatingBar: React.FC<RatingBarProps> = ({ score, avgRatings, reviewCount }) => {
     const percentage = reviewCount && (avgRatings[score] / reviewCount) * 100;
-    console.log(percentage);
 
     return (
         <div className="container">

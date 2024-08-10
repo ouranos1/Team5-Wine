@@ -1,41 +1,117 @@
-@import "../../styles/ColorList.scss";
-@import "../../styles/Font-Mixins.scss";
-@import "../../app/globals.scss";
+@import "@/styles/ColorList.scss";
+@import "@/styles/Font-Mixins.scss";
+@import "@/app/globals.scss";
 
-.allContainer {
-    height: 233px;
+.all-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    .allSubContainer {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+    &-L {
+        height: 233px;
 
-        .allStartContainer {}
-
-        .allButton {
+        .all-sub-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .all-start-container {}
+
+            .all-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            Button {
+                width: 100px;
+                height: 40px;
+                font-size: 14px;
+
+                &:hover {
+                    background-color: $Primary-Purple-200;
+                }
+            }
         }
 
-        Button {
-            width: 100px;
-            height: 40px;
-            font-size: 14px;
-
-            &:hover {
-                background-color: $Primary-Purple-200;
-            }
+        .all-rating-bars {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 8px;
         }
     }
 
-    .allRatingBars {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 8px;
+    &-M {
+        height: 180px;
+
+        .all-sub-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .all-start-container {}
+
+            .all-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            Button {
+                width: 80px;
+                height: 35px;
+                font-size: 12px;
+
+                &:hover {
+                    background-color: $Primary-Purple-200;
+                }
+            }
+        }
+
+        .all-rating-bars {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 6px;
+        }
+    }
+
+    &-S {
+        .allContainer {
+            height: 233px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .allSubContainer {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .allButton {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                Button {
+                    width: 100px;
+                    height: 40px;
+                    font-size: 14px;
+
+                    &:hover {
+                        background-color: $Primary-Purple-200;
+                    }
+                }
+            }
+
+            .allRatingBars {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 8px;
+            }
+        }
     }
 }
