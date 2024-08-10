@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import './Card.scss';
+import './CardMy.scss';
 
 interface ReviewCardProps {
     rating: number;

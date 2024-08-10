@@ -5,11 +5,12 @@ import GNB from '@/components/gnb/GNB';
 import Card from '@/components/cardComponent/CardDetail';
 import { wineDetail } from "@/api/Wine";
 import { wineDetailType } from "@/types/WineProps";
-import RatingStart from "@/components/ratingstart/RatingStart";
+import RatingAll from "@/components/ratingall/RatingAll";
 
 const App: React.FC = () => {
     const [detail, setDetail] = useState<wineDetailType>();
     const [size, setSize] = useState<'L' | 'S'>('L');
+    const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
 
     useEffect(() => {
         const fetchWineMy = async () => {
@@ -43,9 +44,21 @@ const App: React.FC = () => {
             <GNB />
             {detail && (
                 <>
-                    <Card size={size} image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
+                    <Card
+                        size={size}
+                        image={detail.image}
+                        wineName={detail.name}
+                        wineDesc={detail.region}
+                        winePrice={detail.price}
+                    />
                     <br />
-                    <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={detail.avgRating} reviewCount={detail.reviewCount} />
+                    <RatingAll
+                        size={size}
+                        score={score}
+                        avgRating={detail.avgRating}
+                        avgRatings={detail.avgRatings}
+                        reviewCount={detail.reviewCount}
+                    />
                 </>
             )}
         </>

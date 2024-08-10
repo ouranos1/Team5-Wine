@@ -1,15 +1,23 @@
 'use client';
 
 import React from 'react';
-import './ratingBar.scss';
+import './RatingBar.scss';
 
-interface ProgressBarProps {
-    score: number;
-    maxScore: number;
+interface RatingBarProps {
+    score: 1 | 2 | 3 | 4 | 5;
+    avgRatings: {
+        1: number;
+        2: number;
+        3: number;
+        4: number;
+        5: number;
+    };
+    reviewCount: number;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ score, maxScore }) => {
-    const percentage = (score / maxScore) * 100;
+const RatingBar: React.FC<RatingBarProps> = ({ score, avgRatings, reviewCount }) => {
+    const percentage = (avgRatings[score] / reviewCount) * 100;
+    console.log(percentage);
 
     return (
         <div className="container">
@@ -21,8 +29,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ score, maxScore }) => {
                 ></div>
             </div>
         </div>
+
     );
 };
 
-export default ProgressBar;
+export default RatingBar;
 

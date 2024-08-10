@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import './Card.scss';
+import './CardMonthly.scss';
 import wine_bottle from '@/assets/icon/wine_bottle.svg';
 import Stars from '../stars/StarsComponent'
 

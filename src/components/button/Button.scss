@@ -20,8 +20,8 @@
   }
 
   &:active {
-    background-color: $Primary-Purple-200;
     transform: scale(0.98);
+    background-color: $Primary-Purple-200;
   }
 
   &:disabled {

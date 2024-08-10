@@ -4,26 +4,28 @@
 
 .container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-}
 
-.label {
-    margin-right: 10px;
-    font-size: 14px;
-    color: #5A5A5A; // 텍스트 색상
-}
+    .label {
+        @include font-settings(16, medium, 26);
+        color: $Grayscale-300;
+        width: 40px;
+    }
 
-.progressBar {
-    flex: 1;
-    background-color: #f2f2f2; // 진행 바의 배경색
-    border-radius: 5px;
-    overflow: hidden;
-    height: 8px; // 진행 바의 높이
-}
+    .progressBar {
+        height: 6px;
+        width: 100%;
+        border-radius: 50px;
+        background-color: $Grayscale-100;
 
-.progress {
-    background-color: #6c4dd9; // 진행 상태의 색상 (보라색)
-    height: 100%;
-    transition: width 0.3s ease; // 진행 바의 애니메이션
+        .progress {
+            background-color: $Primary-Purple-100;
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 50px;
+        }
+    }
+
 }
