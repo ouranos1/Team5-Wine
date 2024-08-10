@@ -10,45 +10,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    &.review-card-L {
-        width: 800px;
-    }
-
-    &.review-card-M {
-        width: 704px;
-    }
-
-    &.review-card-S {
-        width: 343px;
-        padding: 16px 20px;
-        gap: 17px;
-
-        .review-header .rating-container {
-            .rating {
-                @include font-settings(14, bold, 24);
-                width: 60px;
-                height: 32px;
-            }
-
-            .time {
-                @include font-settings(14, regular, 24);
-            }
-        }
-
-        .review-header .options {
-            font-size: 24px;
-        }
-
-        .review-body .title {
-            @include font-settings(14, medium, 24);
-        }
-
-        .review-body .description {
-            @include font-settings(14, regular, 24);
-            line-height: 24px;
-        }
-    }
+    width: 100%;
 
     .review-header {
         display: flex;
@@ -58,6 +20,7 @@
         .rating-container {
             display: flex;
             align-items: center;
+            height: 42px;
 
             .rating {
                 @include font-settings(18, bold, 26);
@@ -67,7 +30,7 @@
                 align-items: center;
                 justify-content: center;
                 width: 80px;
-                height: 42px;
+                height: 100%;
                 border-radius: 12px;
                 margin-right: 15px;
             }
@@ -96,6 +59,40 @@
             @include font-settings(16, regular, 26);
             color: $Grayscale-400;
             line-height: 26px;
+        }
+    }
+
+
+    @include mobile {
+        background-color: rgb(255, 240, 232);
+        padding: 16px 20px;
+        gap: 17px;
+
+        .review-header .rating-container {
+            height: 32px;
+
+            .rating {
+                @include font-settings(14, bold, 24);
+                width: 60px;
+                height: 100%;
+            }
+
+            .time {
+                @include font-settings(14, regular, 24);
+            }
+        }
+
+        .review-header .options {
+            font-size: 24px;
+        }
+
+        .review-body .title {
+            @include font-settings(14, medium, 24);
+        }
+
+        .review-body .description {
+            @include font-settings(14, regular, 24);
+            line-height: 24px;
         }
     }
 }

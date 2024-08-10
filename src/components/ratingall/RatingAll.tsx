@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './RatingAll.scss';
 import { wineDetail } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
@@ -20,11 +20,32 @@ interface RatingAllProps {
         5: number;
     };
     reviewCount: number;
-    size: 'L' | 'S';
 }
 
-const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, reviewCount, size }) => {
+const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, reviewCount }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [starSize, setStarSize] = useState(17);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 767) { // Mobile size 기준
+                setStarSize(12);
+            } else {
+                setStarSize(17);
+            }
+        };
+
+        // 초기 사이즈 설정
+        handleResize();
+
+        // 창 크기 변경 이벤트 리스너 추가
+        window.addEventListener('resize', handleResize);
+
+        // 컴포넌트 언마운트 시 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -39,7 +60,7 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
             <div className='allContainer'>
                 <div className='allSubContainer'>
                     <div className='allStartContainer'>
-                        <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={avgRating} reviewCount={reviewCount} />
+                        <RatingStart starSize={starSize} avgRating={avgRating} reviewCount={reviewCount} />
                     </div>
                     <div className='allButton'>
                         <Button text={'리뷰 남기기'} onClick={handleOpenModal} />
@@ -63,4 +84,3 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
 };
 
 export default RatingAll;
-

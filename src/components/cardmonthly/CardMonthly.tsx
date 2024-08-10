@@ -9,18 +9,16 @@ interface CardProps {
     image: string | null;
     avgRating: number;
     name: string;
-    starSize: 22 | 17 | 12 | 9 | 8;
-    size: 'L' | 'S';
 }
 
-const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name, starSize, size }) => {
+const Cardmonthly: React.FC<CardProps> = ({ image, avgRating, name }) => {
     const stars = Math.round(avgRating);
     return (
-        <div className={`card card-${size}`}>
+        <div className="card">
             <img className="wine-img" src={image !== null ? image : wine_bottle} alt="Wine bottle" />
             <div className="card-content">
                 <div className="rating">{avgRating.toFixed(1)}</div>
-                <Stars size={'L'} starSize={starSize} stars={avgRating} isEvent={false} />
+                <Stars stars={avgRating} isEvent={false} />
                 <div className="description">{name}</div>
             </div>
         </div>
