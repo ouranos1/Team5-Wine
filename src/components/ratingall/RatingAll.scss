@@ -1,0 +1,26 @@
+@import "../../styles/ColorList.scss";
+@import "../../styles/Font-Mixins.scss";
+@import "../../app/globals.scss";
+
+.allContainer {
+    height: 233px;
+
+    .allSubContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .allStartContainer {}
+
+        .allButton Button {
+            width: 100px;
+            @include font-settings(14, bold, 24);
+
+            &:hover {
+                background-color: $Primary-Purple-200;
+            }
+        }
+    }
+
+    .allRatingBars {}
+}

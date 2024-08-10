@@ -2,8 +2,8 @@
 
 import React from 'react';
 import './RatingAll.scss';
-import { wineDetail } from "@/api/Wine";
-import { wineDetailType } from "@/types/WineProps";
+import { wineDetail } from '@/api/Wine';
+import { wineDetailType } from '@/types/WineProps';
 import Button from '../button/Button';
 import RatingBar from '../ratingbar/RatingBar';
 import RatingStart from '../ratingstart/RatingStart';
@@ -26,17 +26,23 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
 
     return (
         <>
-            <div>
-                <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={avgRating} reviewCount={reviewCount} />
-                <Button text={'리뷰 남기기'} />
-            </div>
-            <div>
-                <RatingBar score={5} avgRatings={avgRatings} reviewCount={reviewCount} />
-                <RatingBar score={4} avgRatings={avgRatings} reviewCount={reviewCount} />
-                <RatingBar score={3} avgRatings={avgRatings} reviewCount={reviewCount} />
-                <RatingBar score={2} avgRatings={avgRatings} reviewCount={reviewCount} />
-                <RatingBar score={1} avgRatings={avgRatings} reviewCount={reviewCount} />
-            </div>
+            <div className='allContainer'>
+                <div className='allSubContainer'>
+                    <div className='allStartContainer'>
+                        <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={avgRating} reviewCount={reviewCount} />
+                    </div>
+                    <div className='allButton'>
+                        <Button text={'리뷰 남기기'} />
+                    </div>
+                </div>
+                <div className='allRatingBars'>
+                    <RatingBar score={5} avgRatings={avgRatings} reviewCount={reviewCount} />
+                    <RatingBar score={4} avgRatings={avgRatings} reviewCount={reviewCount} />
+                    <RatingBar score={3} avgRatings={avgRatings} reviewCount={reviewCount} />
+                    <RatingBar score={2} avgRatings={avgRatings} reviewCount={reviewCount} />
+                    <RatingBar score={1} avgRatings={avgRatings} reviewCount={reviewCount} />
+                </div>
+            </div >
         </>
     );
 };
