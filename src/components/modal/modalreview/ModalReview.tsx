@@ -9,7 +9,7 @@ import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { AromaTag } from '@/components/aromatag/AromaTag';
 import { responseReviewBody } from '@/types/ReviewProps';
 import { useState } from 'react';
-import { createAromaList } from '@/utils/AromaUtils';
+import { createAromaList } from '@/utils/aromautils';
 import { AromaName } from '@/types/Aroma';
 import { SlideMode } from '@/types/SlideOption';
 
