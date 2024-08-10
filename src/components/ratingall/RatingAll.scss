@@ -47,10 +47,13 @@
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
+            margin-bottom: 0;
 
             .allButton {
                 display: flex;
+                position: relative;
                 justify-content: flex-start;
+                bottom: 0;
 
                 Button {
                     width: 113px;
@@ -89,6 +92,7 @@
 
                 .allButton {
                     display: flex;
+                    position: relative;
                     justify-content: center;
                     align-items: center;
 
