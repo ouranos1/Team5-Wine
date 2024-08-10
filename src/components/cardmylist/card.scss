@@ -32,24 +32,24 @@
     }
 
     .wine {
-      width: 300px;
-      height: 168px;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      width: 187px;
+      height: 127.5px;
+      margin-top: 20px;
+      margin-bottom: 16.5px;
 
       .wine-name {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         width: 100%;
-        height: 72px;
-        @include font-settings(30, semibold, 36);
+        height: 48px;
+        @include font-settings(20, semibold, 24);
         color: $Grayscale-400;
       }
 
       .wine-desc {
-        margin-bottom: 13px;
+        margin-bottom: 4.5px;
         width: 100%;
-        height: 26px;
-        @include font-settings(16, regular, 26);
+        height: 24px;
+        @include font-settings(14, regular, 24);
         color: $Grayscale-300;
       }
 
@@ -62,7 +62,7 @@
         border-radius: 12px;
         background: $Primary-Purple-10;
         color: $Primary-Purple-100;
-        @include font-settings(18, bold, 26);
+        @include font-settings(14, bold, 24);
         text-align: center;
       }
     }
