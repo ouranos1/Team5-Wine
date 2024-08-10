@@ -24,24 +24,15 @@ interface RatingAllProps {
 
 const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, reviewCount }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
-    const [starSize, setStarSize] = useState(17);
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 767) { // Mobile size 기준
-                setStarSize(12);
-            } else {
-                setStarSize(17);
-            }
         };
 
-        // 초기 사이즈 설정
         handleResize();
 
-        // 창 크기 변경 이벤트 리스너 추가
         window.addEventListener('resize', handleResize);
 
-        // 컴포넌트 언마운트 시 이벤트 리스너 제거
         return () => {
             window.removeEventListener('resize', handleResize);
         };
