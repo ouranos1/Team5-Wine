@@ -13,39 +13,6 @@ function MyProfile() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  //api 테스트용
-  const testoption: SildeOptionProps = {
-    SlideOptionTitle: 'test옵션타이틀',
-    LeftOption: 'test레프트옵션',
-    RightOption: 'test라이트옵션',
-    value: 70,
-    mode: SlideMode.VIEW,
-  };
-
-  const testoption2: SildeOptionProps = {
-    SlideOptionTitle: 'test옵션타이틀',
-    LeftOption: 'test레프트옵션',
-    RightOption: 'test라이트옵션',
-    mode: SlideMode.CREATE,
-  };
-
-  const test: signUpRequestBody = {
-    image: null,
-    email: 'test4@test4.com',
-    nickname: 'test4',
-    password: '12345678',
-    passwordConfirmation: '12345678',
-  };
-
-  const test2: signInRequestBody = {
-    email: 'gwangho@gwangho.com',
-    password: '12345678',
-  };
-
-  const refreshtest: object = {
-    refreshToken: 'fdasfdsa',
-  };
-
   useEffect(() => {
     async function tt() {
       // await signUpAPI(test);
@@ -58,8 +25,16 @@ function MyProfile() {
 
   return (
     <div>
-      <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
+      {/* <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" /> */}
+      <div>
+        {/* 전체 데이터 */}
+        <div>{/* 사용자 프로필 및 닉네임 수정 창 */}</div>
+        <div>
+          {/* 사용자 작성 후기와 와인 보여줄창 */}
+          <div>{/* 내가 쓴 후기, 내가 등록한 와인 */}</div>
+        </div>
+      </div>
     </div>
   );
 }
