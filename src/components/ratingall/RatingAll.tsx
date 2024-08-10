@@ -60,7 +60,7 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
             <div className='allContainer'>
                 <div className='allSubContainer'>
                     <div className='allStartContainer'>
-                        <RatingStart starSize={starSize} avgRating={avgRating} reviewCount={reviewCount} />
+                        <RatingStart avgRating={avgRating} reviewCount={reviewCount} />
                     </div>
                     <div className='allButton'>
                         <Button text={'리뷰 남기기'} onClick={handleOpenModal} />
