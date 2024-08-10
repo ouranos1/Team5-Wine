@@ -2,9 +2,9 @@
 import React from 'react';
 import Image from 'next/image';
 //import styles from './page.module.css';
-import Card from '@/components/carddetail/Card';
+import Card from '@/components/cardmylist/card';
 
-export default function Home() {
+export default function Cardpage() {
   const wineprice = 64990;
   return (
     <>

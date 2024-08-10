@@ -9,13 +9,12 @@
   margin-top: 20px;
   display: flex;
 
-  // Small Size
   @include desktop {
     width: 1140px;
     height: 260px;
 
     .card-image {
-      margin: 51px 86px 0px 100px;
+      margin: 49px 86px 0px 100px;
       width: 58px;
       height: 209px;
     }
@@ -57,13 +56,12 @@
     }
   }
 
-  // Medium Size
   @include tablet {
     width: 704px;
     height: 260px;
 
     .card-image {
-      margin: -42px 60px 0px 60px;
+      margin: -44px 60px 0px 60px;
       width: 84px;
       height: 302px;
     }
@@ -105,8 +103,6 @@
     }
   }
 
-  // Large Size
-
   @include mobile {
     width: 343px;
     height: 190px;
@@ -114,7 +110,7 @@
 
     .card-image {
       vertical-align: top;
-      margin: -19px 20px 0px 20px;
+      margin: -21px 20px 0px 20px;
       width: 58px;
       height: 209px;
     }
