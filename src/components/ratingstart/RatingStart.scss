@@ -4,39 +4,37 @@
 
 .start-card {
     display: flex;
+    width: 218px;
+    height: 64px;
+    gap: 15px;
 
-    &-L {
-        width: 218px;
-        height: 64px;
-        gap: 15px;
+    .start-rating {
+        width: 86px;
+        @include font-settings(54, heavy, 64);
+    }
 
-        .start-rating {
-            width: 86px;
-            @include font-settings(54, heavy, 64);
+    .start-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 112px;
+
+        .stars {
+            height: 24px;
         }
 
-        .start-card-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 112px;
-
-            .stars {
-                height: 24px;
-            }
-
-            .start-review {
-                @include font-settings(14, regular, 24);
-                color: $Grayscale-300;
-                height: 24px;
-            }
+        .start-review {
+            @include font-settings(14, regular, 24);
+            color: $Grayscale-300;
+            height: 24px;
         }
     }
 
-    &-S {
+    @include mobile {
         width: 162px;
         height: 47px;
         gap: 15px;
+
 
         .start-rating {
             width: 57px;

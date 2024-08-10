@@ -1,58 +1,57 @@
-@import "@/styles/ColorList.scss";
-@import "@/styles/Font-Mixins.scss";
-@import "@/app/globals.scss";
+@import "../../styles/ColorList.scss";
+@import "../../styles/Font-Mixins.scss";
+@import "../../app/globals.scss";
 
-.all-container {
+.allContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 233px;
+    background-color: aliceblue;
 
-    &-L {
-        height: 233px;
+    .allSubContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
 
-        .all-sub-container {
+        .allStartContainer {}
+
+        .allButton {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
-
-            .all-start-container {}
-
-            .all-button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            Button {
-                width: 100px;
-                height: 40px;
-                font-size: 14px;
-
-                &:hover {
-                    background-color: $Primary-Purple-200;
-                }
-            }
+            justify-content: center;
+            align-items: center;
         }
 
-        .all-rating-bars {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 8px;
+        Button {
+            width: 100px;
+            height: 40px;
+            font-size: 14px;
+
+            &:hover {
+                background-color: $Primary-Purple-200;
+            }
         }
     }
 
-    &-M {
-        height: 180px;
+    .allRatingBars {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+    }
 
-        .all-sub-container {
+    @include tablet {
+        height: 180px;
+        background-color: rgb(167, 203, 235);
+
+        .allRatingBars {
             display: flex;
             justify-content: space-between;
             width: 100%;
 
-            .all-start-container {}
+            .allStartContainer {}
 
-            .all-button {
+            .allButton {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -69,7 +68,7 @@
             }
         }
 
-        .all-rating-bars {
+        .allRatingBars {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -77,41 +76,42 @@
         }
     }
 
-    &-S {
-        .allContainer {
-            height: 233px;
+
+    @include mobile {
+        height: 233px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: rgb(73, 171, 250);
+
+        .allSubContainer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .allButton {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            Button {
+                width: 100px;
+                height: 40px;
+                font-size: 14px;
+
+                &:hover {
+                    background-color: $Primary-Purple-200;
+                }
+            }
+        }
+
+        .allRatingBars {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-
-            .allSubContainer {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-
-                .allButton {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                Button {
-                    width: 100px;
-                    height: 40px;
-                    font-size: 14px;
-
-                    &:hover {
-                        background-color: $Primary-Purple-200;
-                    }
-                }
-            }
-
-            .allRatingBars {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                gap: 8px;
-            }
+            gap: 8px;
         }
     }
 }
