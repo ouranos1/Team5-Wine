@@ -4,6 +4,9 @@
 
 .allContainer {
     height: 233px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .allSubContainer {
         display: flex;
@@ -12,9 +15,16 @@
 
         .allStartContainer {}
 
-        .allButton Button {
+        .allButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        Button {
             width: 100px;
-            @include font-settings(14, bold, 24);
+            height: 40px;
+            font-size: 14px;
 
             &:hover {
                 background-color: $Primary-Purple-200;
@@ -22,5 +32,10 @@
         }
     }
 
-    .allRatingBars {}
+    .allRatingBars {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+    }
 }

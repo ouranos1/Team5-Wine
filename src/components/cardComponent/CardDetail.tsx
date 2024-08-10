@@ -1,7 +1,7 @@
 import React from 'react';
 import './CardDetail';
 import imageProp from '@/types/Image';
-import './CardDetail.scss';
+import './Soohyun.scss';
 
 interface Props {
   size: 'S' | 'Group63' | 'L';
