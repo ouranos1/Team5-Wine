@@ -27,7 +27,6 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
     const [isModalOpen, setIsModalOpen] = React.useState(false);
 
     const handleOpenModal = () => {
-        console.log('마침 궁금했다고')
         setIsModalOpen(true);
     };
 
