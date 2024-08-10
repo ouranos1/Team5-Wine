@@ -1,0 +1,14 @@
+@import "../../styles/ColorList.scss";
+@import "../../app/globals.scss";
+
+.stars {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    pointer-events: all;
+
+    .star {
+        cursor: pointer;
+    }
+}

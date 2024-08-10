@@ -1,0 +1,60 @@
+@import '../../../styles/Font-Mixins.scss';
+@import '../../../app/globals.scss';
+
+.review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 48px;
+
+  .review-title {
+    div {
+      margin-bottom: 24px;
+      div {
+        display: flex;
+        margin-bottom: 24px;
+
+        .wine-icon {
+          width: 68px;
+          height: 68px;
+          margin-right: 16px;
+
+          @include mobile {
+            width: 67px;
+            height: 67px;
+          }
+        }
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          p {
+            @include font-settings(18, semibold, 26);
+
+            @include mobile {
+              @include font-settings(16, bold, 26);
+            }
+          }
+        }
+      }
+    }
+  }
+  .wine-taste {
+    .taste-title {
+      @include font-settings(20, bold, 32);
+      margin-bottom: 24px;
+      @include mobile {
+        @include font-settings(18, bold, 26);
+      }
+    }
+  }
+  .wine-aroma {
+    .wine-aroma-title {
+      @include font-settings(20, bold, 32);
+      margin-bottom: 24px;
+      @include mobile {
+        @include font-settings(18, bold, 26);
+      }
+    }
+  }
+}
