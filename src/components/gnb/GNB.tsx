@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
+import { useSession } from 'next-auth/react';
 
 interface GNBProps {
   userImage?: string;
@@ -32,17 +33,22 @@ interface GNBProps {
 
 const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
-  const userString = localStorage.getItem('User');
+  const session = useSession();
 
-  useEffect(() => {
-    if (userString) {
-      try {
-        setUserData(JSON.parse(userString));
-      } catch (e) {
-        console.error('Failed to parse user data from localStorage:', e);
-      }
-    }
-  }, [userString]);
+  console.log(session);
+
+  // TODO: 현재 500 에러가 나고있어서 잠시 주석처리함
+  // const userString = localStorage.getItem('User');
+
+  // useEffect(() => {
+  //   if (userString) {
+  //     try {
+  //       setUserData(JSON.parse(userString));
+  //     } catch (e) {
+  //       console.error('Failed to parse user data from localStorage:', e);
+  //     }
+  //   }
+  // }, [userString]);
 
   // useEffect(() => {
   //   if (userString) {

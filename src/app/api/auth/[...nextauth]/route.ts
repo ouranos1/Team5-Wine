@@ -7,29 +7,41 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      id : 'email',
+      id : 'Credentials',
       name: 'Credentials',
       credentials: {
-        username: { label: "email", type: "email", placeholder: "Email" },
+        email: { type: "text" },
         password: {  label: "password", type: "password" }
       },
       async authorize(credentials, req) {
+        console.log("credentials", credentials);
+
+        const { email, password } = credentials || {};
         // TODO: 사용자 정보 가져와서 처리. 
         // https://winereview-api.vercel.app/docs/#/Auth/SignIn
-        const res = await fetch("/auth/signIn", {
+        // TODO: 코드 개선 필요! teamId 변경
+        const res = await fetch("https://winereview-api.vercel.app/7-5/auth/signIn", {
           method: 'POST',
-          body: JSON.stringify(credentials),
+          body: JSON.stringify({email: `${decodeURIComponent(email || "")}`, password}),
           headers: { "Content-Type": "application/json" }
-        })
-        const user = await res.json();
+        }).catch((e) => {
+          console.error("error", e);
+          return null;
+        });
+        const user = await res?.json();
+
+        console.log("response", user);;
   
+        // TODO: 나중에 변경 필요!
         // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user
+        if (res?.ok && user) {
+          console.log(1111111, user.user);
+          return user.user;
         }
         // Return null if user data could not be retrieved
+        console.log(22222222);
         return null
-      }
+      },
     }),    
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -44,16 +56,18 @@ const handler = NextAuth({
       clientSecret: process.env.NAVER_CLIENT_SECRET || '',
     })
   ],
-  // TODO 
-  // callbacks: {
-  //   async signIn({ account, profile }) {
-  //     if (account?.provider === "google") {
-  //       // TODO: 
-  //       return profile.email_verified && profile.email.endsWith("@example.com")
-  //     }
-  //     return true // Do different verification for other providers that don't have `email_verified`
-  //   },
-  // }
+  secret: "1234qwer",
+  callbacks: {
+    session({ session, token, user }) {
+      console.log("callbacks", session, token, user)
+      return session;
+   },
+   async jwt({ token, user }) {
+    token.user = user
+    return token
+  },
+ }
+ 
 });
 
 export { handler as GET, handler as POST };
