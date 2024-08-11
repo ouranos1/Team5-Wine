@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './GNB.scss';
 import Logo from '@/assets/icon/logo_wine.svg';
 import Image from 'next/image';
@@ -12,19 +12,6 @@ import defaultprofile from '@/assets/icon/defaultprofile.webp';
 interface GNBProps {
   userImage?: string;
 }
-
-const handleMenu = () => {
-  const items = [
-    { name: '마이페이지', path: '/myprofile' },
-    { name: '로그아웃', path: '/' },
-  ];
-
-  return (
-    <div>
-      <Dropdown items={items} />
-    </div>
-  );
-};
 
 const GNB: React.FC<GNBProps> = ({ userImage }) => {
   const [userData, setUserData] = useState<user>();
