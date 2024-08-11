@@ -63,11 +63,36 @@ const handler = NextAuth({
   callbacks: {
     async session({ session, token, user }) {
       console.log("session", session, token, user);
-      session.user = token;
+      session.user = {
+        ...token,
+      } as any; 
       return session;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
+      
       console.log("jwt", token, user);
+
+      if (account?.provider === "google")  {
+        // TODO: 간편 로그인 처리. https://winereview-api.vercel.app/docs/#/Auth/SignInWithOauth
+        const res = await fetch("https://winereview-api.vercel.app/7-5/auth/signIn/google", {
+          method: 'POST',
+          // TODO: 데이터 형식에 맞춰서 넣기
+          body: JSON.stringify({...}),
+          headers: { "Content-Type": "application/json" }
+        }).catch((e) => {
+          console.error("error", e);
+          return null;
+        });
+        const user = await res?.json();
+        token.user = user;
+        return token;
+      }
+
+      if (account?.provider === "kakao")  {
+        // TODO: 카카오 로그인도 구글과 유사하게 처리
+      }
+
+
       if (user) {
         token.user = user;
       }
