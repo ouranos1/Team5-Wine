@@ -1,23 +1,24 @@
 @import "../styles/ColorList.scss";
+@import "@/styles/Font-Mixins.scss";
 
 body {
-    font-family: 'Pretendard' !important;
+  font-family: 'Pretendard' !important;
 }
 
 @mixin desktop {
-    @media screen and (min-width: 1025px) and (max-width: 1248px) {
-        @content;
-    }
+  @media screen and (min-width: 1025px) {
+    @content;
+  }
 }
 
 @mixin tablet {
-    @media screen and (max-width: 1024px) {
-        @content;
-    }
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
 }
 
 @mixin mobile {
-    @media screen and (max-width: 767px) {
-        @content;
-    }
+  @media screen and (max-width: 767px) {
+    @content;
+  }
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import '@/components/dropdown/DropDown.scss';
-import { DropdownProps } from '@/types/DropDown';
+import { DropdownProps } from "@/types/DropDown";
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   const handleItemClick = (item: { name: string; path: string }) => {

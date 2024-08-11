@@ -1,0 +1,24 @@
+@import "@/app/globals.scss";
+
+.myprofile-layer {
+    .user-profile-data {
+        .user-data {
+            .user-image-layer {
+                
+            }
+            .user-nickname {
+                @include font-settings(24, bold, 32);
+                color: $Grayscale-400;
+            }
+            .user-email {
+                @include font-settings(16, regular, 26);
+                color: $Grayscale-300;
+            }
+            .user-edit {
+                .edit-nickname {
+                    @include font-settings(16, medium, 26);
+                }
+            }
+        }
+    }
+}
