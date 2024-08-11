@@ -4,6 +4,7 @@ import './globals.scss';
 import './reset.scss';
 import '@/styles/Font-Mixins.scss';
 import Provider from '@/components/provider/Provider';
+import GNB from '@/components/gnb/GNB';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <GNB  />
         <Provider>{children}</Provider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import { id } from '@/types/Id';
 import { imageProp } from '@/types/Image';
 import { ReviewListType, recentReview } from '@/types/ReviewProps';
+import { avgratings } from './AvgRatings';
 
 export interface wine {
   id: id;
@@ -23,7 +24,7 @@ export interface wineDetailType {
   recentReview: recentReview | null;
   userId: id;
   reviews: [ReviewListType];
-  avgRatings: number;
+  avgRatings: avgratings;
 }
 
 export interface winListType {
