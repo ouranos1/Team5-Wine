@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
+import defaultprofile from '@/assets/icon/defaultprofile.webp';
 
 interface GNBProps {
   userImage?: string;
@@ -26,7 +27,7 @@ const handleMenu = () => {
 };
 
 const GNB: React.FC<GNBProps> = ({ userImage }) => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
   useEffect(() => {
     if (userString) {
@@ -42,7 +43,7 @@ const GNB: React.FC<GNBProps> = ({ userImage }) => {
     <nav className="gnb">
       <Image src={Logo} alt="Logo" className="logo" />
       {userData ? (
-        <Image src={userData.image} alt="User" className="user-image" onClick={handleMenu} />
+        <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
       ) : (
         <Link href="/login" className="gnb-login">
           로그인

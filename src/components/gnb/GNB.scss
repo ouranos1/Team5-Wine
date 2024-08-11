@@ -1,3 +1,7 @@
+@import '@/app/globals.scss';
+@import '@/styles/ColorList.scss';
+@import '@/styles/Font-Mixins.scss';
+
 .gnb {
   display: flex;
   background-color: #101318;
@@ -7,18 +11,22 @@
   padding: 27px 60px;
   border-radius: 16px;
   justify-content: space-between;
-}
 
-.logo {
-  width: 52px;
-  height: auto;
-}
+  .logo {
+    width: 52px;
+    height: auto;
+  }
 
-.gnb-login {
-  color: white;
-}
+  .gnb-login {
+    color: white;
+  }
 
-.user-image {
-  border-radius: 50%;
-  border: 1px gray;
+  .user-image {
+    border-radius: 50%;
+    border: 1px gray;
+    width: 45px;
+    height: auto;
+
+    @include mobile;
+  }
 }
