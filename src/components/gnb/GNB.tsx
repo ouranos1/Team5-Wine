@@ -8,10 +8,26 @@ import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
+import { useState, useEffect } from 'react';
 
 interface GNBProps {
   userImage?: string;
 }
+
+const handleMenu = () => {
+  const items = [
+    { name: '마이페이지', path: '/myprofile' },
+    { name: '로그아웃', path: '/' },
+  ];
+  return (
+    <div>
+    <div>
+      <Dropdown items={items} />
+      <Dropdown items={items} />
+    </div>
+    </div>
+  );
+};
 
 const GNB: React.FC<GNBProps> = ({ userImage }) => {
   const [userData, setUserData] = useState<user>();

@@ -2,31 +2,34 @@
 
 import Input from '@/components/inputComponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
-import { useEffect, useState } from 'react';
+import {ModalReview} from '@/components/modal/modalreview/ModalReview';
+import { useEffect, useState, useMemo } from 'react';
+import { user } from '@/types/UserProps';
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // useEffect(() => {
-    // async function tt() {
-      // await signUpAPI(test);
-      //    const test:signResponse = await signInAPI(test2);
-      // await refreshToken(refreshtest);
-    // }
-    // tt();
-  // }, []);
+  const userData = useMemo(() => {
+    const userString = localStorage.getItem("User");
+    try {
+      return userString ? JSON.parse(userString) : null;
+    }
+    catch(e) {
+      console.log("로컬스토리지의 유저데이터 불러오기 에러");
+    }
+  }, []);
 
   return (
     <div className='myprofile-layer'>
       {/* 전체 데이터 */}
-      {/* <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" /> */}
+      <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
       <div className='user-profile-data'>{/* 사용자 프로필 및 닉네임 수정 창 */}
         <div>
           {/* <Image /> */}
-          <p>사용자닉네임</p>
+          <p>{userData.nickname}</p>
           <div>
             <p>닉네임</p>
             {/* <Input /> */}
