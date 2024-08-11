@@ -9,40 +9,40 @@
     gap: 28px;
     padding: 24px 30px 0 30px;
     background-color: rgb(235, 255, 199);
+    width: 232px;
+    height: 185px;
 
-    &-L {
-        width: 232px;
-        height: 185px;
+    .wine-img {
+        width: 44px;
+        object-fit: contain; //가로세로 비율 유지
+    }
 
-        .wine-img {
-            width: 44px;
-            object-fit: contain; //가로세로 비율 유지
+    .card-content {
+        width: 100px;
+
+        .rating {
+            @include font-settings(36, heavy, 42);
         }
 
-        .card-content {
-            width: 100px;
+        .stars-rating img {
+            width: 18px;
+            margin: 5px auto;
+        }
 
-            .rating {
-                @include font-settings(36, heavy, 42);
-            }
-
-            .stars {
-                margin: 5px auto;
-            }
-
-            .description {
-                @include font-settings(12, regular, 18);
-                color: $Grayscale-300;
-                line-height: 18px;
-            }
+        .description {
+            @include font-settings(12, regular, 18);
+            color: $Grayscale-300;
+            line-height: 18px;
         }
     }
 
-    &-S {
+
+    @include mobile {
         width: 193px;
         height: 160px;
         padding: 24px 25px 0 25px;
         gap: 25px;
+        background-color: rgb(197, 234, 130);
 
         .wine-img {
             width: 38px;
@@ -54,7 +54,8 @@
                 @include font-settings(28, heavy, 32);
             }
 
-            .stars {
+            .stars-rating img {
+                width: 12px;
                 margin: 5px auto;
             }
 

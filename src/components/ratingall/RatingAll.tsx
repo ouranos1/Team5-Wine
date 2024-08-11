@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './RatingAll.scss';
 import { wineDetail } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
@@ -20,14 +20,25 @@ interface RatingAllProps {
         5: number;
     };
     reviewCount: number;
-    size: 'L' | 'S';
 }
 
-const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, reviewCount, size }) => {
+const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, reviewCount }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
 
+    useEffect(() => {
+        const handleResize = () => {
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     const handleOpenModal = () => {
-        console.log('마침 궁금했다고')
         setIsModalOpen(true);
     };
 
@@ -40,7 +51,7 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
             <div className='allContainer'>
                 <div className='allSubContainer'>
                     <div className='allStartContainer'>
-                        <RatingStart size={size} starSize={size === 'L' ? 17 : 12} avgRating={avgRating} reviewCount={reviewCount} />
+                        <RatingStart avgRating={avgRating} reviewCount={reviewCount} />
                     </div>
                     <div className='allButton'>
                         <Button text={'리뷰 남기기'} onClick={handleOpenModal} />
@@ -64,4 +75,3 @@ const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, rev
 };
 
 export default RatingAll;
-

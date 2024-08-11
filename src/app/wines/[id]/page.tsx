@@ -7,12 +7,16 @@ import './page.scss';
 import { wineDetail } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
 import RatingAll from '@/components/ratingall/RatingAll';
-import { PageProps } from '../../../../.next/types/app/layout';
+import CardReview from '@/components/cardreview/CardReview';
+
+interface PageProps {
+    params: { id: string };
+}
 
 const App: React.FC = ({ params }: PageProps) => {
     const id = parseInt(params.id, 10);
     const [detail, setDetail] = useState<wineDetailType>();
-    const [size, setSize] = useState<'L' | 'S'>('L');
+    const [size, setSize] = useState<'L' | 'Group63' | 'S'>('S');
     const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
 
     useEffect(() => {
@@ -20,7 +24,6 @@ const App: React.FC = ({ params }: PageProps) => {
             try {
                 const response = await wineDetail(id);
                 setDetail(response);
-                console.log(response);
             } catch (error) {
                 console.error('Error fetching wine list:', error);
             }
@@ -48,21 +51,11 @@ const App: React.FC = ({ params }: PageProps) => {
                 <GNB />
                 {detail && (
                     <>
-                        <Card
-                            size={size}
-                            image={detail.image}
-                            wineName={detail.name}
-                            wineDesc={detail.region}
-                            winePrice={detail.price}
-                        />
-                        <br />
-                        <RatingAll
-                            size={size}
-                            score={score}
-                            avgRating={detail.avgRating}
-                            avgRatings={detail.avgRatings}
-                            reviewCount={detail.reviewCount}
-                        />
+                        <Card size={size} image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
+                        <RatingAll size={size} score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} />
+                        {detail.reviews.map((review) => {
+                            return <CardReview key={review.id} aromas={review.aroma} />;
+                        })}
                     </>
                 )}
             </div>
