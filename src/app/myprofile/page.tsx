@@ -2,6 +2,7 @@
 
 import Input from '@/components/inputComponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
+import ModalReview from '@/components/modal/modalreview/ModalReview';
 import { useEffect, useState } from 'react';
 
 function MyProfile() {
@@ -21,8 +22,8 @@ function MyProfile() {
   return (
     <div className='myprofile-layer'>
       {/* 전체 데이터 */}
-      {/* <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" /> */}
+      <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
       <div className='user-profile-data'>{/* 사용자 프로필 및 닉네임 수정 창 */}
         <div>
           {/* <Image /> */}

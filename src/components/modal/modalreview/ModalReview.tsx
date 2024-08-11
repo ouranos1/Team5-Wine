@@ -5,7 +5,6 @@ import wineIcon from '@/assets/icon/wineIcon.svg';
 import Input from '@/components/inputComponent/Input';
 import '@/components/modal/modalreview/ModalReview.scss';
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
-// import { Aromas, toggleAromaSelection } from '@/utils/AromaUtils';
 import { AromaTag } from '@/components/aromatag/AromaTag';
 import { responseReviewBody } from '@/types/ReviewProps';
 import { useState } from 'react';
@@ -37,7 +36,6 @@ export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: M
             {ReviewData ? '수정하기' : '리뷰 남기기'}
           </button>,
         ]}
-        role="review"
       >
         <div className="review-content">
           <div className="review-title">
@@ -68,3 +66,5 @@ export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: M
     </div>
   );
 }
+
+export default ModalReview;
