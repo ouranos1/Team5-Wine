@@ -22,7 +22,6 @@ const handleMenu = () => {
   return (
     <div>
       <Dropdown items={items} />
-      <Dropdown items={items} />
     </div>
   );
 };
@@ -30,6 +29,7 @@ const handleMenu = () => {
 const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
+  
   useEffect(() => {
     if (userString) {
       try {

@@ -5,11 +5,20 @@ import '@/components/slidecomponent/SlideComponent.scss';
 import {ModalReview} from '@/components/modal/modalreview/ModalReview';
 import { useEffect, useState, useMemo } from 'react';
 import "@/app/myprofile/page.scss";
+import Button from '@/components/button/Button';
+import Image from 'next/image';
+import defaultprofile from '@/assets/icon/defaultprofile.webp';
+
+function changeNickName() {
+
+}
+
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const userData = useMemo(() => {
     const userString = localStorage.getItem("User");
@@ -23,20 +32,38 @@ function MyProfile() {
 
   console.log(userData); 
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const currentImage = selectedImage || userData.image || defaultprofile;
+
   return (
     <div className='myprofile-layer'>
       {/* 전체 데이터 */}
-      <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
+      {/* <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" /> */}
       <div className='user-profile-data'>{/* 사용자 프로필 및 닉네임 수정 창 */}
-        <div>
-          {/* <Image /> */}
+        <div className='user-data'>
+          <div className='user-image-layer'>
+              <Image  src={currentImage} alt="유저프로필" />
+              <input type="file" className='user-image-input' onChange={handleFileChange}>
+                <label>+</label>
+              </input>
+          </div>
           <p className='user-nickname'>{userData.nickname}</p>
           <p className='user-email'>{userData.email}</p>
-          <div>
-            <p>닉네임</p>
+          <div className='user-edit'>
+            <p className='edit-nickname'>닉네임</p>
             <input />
-            <button>변경하기</button>
+            <Button text="변경하기" onClick={changeNickName}/>
           </div>
         </div>
       </div>
