@@ -8,13 +8,17 @@ import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
+import { useState, useEffect } from 'react';
+
+interface GNBProps {
+  userImage?: string;
+}
 
 const handleMenu = () => {
   const items = [
     { name: '마이페이지', path: '/myprofile' },
     { name: '로그아웃', path: '/' },
   ];
-
   return (
     <div>
       <Dropdown items={items} />
@@ -22,9 +26,10 @@ const handleMenu = () => {
   );
 };
 
-const GNB: React.FC = () => {
+const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
+  
   useEffect(() => {
     if (userString) {
       try {
@@ -37,16 +42,16 @@ const GNB: React.FC = () => {
 
   return (
     <div className="gnb-container">
-      <nav className="gnb">
-        <Image src={Logo} alt="Logo" className="logo" />
-        {/* {userData ? (
-          <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
-        ) : (
-          <Link href="/login" className="gnb-login">
-            로그인
-          </Link>
-        )} */}
-      </nav>
+    <nav className="gnb">
+      <Image src={Logo} alt="Logo" className="logo" />
+      {userData ? (
+        <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
+      ) : (
+        <Link href="/login" className="gnb-login">
+          로그인
+        </Link>
+      )}
+    </nav>
     </div>
   );
 };
