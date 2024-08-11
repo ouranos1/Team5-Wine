@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './GNB.scss';
 import Logo from '@/assets/icon/logo_wine.svg';
 import Image from 'next/image';
