@@ -8,9 +8,9 @@
   border-radius: 16px;
   margin-top: 20px;
   display: flex;
+  width: 100%;
 
   // @include desktop {
-  width: 1140px;
   height: 260px;
 
   .card-image {
@@ -57,7 +57,6 @@
 
 
   @include tablet {
-    width: 704px;
     height: 260px;
 
     .card-image {
@@ -104,7 +103,6 @@
   }
 
   @include mobile {
-    width: 343px;
     height: 190px;
     border-radius: 12px;
 
