@@ -9,20 +9,17 @@ import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
 
-const handleMenu = () => {
+const GNB: React.FC = () => {
   const items = [
     { name: '마이페이지', path: '/myprofile' },
     { name: '로그아웃', path: '/' },
   ];
+  const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <div>
-      <Dropdown items={items} />
-    </div>
-  );
-};
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-const GNB: React.FC = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
   useEffect(() => {
@@ -39,7 +36,10 @@ const GNB: React.FC = () => {
     <nav className="gnb">
       <Image src={Logo} alt="Logo" className="logo" />
       {userData ? (
-        <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
+        <>
+          <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={toggleDropdown} />
+          <Dropdown items={items} />
+        </>
       ) : (
         <Link href="/login" className="gnb-login">
           로그인

@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import '@/components/dropdown/DropDown.scss';
 import { DropdownProps } from '@/types/DropDown';
