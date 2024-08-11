@@ -41,6 +41,7 @@ const GNB: React.FC<GNBProps> = () => {
   }, [userString]);
 
   return (
+    <div className="gnb-container">
     <nav className="gnb">
       <Image src={Logo} alt="Logo" className="logo" />
       {userData ? (
@@ -51,6 +52,7 @@ const GNB: React.FC<GNBProps> = () => {
         </Link>
       )}
     </nav>
+    </div>
   );
 };
 
