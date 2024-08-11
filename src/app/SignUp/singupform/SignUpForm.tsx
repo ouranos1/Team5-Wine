@@ -5,6 +5,7 @@ import wineLogo from '@/assets/icon/wineLogo.svg';
 import Input from '@/components/inputComponent/Input';
 import Button from '@/components/button/Button';
 import { signUpAPI, signInAPI } from '@/api/Auth';
+import { loginAndStoreTokens } from '@/utils/authutils';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -86,15 +87,7 @@ export default function SignupForm() {
         await signUpAPI(userData);
         alert('회원가입이 완료되었습니다');
 
-        const loginData = {
-          email: email,
-          password: password,
-        };
-
-        const { accessToken, refreshToken } = await signInAPI(loginData);
-
-        localStorage.setItem('acceessToken', accessToken);
-        localStorage.setItem('refreshToken', refreshToken);
+        await loginAndStoreTokens({ email, password });
 
         router.push('/');
       } catch (error) {
@@ -111,13 +104,13 @@ export default function SignupForm() {
         <div className="signup-header">
           <Image src={wineLogo} alt="와인 로고" width={104} height={30} />
         </div>
-        <Input type="email" size="L" placeholder="whyne@email.com" inputname="이메일" value={email} onChange={(e) => handleEmailChange(e.target.value)} />
+        <Input type="email" size="L" placeholder="whyne@email.com" inputname="이메일" defaultValue={email} onBlur={(e) => handleEmailChange(e.target.value)} />
         {errors.email && <p className="error-message">{errors.email}</p>}
-        <Input type="text" size="L" placeholder="whyne" inputname="닉네임" value={nickname} onChange={(e) => handleNicknameChange(e.target.value)} />
+        <Input type="text" size="L" placeholder="whyne" inputname="닉네임" defaultValue={nickname} onBlur={(e) => handleNicknameChange(e.target.value)} />
         {errors.nickname && <p className="error-message">{errors.nickname}</p>}
-        <Input type="password" size="L" placeholder="비밀번호" inputname="비밀번호" value={password} onChange={(e) => handlePasswordChange(e.target.value)} />
+        <Input type="password" size="L" placeholder="비밀번호" inputname="비밀번호" defaultValue={password} onBlur={(e) => handlePasswordChange(e.target.value)} />
         {errors.password && <p className="error-message">{errors.password}</p>}
-        <Input type="password" size="L" placeholder="비밀번호 확인" inputname="비밀번호 확인" value={passwordConfirmation} onChange={(e) => handleConfirmPasswordChange(e.target.value)} />
+        <Input type="password" size="L" placeholder="비밀번호 확인" inputname="비밀번호 확인" defaultValue={passwordConfirmation} onBlur={(e) => handleConfirmPasswordChange(e.target.value)} />
         {errors.passwordConfirmation && <p className="error-message">{errors.passwordConfirmation}</p>}
         <Button text="가입하기" type="submit" />
       </form>

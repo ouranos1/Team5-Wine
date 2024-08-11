@@ -2,58 +2,58 @@
 @import "../../styles/Font-Mixins.scss";
 @import "../../app/globals.scss";
 
-.card {
+.start-card {
     display: flex;
+    width: 218px;
+    height: 64px;
+    gap: 15px;
 
-    &-L {
-        width: 218px;
-        height: 64px;
-        gap: 15px;
+    .start-rating {
+        width: 86px;
+        @include font-settings(54, heavy, 64);
+    }
 
-        .rating {
-            width: 86px;
-            @include font-settings(54, heavy, 64);
+    .start-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 112px;
+
+        .stars img {
+            width: 18px;
+            height: 18px;
         }
 
-        .card-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            .stars {
-                width: 112px;
-                height: 24px;
-            }
-
-            span {
-                @include font-settings(14, regular, 24);
-                color: $Grayscale-300;
-                height: 24px;
-            }
+        .start-review {
+            @include font-settings(14, regular, 24);
+            color: $Grayscale-300;
+            height: 24px;
         }
     }
 
-    &-S {
+    @include mobile {
         width: 162px;
         height: 47px;
         gap: 15px;
 
-        .rating {
+
+        .start-rating {
             width: 57px;
             @include font-settings(36, heavy, 42);
         }
 
-        .card-content {
+        .start-card-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 90px;
 
-            .stars {
-                width: 90px;
-                height: 18px;
+            .stars img {
+                width: 12px;
+                height: 12px;
             }
 
-            span {
+            .start-review {
                 @include font-settings(14, regular, 24);
                 color: $Grayscale-300;
                 height: 24px;

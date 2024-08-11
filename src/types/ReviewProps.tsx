@@ -7,7 +7,7 @@ export interface recentReview {
   user: recentReview;
   updatedAt: string;
   createdAt: string;
-  aroma: Aroma;
+  aroma: AromaName[];
   rating: number;
   id: id;
 }
@@ -19,7 +19,7 @@ export interface reviewDetailType {
   smoothTannic: number;
   drySweet: number;
   softAcidic: number;
-  aroma: Aroma[];
+  aroma: AromaName[];
   content: string;
   createdAt: string;
   updatedAt: string;
@@ -40,20 +40,11 @@ export interface ReviewListType {
   smoothTannic: number;
   drySweet: number;
   softAcidic: number;
-  aroma: Aroma;
+  aroma: AromaName[];
   content: string;
   createdAt: string;
   updatedAt: string;
   user: reviewUser;
-}
-
-export interface recentReview {
-  user: recentReview;
-  updatedAt: string;
-  createdAt: string;
-  aroma: Aroma;
-  rating: number;
-  id: id;
 }
 
 export interface createReviewBody {
@@ -62,7 +53,7 @@ export interface createReviewBody {
   smoothTannic: number;
   drySweet: number;
   softAcidic: number;
-  aroma: Aroma;
+  aroma: AromaName[];
   content: string;
   wineId: number;
 }
@@ -74,7 +65,7 @@ export interface responseReviewBody {
   smoothTannic: number;
   drySweet: number;
   softAcidic: number;
-  aroma: Aroma;
+  aroma: AromaName[];
   content: string;
   wineId: number;
   teamId: string;
@@ -86,6 +77,6 @@ export interface editReview {
   smoothTannic: number;
   drySweet: number;
   softAcidic: number;
-  aroma: Aroma;
+  aroma: AromaName[];
   content: string;
 }

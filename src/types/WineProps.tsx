@@ -1,6 +1,7 @@
 import { id } from '@/types/Id';
 import { imageProp } from '@/types/Image';
 import { ReviewListType, recentReview } from '@/types/ReviewProps';
+import { avgratings } from './AvgRatings';
 
 export interface wine {
   id: id;
@@ -23,7 +24,7 @@ export interface wineDetailType {
   recentReview: recentReview | null;
   userId: id;
   reviews: [ReviewListType];
-  avgRatings: number;
+  avgRatings: avgratings;
 }
 
 export interface winListType {
@@ -42,12 +43,12 @@ export interface createWineBody {
   region: string;
   image: imageProp;
   price: number;
-  type: wineType;
+  type: wineType | wineTypeName;
 }
 
 type wineTypeName = 'RED' | 'WHITE' | 'SPARKLING';
 
 export interface wineType {
   name: wineTypeName;
-  selected: boolean;
+  selected?: boolean;
 }

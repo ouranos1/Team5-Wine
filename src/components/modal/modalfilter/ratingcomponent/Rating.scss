@@ -4,6 +4,7 @@
 .rating-container {
   display: flex;
   flex-direction: column;
+  margin-bottom: 25px;
 
   .rating-title {
     @include font-settings(20, 'bold', 32);
