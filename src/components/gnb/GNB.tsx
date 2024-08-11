@@ -14,11 +14,16 @@ interface GNBProps {
   userImage?: string;
 }
 
-const handleMenu = () => {
+const GNB: React.FC = () => {
   const items = [
     { name: '마이페이지', path: '/myprofile' },
     { name: '로그아웃', path: '/' },
   ];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
       <Dropdown items={items} />
@@ -41,18 +46,19 @@ const GNB: React.FC<GNBProps> = () => {
   }, [userString]);
 
   return (
-    <div className="gnb-container">
     <nav className="gnb">
       <Image src={Logo} alt="Logo" className="logo" />
       {userData ? (
-        <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
+        <>
+          <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={toggleDropdown} />
+          <Dropdown items={items} />
+        </>
       ) : (
         <Link href="/login" className="gnb-login">
           로그인
         </Link>
       )}
     </nav>
-    </div>
   );
 };
 
