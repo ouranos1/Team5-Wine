@@ -42,12 +42,12 @@ export interface createWineBody {
   region: string;
   image: imageProp;
   price: number;
-  type: wineType;
+  type: wineType | wineTypeName;
 }
 
 type wineTypeName = 'RED' | 'WHITE' | 'SPARKLING';
 
 export interface wineType {
   name: wineTypeName;
-  selected: boolean;
+  selected?: boolean;
 }
