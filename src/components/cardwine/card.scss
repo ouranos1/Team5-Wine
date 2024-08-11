@@ -1,0 +1,195 @@
+@import '@/styles/ColorList.scss';
+@import '@/styles/Font-Mixins.scss';
+@import '@/app/globals.scss';
+
+.card {
+  position: relative;
+  border: 1px solid $Grayscale-200;
+  background: $White;
+  border-radius: 16px;
+  //margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  .hr {
+    border: 1px solid $Grayscale-200;
+  }
+  // Large Size
+  @include desktop {
+    width: 800px;
+    height: 375px;
+
+    .up-card {
+      width: 100%;
+      height: 248px;
+      border: 1px solid $Grayscale-200;
+
+      .card-image {
+        margin: 40px 81px 0px 60px;
+        width: 60px;
+        height: 208px;
+      }
+
+      .wine {
+        width: 300px;
+        height: 188px;
+        margin-top: 36.5px;
+        margin-bottom: 23.5px;
+
+        .wine-name {
+          margin-bottom: 20px;
+          width: 100%;
+          height: 84px;
+          @include font-settings(32, semibold, 42);
+          color: $Grayscale-400;
+        }
+
+        .wine-desc {
+          margin-bottom: 4.5px;
+          width: 100%;
+          height: 26px;
+          @include font-settings(16, regular, 26);
+          color: $Grayscale-300;
+        }
+
+        .wine-price {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          height: 42px;
+          padding: 8px 15px;
+          border-radius: 12px;
+          background: $Primary-Purple-10;
+          color: $Primary-Purple-100;
+          @include font-settings(18, bold, 26);
+          text-align: center;
+        }
+      }
+    }
+
+    .down-card {
+      margin: 19.5px 60px;
+      width: 100%;
+      height: 127px;
+      .review-name {
+        @include font-settings(16, semibold, 26);
+        color: $Grayscale-400;
+      }
+      .review-detail {
+        width: 100%;
+        height: 52px;
+        @include font-settings(16, regular, 26);
+        color: $Grayscale-300;
+      }
+    }
+  }
+
+  // Medium Size
+  @include tablet {
+    width: 704px;
+    height: 375px;
+    .up-card {
+      width: 100%;
+
+      .card-image {
+        margin: -44px 40px 0px 60px;
+        width: 76px;
+        height: 270px;
+      }
+
+      .wine {
+        width: 300px;
+        height: 168px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        .wine-name {
+          margin-bottom: 20px;
+          width: 100%;
+          height: 72px;
+          @include font-settings(30, semibold, 36);
+          color: $Grayscale-400;
+        }
+
+        .wine-desc {
+          margin-bottom: 13px;
+          width: 100%;
+          height: 26px;
+          @include font-settings(16, regular, 26);
+          color: $Grayscale-300;
+        }
+
+        .wine-price {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          height: 37px;
+          padding: 8px 15px;
+          border-radius: 12px;
+          background: $Primary-Purple-10;
+          color: $Primary-Purple-100;
+          @include font-settings(18, bold, 26);
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  // Small Size
+  @include mobile {
+    width: 343px;
+    height: 164px;
+    border-radius: 12px;
+
+    .options {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: $Grayscale-300;
+      cursor: pointer;
+    }
+
+    .card-image {
+      vertical-align: top;
+      margin: -23px 20px 0px 20px;
+      width: 53px;
+      height: 185px;
+    }
+
+    .wine {
+      width: 187px;
+      height: 127.5px;
+      margin-top: 20px;
+      margin-bottom: 16.5px;
+
+      .wine-name {
+        margin-bottom: 15px;
+        width: 100%;
+        height: 48px;
+        @include font-settings(20, semibold, 24);
+        color: $Grayscale-400;
+      }
+
+      .wine-desc {
+        margin-bottom: 4.5px;
+        width: 100%;
+        height: 24px;
+        @include font-settings(14, regular, 24);
+        color: $Grayscale-300;
+      }
+
+      .wine-price {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        padding: 6px 10px;
+        border-radius: 10px;
+        background: $Primary-Purple-10;
+        color: $Primary-Purple-100;
+        @include font-settings(14, bold, 24);
+        text-align: center;
+      }
+    }
+  }
+}
