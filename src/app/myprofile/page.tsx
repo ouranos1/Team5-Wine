@@ -4,7 +4,7 @@ import Input from '@/components/inputComponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
 import {ModalReview} from '@/components/modal/modalreview/ModalReview';
 import { useEffect, useState, useMemo } from 'react';
-import { user } from '@/types/UserProps';
+import "@/app/myprofile/page.scss";
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,6 +21,8 @@ function MyProfile() {
     }
   }, []);
 
+  console.log(userData); 
+
   return (
     <div className='myprofile-layer'>
       {/* 전체 데이터 */}
@@ -29,10 +31,11 @@ function MyProfile() {
       <div className='user-profile-data'>{/* 사용자 프로필 및 닉네임 수정 창 */}
         <div>
           {/* <Image /> */}
-          <p>{userData.nickname}</p>
+          <p className='user-nickname'>{userData.nickname}</p>
+          <p className='user-email'>{userData.email}</p>
           <div>
             <p>닉네임</p>
-            {/* <Input /> */}
+            <input />
             <button>변경하기</button>
           </div>
         </div>

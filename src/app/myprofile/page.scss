@@ -1,0 +1,11 @@
+@import "@/app/globals.scss";
+
+.myprofile-layer {
+    .user-profile-data {
+        div {
+            .user-nickname {
+                @include font-settings(24, bold, 32);
+            }
+        }
+    }
+}

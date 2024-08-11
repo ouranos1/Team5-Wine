@@ -21,15 +21,13 @@ const handleMenu = () => {
   ];
   return (
     <div>
-    <div>
       <Dropdown items={items} />
       <Dropdown items={items} />
-    </div>
     </div>
   );
 };
 
-const GNB: React.FC<GNBProps> = ({ userImage }) => {
+const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
   useEffect(() => {
