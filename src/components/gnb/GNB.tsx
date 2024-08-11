@@ -36,18 +36,16 @@ const GNB: React.FC = () => {
   }, [userString]);
 
   return (
-    <div className="gnb-container">
-      <nav className="gnb">
-        <Image src={Logo} alt="Logo" className="logo" />
-        {/* {userData ? (
-          <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
-        ) : (
-          <Link href="/login" className="gnb-login">
-            로그인
-          </Link>
-        )} */}
-      </nav>
-    </div>
+    <nav className="gnb">
+      <Image src={Logo} alt="Logo" className="logo" />
+      {userData ? (
+        <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={handleMenu} />
+      ) : (
+        <Link href="/login" className="gnb-login">
+          로그인
+        </Link>
+      )}
+    </nav>
   );
 };
 
