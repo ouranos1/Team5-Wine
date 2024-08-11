@@ -2,31 +2,39 @@
 @import '@/styles/ColorList.scss';
 @import '@/styles/Font-Mixins.scss';
 
-.gnb {
-  display: flex;
-  background-color: #101318;
-  width: 100%;
-  top: 20px;
-  left: 20px;
-  padding: 27px 60px;
-  border-radius: 16px;
-  justify-content: space-between;
+.gnb-container {
+  .gnb {
+    display: flex;
+    background-color: #101318;
+    width: 100%;
+    top: 20px;
+    left: 20px;
+    padding: 12px 60px;
+    border-radius: 16px;
+    justify-content: space-between;
 
-  .logo {
-    width: 52px;
-    height: auto;
-  }
+    @include mobile {
+      padding: 12px 20px;
+    }
 
-  .gnb-login {
-    color: white;
-  }
+    .logo {
+      width: 52px;
+      height: auto;
+    }
 
-  .user-image {
-    border-radius: 50%;
-    border: 1px gray;
-    width: 45px;
-    height: auto;
+    .gnb-login {
+      color: white;
+    }
 
-    @include mobile;
+    .user-image {
+      border-radius: 50%;
+      border: 1px gray;
+      width: 45px;
+      height: auto;
+
+      @include mobile {
+        width: 20px;
+      }
+    }
   }
 }

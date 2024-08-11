@@ -1,23 +1,19 @@
-import { signInAPI } from '@/api/Auth';
-import { signInRequestBody, signResponse } from '@/types/AuthProps';
+import './loginform.scss';
 import React, { useState } from 'react';
+import { signInAPI } from '@/api/Auth';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
 import Input from '@/components/inputComponent/Input';
 import Button from '@/components/button/Button';
-import Logo from '@/assets/icon/wineLogo.svg';
-import Link from 'next/link';
-import './loginform.scss';
 import OAuthButton from '../oauthbuttoncomponent/OAuthButton';
+import Logo from '@/assets/icon/wineLogo.svg';
 import googleLogo from '@/assets/icon/googleLogo.svg';
 import kakaoLogo from '@/assets/icon/kakaoLogo.svg';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { signInRequestBody, signResponse } from '@/types/AuthProps';
 
-interface LoginFormProps {
-  onLoginSuccess: (image: string, accessToken: string, refreshToken: string) => void;
-}
-
-const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
+const LoginForm: React.FC = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -58,17 +54,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
         </p>
       </form>
     </div>
-
-    /* <SearchBar placeholder="와인을 검색해 보세요" />
-      <OAuthButton logo={googleLogo} text={session ? '로그아웃' : 'google로 시작하기'} onClick={session ? signOut : () => signIn('google')} />
-      <OAuthButton logo={kakaoLogo} text={session ? '로그아웃' : 'kakao로 시작하기'} onClick={session ? signOut : () => signIn('kakao')} /> */
-
-    // <div>
-    //     <h2>Login</h2>
-    //     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-    //     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-    //     <button onClick={handleLogin}>Login</button>
-    // </div>
   );
 };
 
