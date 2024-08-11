@@ -9,7 +9,7 @@ import RatingAll from '@/components/ratingall/RatingAll';
 import CardReview from '@/components/cardreview/CardReview';
 
 interface PageProps {
-    params: { id: string };
+  params: { id: string };
 }
 
 const App: React.FC = ({ params }: PageProps) => {
@@ -17,16 +17,16 @@ const App: React.FC = ({ params }: PageProps) => {
     const [detail, setDetail] = useState<wineDetailType>();
     const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
 
-    useEffect(() => {
-        const fetchWineMy = async () => {
-            try {
-                const response = await wineDetail(id);
-                setDetail(response);
-            } catch (error) {
-                console.error('Error fetching wine list:', error);
-            }
-        };
-        fetchWineMy();
+  useEffect(() => {
+    const fetchWineMy = async () => {
+      try {
+        const response = await wineDetail(id);
+        setDetail(response);
+      } catch (error) {
+        console.error('Error fetching wine list:', error);
+      }
+    };
+    fetchWineMy();
 
     }, [id]);
 
