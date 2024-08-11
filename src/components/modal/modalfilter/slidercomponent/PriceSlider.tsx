@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PriceSlider.scss';
 
-export default function PriceSlider() {
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+interface PriceSliderProps {
+  minPrice: number;
+  setMinPrice: (price: number) => void;
+  maxPrice: number;
+  setMaxPrice: (price: number) => void;
+}
+
+export default function PriceSlider({ minPrice, setMinPrice, maxPrice, setMaxPrice }: PriceSliderProps) {
   const priceRange = { min: 0, max: 100000 };
 
   const handleMinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,9 +23,10 @@ export default function PriceSlider() {
 
   return (
     <div className="slider-container">
-      <h3 className="slider-title">RRICE</h3>
-      <div className="slider-value  ">
-        <div>₩ {minPrice}</div> <div>₩ {maxPrice}</div>
+      <h3 className="slider-title">PRICE</h3>
+      <div className="slider-value">
+        <div>₩ {minPrice.toLocaleString()}</div>
+        <div>₩ {maxPrice.toLocaleString()}</div>
       </div>
       <div className="slider">
         <input

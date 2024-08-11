@@ -2,18 +2,9 @@ import React from 'react';
 import closeIcon from '@/assets/icon/close.svg';
 import Image from 'next/image';
 import './BaseModal.scss';
+import { BaseModalProps } from '@/types/BaseModalProps';
 
-interface BaseModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  closeButton?: boolean;
-  children: React.ReactNode;
-  footerButtons: React.ReactNode;
-  role: 'filter' | 'wine' | 'review';
-}
-
-function BaseModal({ isOpen, onClose, title, closeButton, children, footerButtons, role }: BaseModalProps) {
+function BaseModal({ isOpen, onClose, title, closeButton, children, footerButtons }: BaseModalProps) {
   if (!isOpen) return null;
 
   const footerButtonsArray = React.Children.toArray(footerButtons);
@@ -28,7 +19,7 @@ function BaseModal({ isOpen, onClose, title, closeButton, children, footerButton
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
-      <div className={`modal modal--${role}`} onClick={(e) => e.stopPropagation()}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2 className="title">{title}</h2>
           {closeButton && (

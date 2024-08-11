@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+// Rating.tsx
+import React from 'react';
 import './Rating.scss';
 
-export default function Rating() {
-  const [selectedRange, setSelectedRange] = useState<string>('전체');
+interface RatingProps {
+  selectedRating: null | number;
+  setSelectedRating: (value: null | number) => void;
+}
 
-  const ratingRanges = [
-    { label: '전체', value: '전체' },
-    { label: '4.8 - 5.0', value: '4.8-5.0' },
-    { label: '4.5 - 4.8', value: '4.5-4.8' },
-    { label: '4.0 - 4.5', value: '4.0-4.5' },
-    { label: '3.0 - 4.0', value: '3.0-4.0' },
+export default function Rating({ selectedRating, setSelectedRating }: RatingProps) {
+  const ratingOptions = [
+    { label: '전체', value: null },
+    { label: '4.8 - 5.0', value: 4.8 },
+    { label: '4.5 - 4.8', value: 4.5 },
+    { label: '4.0 - 4.5', value: 4.0 },
+    { label: '3.0 - 4.0', value: 3.0 },
   ];
 
-  const handleSelect = (value: string) => {
-    setSelectedRange(value);
+  const handleRatingChange = (value: null | number) => {
+    setSelectedRating(value);
   };
 
   return (
     <div className="rating-container">
       <h3 className="rating-title">RATING</h3>
-      {ratingRanges.map((range) => (
-        <div key={range.value} className={`rating-option ${selectedRange === range.value ? 'selected' : ''}`}>
-          <input type="radio" name="rating" value={range.value} checked={selectedRange === range.value} onChange={() => handleSelect(range.value)} id={range.value} />
-          <span>{range.label}</span>
-        </div>
+      {ratingOptions.map(({ label, value }) => (
+        <label className="rating-option" key={label}>
+          <input type="radio" value={label} checked={selectedRating === value} onChange={() => handleRatingChange(value)} />
+          <span>{label}</span>
+        </label>
       ))}
     </div>
   );
