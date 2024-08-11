@@ -36,7 +36,7 @@ const handler = NextAuth({
         // If no error and we have user data, return it
         if (res?.ok && user) {
           console.log(1111111, user.user);
-          return user.user;
+          return user;
         }
         // Return null if user data could not be retrieved
         console.log(22222222);
@@ -57,17 +57,23 @@ const handler = NextAuth({
     })
   ],
   secret: "1234qwer",
-  callbacks: {
-    session({ session, token, user }) {
-      console.log("callbacks", session, token, user)
-      return session;
-   },
-   async jwt({ token, user }) {
-    token.user = user
-    return token
+  pages: {
+    signIn: '/login',
   },
- }
- 
+  callbacks: {
+    async session({ session, token, user }) {
+      console.log("session", session, token, user);
+      session.user = token;
+      return session;
+    },
+    async jwt({ token, user }) {
+      console.log("jwt", token, user);
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    }
+  },
 });
 
 export { handler as GET, handler as POST };

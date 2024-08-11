@@ -32,33 +32,8 @@ interface GNBProps {
 // };
 
 const GNB: React.FC<GNBProps> = () => {
-  const [userData, setUserData] = useState<user>();
   const session = useSession();
-
-  console.log(session);
-
-  // TODO: 현재 500 에러가 나고있어서 잠시 주석처리함
-  // const userString = localStorage.getItem('User');
-
-  // useEffect(() => {
-  //   if (userString) {
-  //     try {
-  //       setUserData(JSON.parse(userString));
-  //     } catch (e) {
-  //       console.error('Failed to parse user data from localStorage:', e);
-  //     }
-  //   }
-  // }, [userString]);
-
-  // useEffect(() => {
-  //   if (userString) {
-  //     try {
-  //       setUserData(JSON.parse(userString));
-  //     } catch (e) {
-  //       console.error('Failed to parse user data from localStorage:', e);
-  //     }
-  //   }
-  // }, [userString]);
+  const userData = session.data?.user.user;
 
   const [isOpen, setIsOpen] = useState(false);
 
