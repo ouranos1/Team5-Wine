@@ -2,6 +2,8 @@
 
 .myprofile-layer {
   margin-top: 37px;
+  display: flex;
+  gap: 60px;
   .user-profile-data {
     padding: 39px 20px;
     border: 1px solid $Grayscale-200;
@@ -36,12 +38,28 @@
         .edit-input {
           margin-bottom: 8px;
         }
-        div {
-          width: 100%;
-          display: flex;
-          justify-content: flex-end;
+        .edit-button-layer {
           button {
             max-width: 96px;
+          }
+        }
+      }
+    }
+  }
+  .my-content {
+    width: 100%;
+    .content-layer {
+      display: flex;
+      .content-menu {
+        display: flex;
+        gap: 32px;
+        width: 100%;
+        .content-menu-title {
+          @include font-settings(20, bold, 32);
+          color: $Grayscale-400;
+
+          &.unactive {
+            color: $Grayscale-300;
           }
         }
       }

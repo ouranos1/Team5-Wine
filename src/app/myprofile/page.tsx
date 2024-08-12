@@ -51,13 +51,13 @@ function MyProfile() {
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
-      <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" />
+      {/* <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" /> */}
       <div className="user-profile-data">
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} width={100} height={100} alt="유저프로필" />
+            <Image src={currentImage} width={164} height={164} alt="유저프로필" />
             <label>+</label>
             <input type="file" className="user-image-input" onChange={handleFileChange} />
           </div>
@@ -65,18 +65,20 @@ function MyProfile() {
           <p className="user-email">{user?.user.email}</p>
           <div className="user-edit">
             <Input className="edit-input" inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
-            <div>
+            <div className="edit-button-layer">
               <Button text="변경하기" onClick={changeNickName} />
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <div className="my-content">
         {/* 사용자 작성 후기와 와인 보여줄창 */}
-        <div>
+        <div className="content-layer">
           {/* 내가 쓴 후기, 내가 등록한 와인 */}
-          <p>내가 쓴 후기</p>
-          <p>내가 등록한 와인</p>
+          <div className="content-menu">
+            <p className="content-menu-title">내가 쓴 후기</p>
+            <p className="content-menu-title unactive">내가 등록한 와인</p>
+          </div>
           <p>총 몇개</p>
         </div>
         <div>
