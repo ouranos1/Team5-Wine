@@ -99,9 +99,9 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
       ]}
     >
       <form>
-        <Input type="text" size="L" placeholder="와인 이름 입력" inputname="와인 이름" defaultValue={wineName} onBlur={handleWineNameChange} />
-        <Input type="text" size="L" placeholder="가격 입력" inputname="가격" defaultValue={price} onBlur={handlePriceChange} />
-        <Input type="text" size="L" placeholder="원산지 입력" inputname="원산지" defaultValue={region} onBlur={handleRegionChange} />
+        <Input type="text" placeholder="와인 이름 입력" inputname="와인 이름" defaultValue={wineName} onBlur={handleWineNameChange} />
+        <Input type="text" placeholder="가격 입력" inputname="가격" defaultValue={price} onBlur={handlePriceChange} />
+        <Input type="text" placeholder="원산지 입력" inputname="원산지" defaultValue={region} onBlur={handleRegionChange} />
 
         <label htmlFor="wine-type">타입</label>
         <select className="wine-type" id="wine-type" value={type} onChange={handleTypeChange}>

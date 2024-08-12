@@ -14,7 +14,8 @@ import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
 import CardReview from '@/components/cardreview/CardReview';
-import { winListType } from '@/types/WineProps';
+import { wineDetailType, winListType } from '@/types/WineProps';
+import Card from '@/components/cardmylist/card';
 
 function changeNickName() {}
 
@@ -27,7 +28,7 @@ function MyProfile() {
   const [totalWineCount, setTotalWineCount] = useState<number>(0);
 
   const [myReviews, setMyReviews] = useState<ReviewListType[]>([]);
-  const [myWines, setMyWines] = useState<winListType[]>([]);
+  const [myWines, setMyWines] = useState<wineDetailType[]>([]);
   const [nowMenu, setNowMenu] = useState<'wine' | 'review'>('review');
 
   const { data: session } = useSession();
@@ -131,8 +132,8 @@ function MyProfile() {
             )
           ) : myReviews.length > 0 ? (
             <div className="content-item">
-              {myReviews.map((review) => (
-                <CardReview key={review.id} reviewId={review.id} />
+              {myWines.map((wine) => (
+                <Card key={wine.id} image={wine.image} wineName={wine.name} wineDesc={wine.region} winePrice={wine.price} wineId={wine.id} />
               ))}
             </div>
           ) : (
