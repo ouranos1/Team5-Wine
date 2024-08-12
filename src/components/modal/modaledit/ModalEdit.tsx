@@ -1,18 +1,18 @@
 'use client';
 
 import BaseModal from '../modalbase/BaseModal';
-import { ModalProps } from '@/types/ModalProps';
+import { ModalWineEditProps } from '@/types/ModalProps';
 import Input from '@/components/inputComponent/Input';
-import ImageUpload from './imagecomponent/ImageUpload';
+import ImageUpload from '@/components/modal/modalwine/imagecomponent/ImageUpload';
 import { useState } from 'react';
 import { ImageAPI } from '@/api/Image';
-import { addWineAPI } from '@/api/Wine';
+import { editWine } from '@/api/Wine';
 import { imageProp } from '@/types/Image';
 import { createWineBody } from '@/types/WineProps';
 import { wineTypeName } from '@/types/WineProps';
-import './ModalWine.scss';
+import './ModalEdit.scss';
 
-export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
+export default function ModalEdit({ isModalOpen, closeModal, id }: ModalWineEditProps) {
   const [wineName, setWineName] = useState('');
   const [price, setPrice] = useState('');
   const [region, setRegion] = useState('');
@@ -39,7 +39,7 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
     setImageFile(file);
   };
 
-  const handleWineRegistration = async (e: React.FormEvent) => {
+  const handleWineEdit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!wineName || !price || !region || !imageFile) {
@@ -72,7 +72,7 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
     console.log(wineData);
 
     try {
-      await addWineAPI(wineData);
+      await editWine(wineData, id);
       console.log('와인 등록 성공');
       closeModal();
     } catch (error) {
@@ -85,21 +85,21 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
     <BaseModal
       isOpen={isModalOpen}
       onClose={closeModal}
-      title="와인 등록"
+      title="내가 등록한 와인"
       closeButton={false}
       footerButtons={[
         <button key="1" onClick={closeModal}>
           취소
         </button>,
-        <button key="2" type="submit" onClick={handleWineRegistration}>
-          와인 등록하기
+        <button key="2" type="submit" onClick={handleWineEdit}>
+          수정하기
         </button>,
       ]}
     >
       <form>
-        <Input type="text" placeholder="와인 이름 입력" inputname="와인 이름" defaultValue={wineName} onBlur={handleWineNameChange} />
-        <Input type="text" placeholder="가격 입력" inputname="가격" defaultValue={price} onBlur={handlePriceChange} />
-        <Input type="text" placeholder="원산지 입력" inputname="원산지" defaultValue={region} onBlur={handleRegionChange} />
+        <Input type="text" size="L" placeholder="와인 이름 입력" inputname="와인 이름" defaultValue={wineName} onBlur={handleWineNameChange} />
+        <Input type="text" size="L" placeholder="가격 입력" inputname="가격" defaultValue={price} onBlur={handlePriceChange} />
+        <Input type="text" size="L" placeholder="원산지 입력" inputname="원산지" defaultValue={region} onBlur={handleRegionChange} />
 
         <label htmlFor="wine-type">타입</label>
         <select className="wine-type" id="wine-type" value={type} onChange={handleTypeChange}>
