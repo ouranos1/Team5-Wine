@@ -16,6 +16,7 @@ import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
 import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
+import { useSession } from 'next-auth/react'; 3
 
 interface ReviewProps {
     reviewId: id;
@@ -41,6 +42,8 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     const [detail, setDetail] = useState<reviewDetailType>();
     const [dropdown, setDropdown] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const session = useSession();
+    const userData = session.data?.user.user;
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -85,6 +88,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
             }
         };
         fetchWineDetail();
+        console.log(userData);
     }, [reviewId, isModalOpen]);
 
     return (
@@ -103,7 +107,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
                             </span>
                         </div>
                         <div>
-                            <span className="options" onClick={toggleDropdown}> ⋮ </span>
+                            {userData.user.id === detail.user.id && < span className="options" onClick={toggleDropdown}> ⋮ </span>}
                         </div>
                     </div>
                     <div className="soohyun-aroma">
