@@ -12,7 +12,7 @@ import { ImageAPI } from '@/api/Image';
 import { useSession } from 'next-auth/react';
 
 function changeNickName() {
-  console.log("닉네임변경");
+  console.log('닉네임변경');
 }
 
 function MyProfile() {
@@ -59,15 +59,15 @@ function MyProfile() {
         <div className="user-data">
           <div className="user-image-layer">
             <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-            <label>+
+            <label>
+              +
               <input id="" type="file" className="user-image-input" onChange={handleFileChange} />
             </label>
           </div>
           <p className="user-nickname">{userData.nickname}</p>
           <p className="user-email">{userData.email}</p>
           <div className="user-edit">
-            <p className="edit-nickname">닉네임</p>
-            <Input className='edit-input'/>
+            <Input className="edit-input" size="S" inputname="닉네임" placeholder={userData.nickname} defaultValue="" />
             <div>
               <Button text="변경하기" onClick={changeNickName} />
             </div>
