@@ -37,22 +37,27 @@ const App: React.FC<PageProps> = ({ params }) => {
     };
 
     return (
-        <div className='page'>
+        <div className='wine-page'>
             {detail && (
-                <>
-                    <Card image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
-                    <RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} handleOpenModal={handleOpenModal} />
-                    {detail.reviewCount > 0 ? detail.reviews.map((review) => (
-                        <CardReview key={review.id} reviewId={review.id} />
-                    )) :
-                        <div>리뷰 없음냥</div>}
-                    <ModalReview
-                        isModalOpen={isModalOpen}
-                        closeModal={handleOpenModal}
-                        wineName="와인 이름"
-                        wineId={id}
-                    />
-                </>
+                <div className='wine-content'>
+                    <div className='wine-card'> <Card image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} /></div>
+                    <div className='a'>
+                        <div className='rating-section'><RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} handleOpenModal={handleOpenModal} /> </div>
+                        <div className='review-title'>리뷰 목록</div>
+                        {detail.reviewCount > 0 ? detail.reviews.map((review) => (
+                            <CardReview key={review.id} reviewId={review.id} />
+                        )) :
+                            <div className='no-reviews'>리뷰 없음냥</div>}
+                        <div className='modal-review'>
+                            <ModalReview
+                                isModalOpen={isModalOpen}
+                                closeModal={handleOpenModal}
+                                wineName="와인 이름"
+                                wineId={id}
+                            />
+                        </div>
+                    </div>
+                </div>
             )}
         </div>
     );

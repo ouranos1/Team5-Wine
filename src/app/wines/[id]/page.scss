@@ -1,7 +1,34 @@
-.page {
-    padding: 20px 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+@import "../../../styles/ColorList.scss";
+@import "../../../styles/Font-Mixins.scss";
+@import "../../../app/globals.scss";
+
+.wine-page {
+    margin-top: 62px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-direction: column;
+
+    .wine-content {
+        background-color: beige;
+
+        .review-title {
+            @include font-settings(20, bold, 24);
+        }
+
+        .wine-card {}
+
+        .a {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 60px;
+
+            .rating-section {}
+
+            .no-reviews {}
+
+            .modal-review {}
+
+        }
+    }
 }

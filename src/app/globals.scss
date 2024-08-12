@@ -24,8 +24,11 @@ body {
   width: 100%;
   max-width: 1140px;
   margin: 24px auto;
-  padding-left: 20px;
-  padding-right: 20px;
+
+  @include tablet() {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   @include mobile() {
     padding-left: 16px;
