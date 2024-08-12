@@ -1,5 +1,6 @@
 'use client';
 
+import { SlideMode } from '@/types/SlideOption';
 import '@/components/slidecomponent/SlideComponent.scss';
 import { SildeOptionProps } from '@/types/SlideOption';
 import { useState } from 'react';
@@ -21,7 +22,7 @@ function SlideComponent(props: SlideComponentProps) {
     <div className="slidebar-layer">
       <p className="option-title">{props.SlideOptionTitle}</p>
       <p className="option">{props.LeftOption}</p>
-      <input type="range" onChange={handleSliderChange} min="0" max="10" className="slider" value={siledValue} disabled={props.value !== undefined} />
+      <input type="range" onChange={handleSliderChange} min="0" max="10" className="slider" value={siledValue} disabled={props.mode === SlideMode.VIEW} />
       <p className="option">{props.RightOption}</p>
     </div>
   );

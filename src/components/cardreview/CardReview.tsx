@@ -11,7 +11,7 @@ import { createAromaList } from '@/utils/aromautils';
 import { SlideMode } from '@/types/SlideOption';
 import { id } from '@/types/Id'
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
-import { searchReviewsAPI } from '@/api/Review'
+import { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review'
 import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
@@ -21,7 +21,7 @@ interface ReviewProps {
     reviewId: id;
 }
 
-function convertReviewListToResponseBody(review: ReviewListType, wineId: number): responseReviewBody {
+function convertReviewListToResponseBody(review: reviewDetailType, wineId: number): responseReviewBody {
     return {
         id: review.id,
         rating: review.rating,
@@ -56,9 +56,17 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
         toggleDropdown();
     }
 
-    const onClickDelete = () => {
+    const onClickDelete = async (reviewId: id) => {
         console.log(reviewId + " 삭제하기");
-        toggleDropdown();
+        try {
+            await deleteReviewsAPI(reviewId);
+            console.log(reviewId + " 삭제 성공");
+            setDetail(undefined);
+            toggleDropdown();
+        } catch (error) {
+            console.error("리뷰 삭제 중 오류 발생", error);
+            alert("리뷰 삭제 중 문제가 발생했습니다.");
+        }
     }
 
     const items = [
@@ -77,7 +85,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
             }
         };
         fetchWineDetail();
-    }, [reviewId]);
+    }, [reviewId, isModalOpen]);
 
     return (
         <>

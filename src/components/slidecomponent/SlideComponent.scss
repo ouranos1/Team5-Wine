@@ -1,5 +1,5 @@
 @import '../../styles/ColorList.scss';
-@import '../../styles//Font-Mixins.scss';
+@import '../../styles/Font-Mixins.scss';
 @import '../../app/globals.scss';
 
 .slidebar-layer {
@@ -7,9 +7,7 @@
   align-items: center;
   gap: 24px;
   width: 100%;
-  @include mobile {
-    gap: 19px;
-  }
+  background-color: rgb(245, 220, 220);
 
   .option-title {
     flex: 0 0 auto;
@@ -24,25 +22,20 @@
     background-color: $Grayscale-100;
     color: $Grayscale-300;
     @include font-settings(14, semibold, 24);
-    @include mobile {
-      width: 48px;
-      @include font-settings(12, semibold, 20);
-    }
   }
 
   .option {
+    width: 70px;
     flex: 0 0 auto;
     color: $Grayscale-400;
     @include font-settings(16, medium, 26);
-
-    @include mobile {
-      @include font-settings(14, medium, 24);
-    }
   }
 
   .slider {
-    -webkit-appearance: none; /* 기본 스타일 제거 (웹킷 브라우저) */
-    appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
+    -webkit-appearance: none;
+    /* 기본 스타일 제거 (웹킷 브라우저) */
+    appearance: none;
+    /* 기본 스타일 제거 (기타 브라우저) */
     background: $Grayscale-100;
     height: 6px;
     border-radius: 50px;
@@ -53,11 +46,28 @@
     &::-webkit-slider-thumb {
       background: $Primary-Purple-100;
     }
+
     &::-moz-range-thumb {
       background: $Primary-Purple-100;
     }
+
     &::-ms-thumb {
       background: $Primary-Purple-100;
+    }
+  }
+
+  @include mobile {
+    gap: 19px;
+    background-color: rgb(196, 251, 255);
+
+    .option-title {
+      width: 48px;
+      @include font-settings(12, semibold, 20);
+    }
+
+    .option {
+      width: 62px;
+      @include font-settings(14, medium, 24);
     }
   }
 }
