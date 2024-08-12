@@ -31,7 +31,7 @@ export async function myReviewsAPI() {
 export async function myWineAPI() {
     let count = 5;
     const method = "get";
-    let query = `/users/me/wines?limit${count}`;
+    let query = `/users/me/wines?limit=${count}`;
     const apiName = "mywine";
     const body = null;
     return await CallAPI({method, query, body, apiName});
