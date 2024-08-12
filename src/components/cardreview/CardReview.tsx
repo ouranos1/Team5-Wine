@@ -3,6 +3,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import './CardReview.scss';
+import Image from 'next/image';
 import { AromaTag } from '@/components/aromatag/AromaTag';
 import { Aroma, AromaName } from '@/types/Aroma';
 import { reviewDetailType } from '@/types/ReviewProps'
@@ -11,13 +12,59 @@ import { SlideMode } from '@/types/SlideOption';
 import { id } from '@/types/Id'
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { searchReviewsAPI } from '@/api/Review'
+import defaultprofile from '@/assets/icon/defaultprofile.webp'
+import SHDropdown from '@/components/shdropdown/SHDropDown';
+import { ModalReview } from '@/components/modal/modalreview/ModalReview';
+import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
 
 interface ReviewProps {
     reviewId: id;
 }
 
+function convertReviewListToResponseBody(review: ReviewListType, wineId: number): responseReviewBody {
+    return {
+        id: review.id,
+        rating: review.rating,
+        lightBold: review.lightBold,
+        smoothTannic: review.smoothTannic,
+        drySweet: review.drySweet,
+        softAcidic: review.softAcidic,
+        aroma: review.aroma,
+        content: review.content,
+        wineId: wineId,
+        teamId: "7-5",
+    };
+}
+
+
 const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     const [detail, setDetail] = useState<reviewDetailType>();
+    const [dropdown, setDropdown] = useState<boolean>(false);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const toggleDropdown = () => {
+        setDropdown(!dropdown);
+    };
+
+    const onClickEdit = () => {
+        console.log(reviewId + " 수정하기");
+        setIsModalOpen(true);
+        toggleDropdown();
+    }
+
+    const onClickDelete = () => {
+        console.log(reviewId + " 삭제하기");
+        toggleDropdown();
+    }
+
+    const items = [
+        { name: "수정하기", func: onClickEdit },
+        { name: "삭제하기", func: onClickDelete }
+    ];
 
     useEffect(() => {
         const fetchWineDetail = async () => {
@@ -37,20 +84,39 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
             {detail &&
                 <div className="soohyun-card">
                     <div className="soohyun-header">
-                        <span className="soohyun-nickname">{detail.user.nickname}</span>
-                        <span className="soohyun-date">{new Date(detail.createdAt).toISOString().split('T')[0]}</span>
+                        <div className="soohyun-profile">
+                            {detail.user.image ?
+                                <img src={detail.user.image} className="soohyun-image" /> :
+                                <Image src={defaultprofile} alt="와인아이콘" className="soohyun-image" />
+                            }
+                            <span className="soohyun-nickname-date">
+                                <span className="soohyun-nickname">{detail.user.nickname}</span>
+                                <span className="soohyun-date">{new Date(detail.createdAt).toISOString().split('T')[0]}</span>
+                            </span>
+                        </div>
+                        <div>
+                            <span className="options" onClick={toggleDropdown}> ⋮ </span>
+                        </div>
                     </div>
                     <div className="soohyun-aroma">
-                        <AromaTag option="view" list={createAromaList(detail.aroma)} />
-                    </div>
+                        <AromaTag option="view" list={createAromaList(detail.aroma)} /></div>
                     <div className="soohyun-content">
                         {detail.content}
                     </div>
                     <div className="soohyun-taste">
                         <WineTasteSlide tasteValue={[detail.lightBold, detail.smoothTannic, detail.drySweet, detail.softAcidic]} SlideMode={SlideMode.VIEW} />
                     </div>
+                    <div className="soohyun-dropdown">
+                        {dropdown && <SHDropdown items={items} />}
+                    </div>
+                    <ModalReview
+                        isModalOpen={isModalOpen}
+                        closeModal={handleCloseModal}
+                        wineName="와인 이름"
+                        wineId={detail?.wineId}
+                        ReviewData={convertReviewListToResponseBody(detail, detail?.wineId)}
+                    />
                 </div>
-
             }
         </>
     );
