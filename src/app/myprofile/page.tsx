@@ -12,6 +12,8 @@ import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
+import CardReview from '@/components/cardreview/CardReview';
+import { winListType } from '@/types/WineProps';
 
 function changeNickName() {}
 
@@ -20,6 +22,10 @@ function MyProfile() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const [myReviews, setMyReviews] = useState<ReviewListType[]>([]);
+  const [myWines, setMyWines] = useState<winListType[]>([]);
+  const [nowMenu, setNowMenu] = useState<'wine' | 'review'>('review');
 
   const { data: session } = useSession();
   const user = session?.user.user; // 세션에서 사용자 데이터 가져오기
@@ -44,10 +50,23 @@ function MyProfile() {
     }
   };
   const currentImage = selectedImage || session?.user.user.image || defaultprofile;
-  // const currentImage = selectedImage || defaultprofile;
-  //
-  // console.log(currentImage);
-  console.log(user);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const reviewResoponse = await myReviewsAPI();
+        const wineResopose = await myWineAPI();
+        console.log(reviewResoponse);
+        setMyReviews(reviewResoponse.list);
+        setMyWines(wineResopose.list);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+    console.log(myReviews);
+  }, []);
+
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
@@ -64,7 +83,9 @@ function MyProfile() {
           <p className="user-nickname">{user?.user.nickname}</p>
           <p className="user-email">{user?.user.email}</p>
           <div className="user-edit">
-            <Input className="edit-input" inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
+            <div className="edit-input">
+              <Input inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
+            </div>
             <div className="edit-button-layer">
               <Button text="변경하기" onClick={changeNickName} />
             </div>
@@ -79,9 +100,20 @@ function MyProfile() {
             <p className="content-menu-title">내가 쓴 후기</p>
             <p className="content-menu-title unactive">내가 등록한 와인</p>
           </div>
-          <p>총 몇개</p>
+          <p className="total-count">총 몇개</p>
         </div>
-        <div>
+        <div className="content">
+          {myReviews.length > 0 ? (
+            <div>
+              {myReviews.map((review) => (
+                <CardReview reviewId={review.id} />
+              ))}
+            </div>
+          ) : (
+            <div>
+              <p>등록된게 없습니다.</p>
+            </div>
+          )}
           {/* 리뷰목록, 와인목록 */}
           {/* 반복문을 통해 유저 아이디를 통해 가지고온 데이터 */}
         </div>
