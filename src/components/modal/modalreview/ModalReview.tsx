@@ -111,7 +111,9 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
                     <Stars stars={ReviewData.rating} isEvent={true} onRatingChange={handleRatingChange} />
                   </div>
                 </div>
-                <Input type="email" defaultValue={ReviewData.content} inputname="" onChange={(e) => setReviewContent(e.target.value)} />
+                <div className='input-width'>
+                  <Input type="email" defaultValue={ReviewData.content} inputname="" onChange={(e) => setReviewContent(e.target.value)} />
+                </div>
               </div>
             </div>
             <div className="wine-taste">

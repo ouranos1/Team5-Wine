@@ -15,10 +15,11 @@
             position: relative;
 
             .rating-section {
-                position: absolute;
-                top: 60px;
+                // position: absolute;
+                // top: 60px;
+                // position: sticky;
+                // top: 492px;  
                 flex: 1;
-                right: 0;
             }
 
             .a {
