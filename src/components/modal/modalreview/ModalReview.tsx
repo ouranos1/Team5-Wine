@@ -7,7 +7,7 @@ import '@/components/modal/modalreview/ModalReview.scss';
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { AromaTag } from '@/components/aromatag/AromaTag';
 import { responseReviewBody } from '@/types/ReviewProps';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { createAromaList } from '@/utils/aromautils';
 import { AromaName } from '@/types/Aroma';
 import { SlideMode } from '@/types/SlideOption';
@@ -27,6 +27,14 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
   const [slideValue, setSlideValue] = useState<number[]>(ReviewData ? [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : [0, 0, 0, 0]);
   const [selectedAromas, setSelectedAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const [reviewContent, setReviewContent] = useState(ReviewData?.content || '');
+
+  useEffect(() => {
+    console.log("rating" + ReviewData?.rating);
+    setRating(ReviewData?.rating || 0);
+    setReviewContent(ReviewData?.content || '');
+    setSlideValue(ReviewData ? [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : [0, 0, 0, 0]);
+    setSelectedAromas(ReviewData?.aroma || []);
+  }, [ReviewData]);
 
   const handleRatingChange = useCallback((newRating: number) => {
     setRating(newRating);

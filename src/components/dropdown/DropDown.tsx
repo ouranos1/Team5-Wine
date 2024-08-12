@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import '@/components/dropdown/DropDown.scss';
+import './DropDown.scss';
 import { DropdownProps } from "@/types/DropDown";
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
