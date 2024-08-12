@@ -35,21 +35,22 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     return (
         <>
             {detail &&
-                <div>
-                    <div>
-                        {detail.user.nickname}
-                        {new Date(detail.createdAt).toISOString().split('T')[0]}
+                <div className="soohyun-card">
+                    <div className="soohyun-header">
+                        <span className="soohyun-nickname">{detail.user.nickname}</span>
+                        <span className="soohyun-date">{new Date(detail.createdAt).toISOString().split('T')[0]}</span>
                     </div>
-                    <div>
+                    <div className="soohyun-aroma">
                         <AromaTag option="view" list={createAromaList(detail.aroma)} />
                     </div>
-                    <div>
+                    <div className="soohyun-content">
                         {detail.content}
                     </div>
-                    <div>
+                    <div className="soohyun-taste">
                         <WineTasteSlide tasteValue={[detail.lightBold, detail.smoothTannic, detail.drySweet, detail.softAcidic]} SlideMode={SlideMode.VIEW} />
                     </div>
                 </div>
+
             }
         </>
     );
