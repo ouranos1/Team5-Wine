@@ -41,35 +41,23 @@ const GNB: React.FC<GNBProps> = () => {
     setIsOpen(!isOpen);
   };
 
-<<<<<<< HEAD
-const GNB: React.FC<GNBProps> = () => {
-  const [userData, setUserData] = useState<user>();
-  const userString = localStorage.getItem('User');
-
-  useEffect(() => {
-    if (userString) {
-      try {
-        setUserData(JSON.parse(userString));
-      } catch (e) {
-        console.error('Failed to parse user data from localStorage:', e);
-      }
-    }
-  }, [userString]);
-=======
   const items = [
     { name: '마이페이지', path: '/myprofile' },
     { name: '로그아웃', path: '/' },
   ];
->>>>>>> upstream/feedback-0811
 
   return (
     <nav className="gnb">
       <Image src={Logo} alt="Logo" className="logo" />
       {userData ? (
-        <>
+        <div className="gnb-right">
           <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={toggleDropdown} />
-          <Dropdown items={items} />
-        </>
+          {isOpen && ( // isOpen이 true일 때만 드롭다운을 렌더링
+            <div className="dropdown-container">
+              <Dropdown items={items} />
+            </div>
+          )}
+        </div>
       ) : (
         <Link href="/login" className="gnb-login">
           로그인
