@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Cardmonthly from '../../components/cardmonthly/CardMonthly';
 import Cardmy from '../../components/cardmy/CardMy';
+import AromaTag from '@/components/aromatag/AromaTag'
 import { wineListAPI, wineDetail } from "@/api/Wine";
 import { winListType, wineDetailType } from "@/types/WineProps";
 
@@ -27,7 +28,7 @@ const App: React.FC = () => {
     useEffect(() => {
         const fetchWineMy = async () => {
             try {
-                const response = await wineDetail(35);
+                const response = await wineDetail(33);
                 setDetail(response);
                 console.log(response);
             } catch (error) {
@@ -40,13 +41,13 @@ const App: React.FC = () => {
 
     return (
         <div>
-            {wineList.map((wine) => (
+            {/* {wineList.map((wine) => (
                 <Cardmonthly key={wine.id}
                     image={wine.image}
                     avgRating={wine.avgRating}
                     name={wine.name}
                 />
-            ))}
+            ))} */}
             {detail !== undefined && detail.reviews.map((d) => (
                 <Cardmy key={d.id}
                     rating={d.rating}
@@ -54,6 +55,7 @@ const App: React.FC = () => {
                     name={detail.name}
                     content={d.content} />
             ))}
+            {/* <AromaTag option="view" /> */}
         </div>
     );
 };

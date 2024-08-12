@@ -33,18 +33,8 @@ const App: React.FC<PageProps> = ({ params }) => {
         <div className='page'>
             {detail && (
                 <>
-                    <Card
-                        image={detail.image}
-                        wineName={detail.name}
-                        wineDesc={detail.region}
-                        winePrice={detail.price}
-                    />
-                    <RatingAll
-                        score={score}
-                        avgRating={detail.avgRating}
-                        avgRatings={detail.avgRatings}
-                        reviewCount={detail.reviewCount}
-                    />
+                    <Card image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
+                    <RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} />
                     {detail.reviews.map((review) => (
                         <CardReview key={review.id} aromas={review.aroma} />
                     ))}
