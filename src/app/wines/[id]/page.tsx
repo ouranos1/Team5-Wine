@@ -45,7 +45,7 @@ const App: React.FC<PageProps> = ({ params }) => {
                         <div className='a'>
                             <div className='rating-section'><RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} handleOpenModal={handleOpenModal} /> </div>
 
-                            <div className='review-title'>리뷰 목록</div>
+                            <div className='review-title-sh'>리뷰 목록</div>
                             <div> {detail.reviewCount > 0 ? detail.reviews.map((review) => (
                                 <CardReview key={review.id} reviewId={review.id} />
                             )) :
