@@ -12,7 +12,7 @@ import { createAromaList } from '@/utils/aromautils';
 import { AromaName } from '@/types/Aroma';
 import { SlideMode } from '@/types/SlideOption';
 import Stars from '@/components/stars/StarsComponent';
-import { addReviewsAPI } from '@/api/Review';
+import { addReviewsAPI, editReviewsAPI } from '@/api/Review';
 
 interface ModalReviewProps extends ModalProps {
   wineName: string;
@@ -43,7 +43,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
   const postReview = useCallback(() => {
     console.log('리뷰등록실행');
     console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
-    if (rating && slideValue && reviewContent) {
+    if (slideValue && reviewContent) {
       const requestBody = {
         rating: rating,
         lightBold: slideValue[0],
@@ -58,6 +58,23 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
     }
   }, [rating, slideValue, reviewContent, selectedAromas, wineId]);
 
+  const patchReview = useCallback(() => {
+    console.log('리뷰수정실행');
+    console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
+    if (ReviewData?.id && slideValue && reviewContent) {
+      const requestBody = {
+        rating: rating,
+        lightBold: slideValue[0],
+        smoothTannic: slideValue[1],
+        drySweet: slideValue[2],
+        softAcidic: slideValue[3],
+        aroma: selectedAromas,
+        content: reviewContent,
+      };
+      editReviewsAPI(requestBody, ReviewData.id);
+    }
+  }, [rating, slideValue, reviewContent, selectedAromas, wineId]);
+
   return (
     <div className="modal-layer">
       <BaseModal
@@ -66,7 +83,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         title={ReviewData ? '수정하기' : '리뷰 등록'}
         closeButton={true}
         footerButtons={[
-          <button key="1" onClick={postReview}>
+          <button key="1" onClick={ReviewData ? postReview : patchReview}>
             {ReviewData ? '수정하기' : '리뷰 남기기'}
           </button>,
         ]}
