@@ -29,20 +29,29 @@
     height: auto;
     margin: 17px 0;
   }
+  .gnb-right {
+    position: relative;
+    display: flex;
+    gap: 40px;
+    .gnb-login {
+      color: white;
+    }
 
-  .gnb-login {
-    color: white;
-  }
+    .user-image {
+      border-radius: 50%;
+      border: 1px gray;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
 
-  .user-image {
-    border-radius: 50%;
-    border: 1px gray;
-    width: 45px;
-    height: 45px;
-
-    @include mobile {
-      width: 20px;
-      height: 20px;
+      @include mobile {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .dropdown-container {
+      position: absolute;
+      right: 0px;
     }
   }
 }
