@@ -1,18 +1,18 @@
 'use client';
 
-import BaseModal from '../modalbase/BaseModal';
-import { ModalProps } from '@/types/ModalProps';
+import BaseModal from '@/components/modal/modalbase/BaseModal';
 import { deleteWine } from '@/api/Wine';
+import { ModalDeleteProps } from '@/types/ModalProps';
 import './ModalWineDelete.scss';
+import { useRouter } from 'next/navigation';
 
-interface ModalDeleteWineProps extends ModalProps {
-  wineId: number; // 삭제할 와인의 ID
-}
-
-export default function ModalDeleteWine({ isModalOpen, closeModal, wineId }: ModalDeleteWineProps) {
+export default function ModalDeleteWine({ isModalOpen, closeModal, id, setWines, wines }: ModalDeleteProps) {
+  const router = useRouter();
   const handleDeleteWine = async () => {
     try {
-      await deleteWine(wineId);
+      console.log(id);
+      await deleteWine(id);
+      setWines(wines.filter((wine) => wine.id !== id));
       alert('와인이 삭제되었습니다.');
       closeModal();
     } catch (error) {
