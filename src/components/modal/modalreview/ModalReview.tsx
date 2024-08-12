@@ -91,8 +91,8 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         <div className="review-content">
           <div className="review-title">
             {/* <p>와인이름과 별점 후기용</p> */}
-            <div className='a'>
-              <div className='b'>
+            <div className="a">
+              <div className="b">
                 <Image src={wineIcon} alt="와인아이콘" className="wine-icon" />
                 <div className="name-and-star">
                   <p>{wineName}</p>
