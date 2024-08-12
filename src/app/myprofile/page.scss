@@ -1,24 +1,50 @@
-@import "@/app/globals.scss";
+@import '@/app/globals.scss';
 
 .myprofile-layer {
-    .user-profile-data {
-        .user-data {
-            .user-image-layer {
-                
-            }
-            .user-nickname {
-                @include font-settings(24, bold, 32);
-                color: $Grayscale-400;
-            }
-            .user-email {
-                @include font-settings(16, regular, 26);
-                color: $Grayscale-300;
-            }
-            .user-edit {
-                .edit-nickname {
-                    @include font-settings(16, medium, 26);
-                }
-            }
+  margin-top: 37px;
+  .user-profile-data {
+    padding: 39px 20px;
+    border: 1px solid $Grayscale-200;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    height: 530px;
+    border-radius: 16px;
+    .user-data {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .user-image-layer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+      .user-nickname {
+        @include font-settings(24, bold, 32);
+        color: $Grayscale-400;
+        margin-bottom: 16px;
+      }
+      .user-email {
+        @include font-settings(16, regular, 26);
+        color: $Grayscale-300;
+        margin-bottom: 48px;
+      }
+      .user-edit {
+        .edit-input {
+          margin-bottom: 8px;
         }
+        div {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          button {
+            max-width: 96px;
+          }
+        }
+      }
     }
+  }
 }
