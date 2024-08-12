@@ -70,13 +70,17 @@
       .total-count {
         @include font-settings(14, regular, 24);
         color: $Primary-Purple-100;
+        width: 100%;
+        max-width: fit-content;
       }
       margin-bottom: 22px;
     }
     .content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      .content-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   }
 }
