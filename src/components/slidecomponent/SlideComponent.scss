@@ -5,9 +5,8 @@
 .slidebar-layer {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
   width: 100%;
-  background-color: rgb(245, 220, 220);
 
   .option-title {
     flex: 0 0 auto;
@@ -15,6 +14,7 @@
     justify-content: center;
     align-items: center;
     white-space: nowrap;
+    margin-right: 16px;
     width: 54px;
     height: 25px;
     border-radius: 6px;
@@ -24,11 +24,19 @@
     @include font-settings(14, semibold, 24);
   }
 
-  .option {
-    width: 70px;
+  .option-left {
+    width: 80px;
     flex: 0 0 auto;
     color: $Grayscale-400;
     @include font-settings(16, medium, 26);
+  }
+
+  .option-right {
+    width: 64px;
+    flex: 0 0 auto;
+    color: $Grayscale-400;
+    @include font-settings(16, medium, 26);
+    text-align: end;
   }
 
   .slider {
@@ -57,16 +65,21 @@
   }
 
   @include mobile {
-    gap: 19px;
-    background-color: rgb(196, 251, 255);
+    gap: 12px;
 
     .option-title {
       width: 48px;
+      margin-right: 7px;
       @include font-settings(12, semibold, 20);
     }
 
-    .option {
-      width: 62px;
+    .option-left {
+      width: 62 px;
+      @include font-settings(14, medium, 24);
+    }
+
+    .option-right {
+      width: 50 px;
       @include font-settings(14, medium, 24);
     }
   }
