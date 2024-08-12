@@ -2,12 +2,12 @@ import { createWineBody } from '@/types/WineProps';
 import CallAPI from './CallApi';
 import { id } from '@/types/Id';
 
-export async function addWineAPI(props: createWineBody, token: string) {
+export async function addWineAPI(props: createWineBody) {
   const method = 'post';
   let query = `/wines`;
   const apiName = 'addwine';
   const body = props;
-  await CallAPI({ method, query, body, apiName, token });
+  await CallAPI({ method, query, body, apiName });
 }
 
 // export async function wineListAPI(limit: number | null = null, cursor: number | null = null, minPrice: number | null = null, maxPrice: number | null = null, rating: number | null = null) {
@@ -45,6 +45,7 @@ export async function wineListAPI(limit: number | null = null, cursor: number | 
   const query = `/wines?${queryParams.toString()}`;
   const apiName = 'winelist';
   const body = null;
+  console.log(query);
 
   return await CallAPI({ method, query, body, apiName });
 }
