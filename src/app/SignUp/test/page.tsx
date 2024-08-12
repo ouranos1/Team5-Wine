@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { wineListAPI } from '@/api/Wine';
 import { wine } from '@/types/WineProps';
 import ModalDeleteWine from '@/components/modal/modaldelete/winedelete/ModalWineDelete';
+import { disableScroll, activateScroll } from '@/components/modal/components/modalscroll/modalScroll';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,6 +20,16 @@ export default function Home() {
     setIsModalOpen(true);
     setSelectedWineId(id);
   };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      const currentScrollY = disableScroll();
+
+      return () => {
+        activateScroll(currentScrollY);
+      };
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     async function fetchWine() {
