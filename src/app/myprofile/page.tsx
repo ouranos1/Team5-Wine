@@ -9,7 +9,9 @@ import Button from '@/components/button/Button';
 import Image from 'next/image';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
 import { ImageAPI } from '@/api/Image';
+import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
+import { myReviewsAPI, myWineAPI } from '@/api/User';
 
 function changeNickName() {
   console.log('닉네임변경');
@@ -20,6 +22,17 @@ function MyProfile() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // const [userData, setUserData] = useState();
+  const localData = localStorage.getItem('User');
+
+  const userData = useMemo(() => {
+    if (localData) {
+      return JSON.parse(localData);
+    }
+  }, [localData]);
+
+  const reviewData = myWineAPI();
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -36,6 +49,9 @@ function MyProfile() {
       }
     }
   };
+
+  console.log(userData);
+  console.log(reviewData);
 
   // const currentImage = selectedImage || userData.image || defaultprofile;
   const currentImage = selectedImage || defaultprofile;

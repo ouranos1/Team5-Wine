@@ -28,12 +28,14 @@ apiInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response && (error.response.status === 401 || error.response.status === 403) && !originalRequest._retry) {
+    if (error.response && (error.response.status === 401 || error.response.status === 403 || error.response.status === 400) && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         const refreshTokenResponse = await refreshToken({
           refreshToken: localStorage.getItem('refreshToken') || ''
         });
+        console.log("리프레쉬토큰동작함");
+        console.log(refreshTokenResponse);
         const newAccessToken = refreshTokenResponse.accessToken;
         localStorage.setItem('accessToken', newAccessToken);
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
