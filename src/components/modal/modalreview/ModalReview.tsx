@@ -78,7 +78,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
                 <Image src={wineIcon} alt="와인아이콘" className="wine-icon" />
                 <div className="name-and-star">
                   <p>{wineName}</p>
-                  <Stars stars={5} isEvent={true} onRatingChange={handleRatingChange} />
+                  <Stars stars={0} isEvent={true} onRatingChange={handleRatingChange} />
                 </div>
               </div>
               <Input type="email" placeholder="후기를 작성해 주세요" inputname="" onChange={(e) => setReviewContent(e.target.value)} />
