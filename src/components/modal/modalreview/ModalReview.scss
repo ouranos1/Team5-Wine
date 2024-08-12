@@ -28,14 +28,31 @@
 
         .name-and-star {
           display: flex;
+          width: 140px;
+          justify-content: space-between;
           flex-direction: column;
-          gap: 8px;
+
+          @include mobile {
+            width: 106px;
+          }
+
+          img {
+            width: 22px;
+            height: 22px;
+
+            @include mobile {
+              width: 17px;
+              height: 17px;
+            }
+          }
 
           p {
             @include font-settings(18, semibold, 26);
+            width: 300px;
 
             @include mobile {
               @include font-settings(16, bold, 26);
+              width: 191px;
             }
           }
         }
