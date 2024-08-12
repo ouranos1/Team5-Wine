@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { wineListAPI } from '@/api/Wine';
 import { wine } from '@/types/WineProps';
 import ModalDeleteWine from '@/components/modal/modaldelete/winedelete/ModalWineDelete';
+import ModalEdit from '@/components/modal/modaledit/ModalEdit';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,9 +44,8 @@ export default function Home() {
               <p>가격: ₩{wine.price.toLocaleString()}</p>
               <p>등급: {wine.avgRating}</p>
               <p>아이디: {wine.id}</p>
-              <button onClick={() => openDeleteModal(wine.id)}>삭제</button>
-              {/* {selectedWineId === wine.id && <ModalDeleteWine isModalOpen={isModalOpen} closeModal={closeModal} id={wine.id} setWines={setWines} wines={wines} />} */}
-              {selectedWineId === wine.id && <ModalDeleteWine isModalOpen={isModalOpen} closeModal={closeModal} id={wine.id} />}
+              <button onClick={() => openDeleteModal(wine.id)}>수정하기</button>
+              {selectedWineId === wine.id && <ModalEdit isModalOpen={isModalOpen} closeModal={closeModal} id={wine.id} />}
             </div>
           ))}
       </div>

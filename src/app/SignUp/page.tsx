@@ -9,6 +9,7 @@ import kakaoLogo from '@/assets/icon/kakaoLogo.svg';
 import { ModalFilter } from '@/components/modal/modalfilter/ModalFilter';
 import ModalWine from '@/components/modal/modalwine/ModalWine';
 import SignupForm from './singupform/SignUpForm';
+import ModalEdit from '@/components/modal/modaledit/ModalEdit';
 import '../globals.scss';
 import './page.scss';
 
@@ -27,6 +28,7 @@ export default function SignUp() {
       <button onClick={openModal}>모달열기</button>
       {/* <ModalFilter isModalOpen={isModalOpen} closeModal={closeModal} /> */}
       <ModalWine isModalOpen={isModalOpen} closeModal={closeModal} />
+      {/* <ModalEdit isModalOpen={isModalOpen} closeModal={closeModal} /> */}
       <SignupForm />
     </>
   );
