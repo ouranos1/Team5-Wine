@@ -25,18 +25,16 @@ apiInstance.interceptors.request.use(
 
 // 응답 인터셉터 설정
 apiInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response && (error.response.status === 401 || error.response.status === 403) && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        const userrefreshToken = { "refreshToken" : localStorage.getItem('refreshToken')};
-        // const response = await axios.post(`${API_KEY}/refresh-token`, { refreshToken });
-        const response = await refreshToken(userrefreshToken);
-        const newAccessToken = response.accessToken;
+        const refreshTokenResponse = await refreshToken({
+          refreshToken: localStorage.getItem('refreshToken') || ''
+        });
+        const newAccessToken = refreshTokenResponse.accessToken;
         localStorage.setItem('accessToken', newAccessToken);
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;

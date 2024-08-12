@@ -21,33 +21,37 @@ function MyProfile() {
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const userData = useMemo(() => {
-    const userString = localStorage.getItem('User');
-    try {
-      return userString ? JSON.parse(userString) : null;
-    } catch (e) {
-      console.log('로컬스토리지의 유저데이터 불러오기 에러');
-    }
-  }, []);
+  // const userData = useMemo(() => {
+  //   const userString = localStorage.getItem('User');
+  //   try {
+  //     return userString ? JSON.parse(userString) : null;
+  //   } catch (e) {
+  //     console.log('로컬스토리지의 유저데이터 불러오기 에러');
+  //   }
+  // }, []);
 
-  console.log(userData);
+  // console.log(userData);
 
   // const session = useSession();
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-
     const token = localStorage.getItem('accessToken');
     if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await ImageAPI(formData);
-      setSelectedImage(response.url);
+      try {
+        const response = await ImageAPI(formData);
+        setSelectedImage(response.url);
+      } catch (error) {
+        console.error('이미지 업로드 실패:', error);
+      }
     }
   };
 
-  const currentImage = selectedImage || userData.image || defaultprofile;
+  // const currentImage = selectedImage || userData.image || defaultprofile;
+  const currentImage = selectedImage || defaultprofile;
 
   return (
     <div className="myprofile-layer">
@@ -64,10 +68,10 @@ function MyProfile() {
               <input id="" type="file" className="user-image-input" onChange={handleFileChange} />
             </label>
           </div>
-          <p className="user-nickname">{userData.nickname}</p>
-          <p className="user-email">{userData.email}</p>
+          <p className="user-nickname">유저 닉네임</p>
+          <p className="user-email">유저 이메일</p>
           <div className="user-edit">
-            <Input className="edit-input" size="S" inputname="닉네임" placeholder={userData.nickname} defaultValue="" />
+            <Input className="edit-input" inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
             <div>
               <Button text="변경하기" onClick={changeNickName} />
             </div>
