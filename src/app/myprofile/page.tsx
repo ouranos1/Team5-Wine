@@ -21,19 +21,6 @@ function MyProfile() {
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // const userData = useMemo(() => {
-  //   const userString = localStorage.getItem('User');
-  //   try {
-  //     return userString ? JSON.parse(userString) : null;
-  //   } catch (e) {
-  //     console.log('로컬스토리지의 유저데이터 불러오기 에러');
-  //   }
-  // }, []);
-
-  // console.log(userData);
-
-  // const session = useSession();
-
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     const token = localStorage.getItem('accessToken');
@@ -57,7 +44,7 @@ function MyProfile() {
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
       <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
+      <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" />
       <div className="user-profile-data">
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">

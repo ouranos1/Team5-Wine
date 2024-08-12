@@ -1,16 +1,15 @@
 import { AromaProps } from '@/types/Aroma';
 import '@/components/aromatag/AromaTag.scss';
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { AromaName } from '@/types/Aroma';
 
 interface AromaTagProps {
   list?: AromaProps[];
-  option: string; // view, edit 등을 통해 구분
-  onChange?: (selectedTags: AromaName[]) => void; // 선택된 태그를 부모 컴포넌트에 전달할 콜백
+  option: 'view' | 'edit';
+  onChange?: (selectedTags: AromaName[]) => void;
 }
 
 export function AromaTag({ list = [], option, onChange }: AromaTagProps) {
-  // 초기 상태를 useMemo로 계산하여 성능 최적화
   const initialSelectedTags = useMemo(() => {
     return list.reduce((acc, aroma) => {
       acc[aroma.name.eng] = aroma.selected;
@@ -32,12 +31,12 @@ export function AromaTag({ list = [], option, onChange }: AromaTagProps) {
     handleTagChange();
   }, [selectedTags, handleTagChange]);
 
-  const handleTagClick = (engName: string) => {
+  const handleTagClick = useCallback((engName: string) => {
     setSelectedTags((prevSelectedTags) => ({
       ...prevSelectedTags,
       [engName]: !prevSelectedTags[engName],
     }));
-  };
+  }, []);
 
   // option에 따른 태그 렌더링을 useMemo로 최적화
   const renderContent = useMemo(() => {
@@ -56,6 +55,7 @@ export function AromaTag({ list = [], option, onChange }: AromaTagProps) {
           </p>
         ));
     }
+    return null;
   }, [list, option, selectedTags, handleTagClick]);
 
   return <div className="aroma-tag-layer">{renderContent}</div>;
