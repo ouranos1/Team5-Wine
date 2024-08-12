@@ -2,6 +2,7 @@ import { Aroma, AromaName } from '@/types/Aroma';
 import { id } from '@/types/Id';
 import { imageProp } from '@/types/Image';
 import { nickName } from '@/types/NickName';
+import { wine, wineDetailType } from './WineProps';
 
 export interface recentReview {
   user: recentReview;
@@ -45,6 +46,7 @@ export interface ReviewListType {
   createdAt: string;
   updatedAt: string;
   user: reviewUser;
+  wine: wine;
 }
 
 export interface createReviewBody {
