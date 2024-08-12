@@ -67,6 +67,23 @@
           text-align: center;
         }
       }
+      .start-card {
+        position: absolute;
+        width: 112px;
+        height: 121px;
+        gap: 10px;
+
+        flex-direction: column;
+        top: 40px;
+        right: 50px;
+      }
+      .right-icon {
+        position: absolute;
+        top: 185.5px;
+        right: 50px;
+        width: 36px;
+        height: 36px;
+      }
     }
 
     .down-card {
@@ -85,7 +102,7 @@
       }
     }
   }
-
+  //
   // Medium Size
   @include tablet {
     width: 704px;
@@ -136,6 +153,23 @@
           @include font-settings(18, bold, 26);
           text-align: center;
         }
+      }
+      .start-card {
+        position: absolute;
+        width: 112px;
+        height: 121px;
+        gap: 10px;
+
+        flex-direction: column;
+        top: 40px;
+        right: 50px;
+      }
+      .right-icon {
+        position: absolute;
+        top: 185.5px;
+        right: 50px;
+        width: 36px;
+        height: 36px;
       }
     }
     .down-card {
@@ -204,7 +238,23 @@
             text-align: center;
           }
         }
+        .start-card {
+          position: absolute;
+          height: 37px;
+          width: 156px;
+          flex-direction: row;
+          top: 177px;
+          right: 55px;
+        }
+        .right-icon {
+          position: absolute;
+          top: 179.5px;
+          right: 19px;
+          width: 32px;
+          height: 32px;
+        }
       }
+
       .down-card {
         width: 303px;
         height: 104px;

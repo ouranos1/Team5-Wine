@@ -3,7 +3,7 @@
 import React from 'react';
 import './Card.scss';
 import { CardProps } from '@/types/Card';
-import CardCommon from '../cardcommon/cardcommon';
+import CardCommon from '../cardcommon/Cardcommon';
 
 const Card: React.FC<CardProps> = ({ size, image, wineName, wineDesc, winePrice }) => {
   return (
