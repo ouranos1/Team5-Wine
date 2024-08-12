@@ -19,19 +19,6 @@ export async function searchReviewsAPI(reviewId: id) {
     return await CallAPI({method, query, body, apiName});
 }
 
-// export interface responseReviewBody {
-//     id: id;
-//     rating: number;
-//     lightBold: number;
-//     smoothTannic: number;
-//     drySweet: number;
-//     softAcidic: number;
-//     aroma: AromaName[];
-//     content: string;
-//     wineId: number;
-//     teamId: string;
-//   }
-
 export async function editReviewsAPI(prop: editReview, reviewId: id) {
     const method = "patch";
     let query = `/reviews/${reviewId}`;

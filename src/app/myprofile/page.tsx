@@ -7,13 +7,15 @@ import { useEffect, useState, useMemo } from 'react';
 import '@/app/myprofile/page.scss';
 import Button from '@/components/button/Button';
 import Image from 'next/image';
+import Cardmy from '@/components/cardmy/CardMy';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
 import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
 import CardReview from '@/components/cardreview/CardReview';
-import { winListType } from '@/types/WineProps';
+import { wineDetailType, winListType } from '@/types/WineProps';
+import Card from '@/components/cardmylist/card';
 
 function changeNickName() {}
 
@@ -22,9 +24,11 @@ function MyProfile() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [totalReviewCount, setTotalReviewCount] = useState<number>(0);
+  const [totalWineCount, setTotalWineCount] = useState<number>(0);
 
   const [myReviews, setMyReviews] = useState<ReviewListType[]>([]);
-  const [myWines, setMyWines] = useState<winListType[]>([]);
+  const [myWines, setMyWines] = useState<wineDetailType[]>([]);
   const [nowMenu, setNowMenu] = useState<'wine' | 'review'>('review');
 
   const { data: session } = useSession();
@@ -35,7 +39,7 @@ function MyProfile() {
     console.log('파일선택옴');
     const token = session?.user.user.accessToken;
     console.log(token);
-    if (file && token) {
+   if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
       console.log('파일url받음');
@@ -51,6 +55,13 @@ function MyProfile() {
   };
   const currentImage = selectedImage || session?.user.user.image || defaultprofile;
 
+  const handleMenu = () => {
+    if (nowMenu === 'review') {
+      setNowMenu('wine');
+    } else {
+      setNowMenu('review');
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,7 +69,9 @@ function MyProfile() {
         const wineResopose = await myWineAPI();
         console.log(reviewResoponse);
         setMyReviews(reviewResoponse.list);
+        setTotalReviewCount(reviewResoponse.totalCount);
         setMyWines(wineResopose.list);
+        setTotalWineCount(wineResopose.totalCount);
       } catch (error) {
         console.log(error);
       }
@@ -70,14 +83,12 @@ function MyProfile() {
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
-      {/* <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" /> */}
       <div className="user-profile-data">
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
             <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-            <label>+</label>
+           <label>+</label>
             <input type="file" className="user-image-input" onChange={handleFileChange} />
           </div>
           <p className="user-nickname">{user?.user.nickname}</p>
@@ -97,16 +108,32 @@ function MyProfile() {
         <div className="content-layer">
           {/* 내가 쓴 후기, 내가 등록한 와인 */}
           <div className="content-menu">
-            <p className="content-menu-title">내가 쓴 후기</p>
-            <p className="content-menu-title unactive">내가 등록한 와인</p>
+            <p className={`content-menu-title ${nowMenu === 'review' ? '' : 'unactive'}`} onClick={handleMenu}>
+              내가 쓴 후기
+            </p>
+            <p className={`content-menu-title ${nowMenu === 'wine' ? '' : 'unactive'}`} onClick={handleMenu}>
+              내가 등록한 와인
+            </p>
           </div>
-          <p className="total-count">총 몇개</p>
+          <p className="total-count">{`총 ${totalReviewCount}개`}</p>
         </div>
         <div className="content">
-          {myReviews.length > 0 ? (
-            <div>
-              {myReviews.map((review) => (
-                <CardReview reviewId={review.id} />
+          {nowMenu === 'review' ? (
+            myReviews.length > 0 ? (
+              <div className="content-item">
+                {myReviews.map((review) => (
+                  <Cardmy key={review.id} rating={review.rating} createdAt={review.createdAt} name={review.wine.name} content={review.content} />
+                ))}
+              </div>
+            ) : (
+              <div>
+                <p>등록된게 없습니다.</p>
+              </div>
+            )
+          ) : myReviews.length > 0 ? (
+            <div className="content-item">
+              {myWines.map((wine) => (
+                <Card key={wine.id} image={wine.image} wineName={wine.name} wineDesc={wine.region} winePrice={wine.price} wineId={wine.id} />
               ))}
             </div>
           ) : (
@@ -114,6 +141,7 @@ function MyProfile() {
               <p>등록된게 없습니다.</p>
             </div>
           )}
+
           {/* 리뷰목록, 와인목록 */}
           {/* 반복문을 통해 유저 아이디를 통해 가지고온 데이터 */}
         </div>

@@ -40,10 +40,8 @@
   }
 
   .slider {
-    -webkit-appearance: none;
-    /* 기본 스타일 제거 (웹킷 브라우저) */
-    appearance: none;
-    /* 기본 스타일 제거 (기타 브라우저) */
+    -webkit-appearance: auto; /* 기본 스타일 제거 (웹킷 브라우저) */
+    // appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
     background: $Grayscale-100;
     height: 6px;
     border-radius: 50px;

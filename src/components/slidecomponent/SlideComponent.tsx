@@ -2,7 +2,7 @@
 
 import { SlideMode } from '@/types/SlideOption';
 import '@/components/slidecomponent/SlideComponent.scss';
-import { SildeOptionProps } from '@/types/SlideOption';
+import { SildeOptionProps, SlideMode } from '@/types/SlideOption';
 import { useState } from 'react';
 
 interface SlideComponentProps extends SildeOptionProps {
@@ -21,9 +21,9 @@ function SlideComponent(props: SlideComponentProps) {
   return (
     <div className="slidebar-layer">
       <p className="option-title">{props.SlideOptionTitle}</p>
-      <p className="option-left">{props.LeftOption}</p>
-      <input type="range" onChange={handleSliderChange} min="0" max="10" className="slider" value={siledValue} disabled={props.mode === SlideMode.VIEW} />
-      <p className="option-right">{props.RightOption}</p>
+      <p className="option">{props.LeftOption}</p>
+      <input type="range" onChange={handleSliderChange} min="0" max="10" className="slider" defaultValue={siledValue} disabled={props.mode === SlideMode.VIEW} />
+      <p className="option">{props.RightOption}</p>
     </div>
   );
 }

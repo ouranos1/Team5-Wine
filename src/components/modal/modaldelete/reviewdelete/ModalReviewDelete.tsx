@@ -2,14 +2,15 @@
 
 import BaseModal from '@/components/modal/modalbase/BaseModal';
 import { deleteReviewsAPI } from '@/api/Review';
-import { ModalDeleteProps } from '@/types/ModalProps';
-import './ModalWineDelete.scss';
+import { ModalWineDeleteProps } from '@/types/ModalProps';
+import './ModalReviewDelete.scss';
 
-export default function ModalDeleteWine({ isModalOpen, closeModal, reviewId }: ModalDeleteProps) {
+export default function ModalDeleteReview({ isModalOpen, closeModal, id }: ModalWineDeleteProps) {
   const handleDeleteReview = async () => {
     try {
-      await deleteReviewsAPI(reviewId);
-      alert('리뷰이 삭제되었습니다.');
+      await deleteReviewsAPI(id);
+      // setWines(wines.filter((wine) => wine.id !== id));
+      alert('리뷰가 삭제되었습니다.');
       closeModal();
     } catch (error) {
       console.error('리뷰 삭제 오류:', error);

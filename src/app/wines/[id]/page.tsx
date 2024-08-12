@@ -19,7 +19,7 @@ const App: React.FC<PageProps> = ({ params }) => {
     const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-    useEffect(() => {
+   useEffect(() => {
         const fetchWineDetail = async () => {
             try {
                 const response = await wineDetail(id);
@@ -65,5 +65,5 @@ const App: React.FC<PageProps> = ({ params }) => {
             )}
         </div>
     );
-};
+;
 export default App;

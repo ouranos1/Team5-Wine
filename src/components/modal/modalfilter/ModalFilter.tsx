@@ -9,8 +9,8 @@ import { ModalFilterProps } from '@/types/ModalProps';
 
 const INITIAL_MIN_PRICE = 0;
 const INITIAL_MAX_PRICE = 100000;
-
-export function ModalFilter({ isModalOpen, closeModal, setWines }: ModalFilterProps) {
+//푸터버튼 안보일 수 있게 프롭스 추가했습니다.
+export function ModalFilter({ isModalOpen, closeModal, setWines, showButton }: ModalFilterProps) {
   const [selectedWineType, setSelectedWineType] = useState('');
   const [minPrice, setMinPrice] = useState(INITIAL_MIN_PRICE);
   const [maxPrice, setMaxPrice] = useState(INITIAL_MAX_PRICE);
@@ -52,14 +52,18 @@ export function ModalFilter({ isModalOpen, closeModal, setWines }: ModalFilterPr
       onClose={handleCloseModal}
       title="필터"
       closeButton={true}
-      footerButtons={[
-        <button key="1" onClick={resetFilters}>
-          초기화
-        </button>,
-        <button key="2" onClick={applyFilters}>
-          필터 적용하기
-        </button>,
-      ]}
+      footerButtons={
+        showButton
+          ? [
+              <button key="1" onClick={resetFilters}>
+                초기화
+              </button>,
+              <button key="2" onClick={applyFilters}>
+                필터 적용하기
+              </button>,
+            ]
+          : null
+      }
     >
       <WineTypes selectedWineType={selectedWineType} setSelectedWineType={setSelectedWineType} />
       <PriceSlider minPrice={minPrice} setMinPrice={setMinPrice} maxPrice={maxPrice} setMaxPrice={setMaxPrice} />
@@ -67,3 +71,4 @@ export function ModalFilter({ isModalOpen, closeModal, setWines }: ModalFilterPr
     </BaseModal>
   );
 }
+//푸터버튼 안보일 수 있게 프롭스 추가했습니다.

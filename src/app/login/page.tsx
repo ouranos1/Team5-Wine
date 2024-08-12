@@ -1,8 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import Button from '@/components/button/Button';
-import GNB from '@/components/gnb/GNB';
+import React, {  } from 'react';
 import LoginForm from '@/components/loginform/loginform';
 import '../globals.scss';
 import './page.scss';
@@ -11,7 +9,6 @@ import { redirect } from 'next/navigation';
 
 const Home: React.FC = () => {
   const session = useSession();
-
   if (session.data?.user.user) {
     redirect('/');
   }
