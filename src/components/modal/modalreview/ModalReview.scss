@@ -9,7 +9,8 @@
 
   .review-title {
     div {
-      margin-bottom: 24px;
+      // margin-bottom: 24px;
+
       div {
         display: flex;
         margin-bottom: 24px;
@@ -24,10 +25,12 @@
             height: 67px;
           }
         }
+
         div {
           display: flex;
           flex-direction: column;
           gap: 8px;
+
           p {
             @include font-settings(18, semibold, 26);
 
@@ -39,19 +42,23 @@
       }
     }
   }
+
   .wine-taste {
     .taste-title {
       @include font-settings(20, bold, 32);
       margin-bottom: 24px;
+
       @include mobile {
         @include font-settings(18, bold, 26);
       }
     }
   }
+
   .wine-aroma {
     .wine-aroma-title {
       @include font-settings(20, bold, 32);
       margin-bottom: 24px;
+
       @include mobile {
         @include font-settings(18, bold, 26);
       }

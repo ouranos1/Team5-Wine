@@ -1,6 +1,6 @@
 import { Aroma, AromaName, AromaProps } from '@/types/Aroma';
 import '@/components/aromatag/AromaTag.scss';
-import { createAromaList } from '@/utils/AromaUtils';
+import { createAromaList } from '@/utils/aromautils';
 import { useState } from 'react';
 
 interface AromaTagProps {
