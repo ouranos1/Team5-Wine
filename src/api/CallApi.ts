@@ -1,48 +1,44 @@
 import axios from 'axios';
 import { ApiCallProps } from '@/types/ApiCallProps';
-import { refreshToken } from './Auth';
+import { refreshSession } from '@/api/RefreshSesssion';
+import { getSession } from 'next-auth/react';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_URL;
 
-// Axios 인스턴스 생성
 const apiInstance = axios.create({
   baseURL: API_KEY,
 });
 
-// 요청 인터셉터 설정
 apiInstance.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem('accessToken');
+  async (config) => {
+    const session = await getSession();
+    const accessToken = session?.user.accessToken;
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// 응답 인터셉터 설정
 apiInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response && (error.response.status === 401 || error.response.status === 403 || error.response.status === 400) && !originalRequest._retry) {
+    if (error.response && (error.response.status === 401 || error.response.status === 403) && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        const refreshTokenResponse = await refreshToken({
-          refreshToken: localStorage.getItem('refreshToken') || ''
-        });
-        console.log("리프레쉬토큰동작함");
-        console.log(refreshTokenResponse);
-        const newAccessToken = refreshTokenResponse.accessToken;
-        localStorage.setItem('accessToken', newAccessToken);
+        // 액세스 토큰을 갱신하고, 갱신된 세션을 적용합니다.
+        await refreshSession(); // 세션을 갱신합니다.
+
+        const session = await getSession();
+        const newAccessToken = session?.user.accessToken;
+
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
         return apiInstance(originalRequest);
       } catch (refreshError) {
-        console.error('토큰 갱신에 실패하였습니다.');
+        console.error('Failed to refresh token:', refreshError);
         return Promise.reject(refreshError);
       }
     }
@@ -62,8 +58,7 @@ function ErrorCheck(method: string, apiName: string) {
 }
 
 async function CallAPI({ method, query, body = null, apiName }: ApiCallProps) {
-  // 인스턴스로 변경 부분
-  let order = query; // baseURL이 설정되어 있으므로 API_KEY를 제외합니다.
+  let order = query;
   try {
     const response = await apiInstance({
       method,
