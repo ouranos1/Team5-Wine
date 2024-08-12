@@ -11,6 +11,8 @@
   //display: flex;
   //flex-direction: column;
   hr {
+    border: none;
+    box-shadow: none;
     border-top: 1px solid $Grayscale-200;
   }
   // Large Size
@@ -24,6 +26,7 @@
       height: 248px;
 
       .card-image {
+        object-fit: cover;
         margin: 40px 81px 0px 60px;
         width: 60px;
         height: 208px;
@@ -93,6 +96,7 @@
       height: 248px;
 
       .card-image {
+        object-fit: cover;
         margin: 40px 47px 0px 40px;
         width: 74px;
         height: 208px;
@@ -160,6 +164,7 @@
         height: 242px;
 
         .card-image {
+          object-fit: cover;
           margin: 30px 36px 0px 20px;
           width: 70px;
           height: 212px;
