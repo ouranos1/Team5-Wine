@@ -8,56 +8,55 @@
   border-radius: 16px;
   margin-top: 20px;
   display: flex;
+  width: 100%;
 
-  @include desktop {
-    width: 1140px;
-    height: 260px;
+  // @include desktop {
+  height: 260px;
 
-    .card-image {
-      margin: 49px 86px 0px 100px;
-      width: 58px;
-      height: 209px;
+  .card-image {
+    margin: 49px 86px 0px 100px;
+    width: 58px;
+    height: 209px;
+  }
+
+  .wine {
+    width: 300px;
+    height: 168px;
+    margin-top: 52px;
+    margin-bottom: 40px;
+
+    .wine-name {
+      margin-bottom: 20px;
+      width: 100%;
+      height: 72px;
+      @include font-settings(30, semibold, 36);
+      color: $Grayscale-400;
     }
 
-    .wine {
-      width: 300px;
-      height: 168px;
-      margin-top: 52px;
-      margin-bottom: 40px;
+    .wine-desc {
+      margin-bottom: 13px;
+      width: 100%;
+      height: 26px;
+      @include font-settings(16, regular, 26);
+      color: $Grayscale-300;
+    }
 
-      .wine-name {
-        margin-bottom: 20px;
-        width: 100%;
-        height: 72px;
-        @include font-settings(30, semibold, 36);
-        color: $Grayscale-400;
-      }
-
-      .wine-desc {
-        margin-bottom: 13px;
-        width: 100%;
-        height: 26px;
-        @include font-settings(16, regular, 26);
-        color: $Grayscale-300;
-      }
-
-      .wine-price {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        height: 37px;
-        padding: 8px 15px;
-        border-radius: 12px;
-        background: $Primary-Purple-10;
-        color: $Primary-Purple-100;
-        @include font-settings(18, bold, 26);
-        text-align: center;
-      }
+    .wine-price {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: 37px;
+      padding: 8px 15px;
+      border-radius: 12px;
+      background: $Primary-Purple-10;
+      color: $Primary-Purple-100;
+      @include font-settings(18, bold, 26);
+      text-align: center;
     }
   }
 
+
   @include tablet {
-    width: 704px;
     height: 260px;
 
     .card-image {
@@ -104,7 +103,6 @@
   }
 
   @include mobile {
-    width: 343px;
     height: 190px;
     border-radius: 12px;
 

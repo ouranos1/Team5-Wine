@@ -9,13 +9,17 @@ import { ImageAPI } from '@/api/Image';
 import { addWineAPI } from '@/api/Wine';
 import { imageProp } from '@/types/Image';
 import { createWineBody } from '@/types/WineProps';
+import { wineTypeName } from '@/types/WineProps';
 import './ModalWine.scss';
 
 export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
   const [wineName, setWineName] = useState('');
   const [price, setPrice] = useState('');
   const [region, setRegion] = useState('');
+  const [type, setType] = useState<wineTypeName>('RED');
   const [imageFile, setImageFile] = useState<File | null>(null);
+
+  const items = [{ name: '와인등록모달', path: '../' }];
 
   const handleWineNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWineName(e.target.value);
@@ -27,6 +31,10 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(e.target.value);
+  };
+
+  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setType(e.target.value as wineTypeName);
   };
 
   const handleImageUpload = (file: File) => {
@@ -46,14 +54,8 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
 
     let imageUrl: imageProp = null;
 
-    const token = localStorage.getItem('accessToken');
-
-    if (!token) {
-      throw new Error('인증 토큰이 없습니다.');
-    }
-
     try {
-      const { url } = await ImageAPI(formData, token);
+      const { url } = await ImageAPI(formData);
       imageUrl = url;
     } catch (error) {
       console.error('이미지 업로드 오류:', error);
@@ -66,13 +68,13 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
       region: region,
       image: imageUrl,
       price: parseFloat(price),
-      type: 'RED',
+      type: type,
     };
 
     console.log(wineData);
 
     try {
-      await addWineAPI(wineData, token);
+      await addWineAPI(wineData);
       console.log('와인 등록 성공');
       closeModal();
     } catch (error) {
@@ -100,6 +102,14 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
         <Input type="text" size="L" placeholder="와인 이름 입력" inputname="와인 이름" defaultValue={wineName} onBlur={handleWineNameChange} />
         <Input type="text" size="L" placeholder="가격 입력" inputname="가격" defaultValue={price} onBlur={handlePriceChange} />
         <Input type="text" size="L" placeholder="원산지 입력" inputname="원산지" defaultValue={region} onBlur={handleRegionChange} />
+
+        <label htmlFor="wine-type">타입</label>
+        <select className="wine-type" id="wine-type" value={type} onChange={handleTypeChange}>
+          <option value="RED">RED</option>
+          <option value="WHITE">WHITE</option>
+          <option value="SPARKLING">SPARKLING</option>
+        </select>
+
         <ImageUpload onImageUpload={handleImageUpload} />
       </form>
     </BaseModal>

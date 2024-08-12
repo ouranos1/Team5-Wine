@@ -1,3 +1,5 @@
+@import '@/styles/ColorList.scss';
+@import '@/styles/Font-Mixins.scss';
 @import '@/app/globals.scss';
 
 .modal {
@@ -10,4 +12,13 @@
 
 .image-upload {
   margin-bottom: 25px;
+}
+
+.wine-type {
+  margin-bottom: 15px;
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid $Grayscale-200;
+  border-radius: 16px;
+  font-size: 14px;
 }

@@ -46,7 +46,7 @@ export interface createWineBody {
   type: wineType | wineTypeName;
 }
 
-type wineTypeName = 'RED' | 'WHITE' | 'SPARKLING';
+export type wineTypeName = 'RED' | 'WHITE' | 'SPARKLING';
 
 export interface wineType {
   name: wineTypeName;
