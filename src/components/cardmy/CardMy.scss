@@ -36,9 +36,34 @@
       }
     }
 
-    .time {
-      @include font-settings(16, regular, 26);
-      color: $Grayscale-300;
+       .rating-container {
+            display: flex;
+            align-items: center;
+            height: 42px;
+
+            .rating {
+                @include font-settings(18, bold, 26);
+                color: $Primary-Purple-100;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 80px;
+                height: 100%;
+                border-radius: 12px;
+                margin-right: 15px;
+            }
+        }
+
+        .time {
+            @include font-settings(16, regular, 26);
+            color: $Grayscale-300;
+        }
+
+        .options {
+            font-size: 26px;
+            color: $Grayscale-300;
+            cursor: pointer;
+        }
     }
 
     .options {
