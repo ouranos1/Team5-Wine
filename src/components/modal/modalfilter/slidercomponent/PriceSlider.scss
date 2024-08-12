@@ -26,16 +26,17 @@
     position: relative;
     height: 6px;
     width: 263px;
+    -webkit-appearance: auto;
 
     .slider-thumb {
-      -webkit-appearance: none;
+      -webkit-appearance: auto;
       width: 263px;
       height: 6px;
       background: transparent;
       position: absolute;
 
       &::-webkit-slider-thumb {
-        appearance: none;
+        // appearance: none;
         width: 20px;
         height: 20px;
         background: #fff;

@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import '@/components/dropdown/DropDown.scss';
-import { DropdownProps } from "@/types/DropDown";
+import { DropdownProps } from '@/types/DropDown';
+import { signOut } from 'next-auth/react';
 
 const Dropdown: React.FC<DropdownProps> = ({ items }) => {
   const handleItemClick = (item: { name: string; path: string }) => {
@@ -13,6 +14,8 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       console.log('🍷');
+
+      signOut();
     }
     // 드롭다운 닫기
   };

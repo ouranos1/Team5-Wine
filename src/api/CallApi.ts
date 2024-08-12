@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ApiCallProps } from '@/types/ApiCallProps';
 import { refreshToken } from './Auth';
+import { getSession } from 'next-auth/react';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_URL;
 
@@ -11,8 +12,10 @@ const apiInstance = axios.create({
 
 // 요청 인터셉터 설정
 apiInstance.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem('accessToken');
+  async (config) => {
+    const session = await getSession();
+    console.log("session", session);
+    const accessToken = session?.user.user.accessToken;
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
@@ -28,15 +31,23 @@ apiInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response && (error.response.status === 401 || error.response.status === 403 || error.response.status === 400) && !originalRequest._retry) {
+    if (error.response && (error.response.status === 401 || error.response.status === 403) && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
+        const session = await getSession();
+        const { refreshToken: rToken } =  session?.user.user || {};
+        if (!refreshToken) {
+          return Promise.reject(error);
+        }
+
         const refreshTokenResponse = await refreshToken({
-          refreshToken: localStorage.getItem('refreshToken') || ''
+          refreshToken: rToken || ''
         });
         console.log("리프레쉬토큰동작함");
         console.log(refreshTokenResponse);
         const newAccessToken = refreshTokenResponse.accessToken;
+
+        // TODO: session 에 있는 값을 수정하도록 처리. 
         localStorage.setItem('accessToken', newAccessToken);
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;

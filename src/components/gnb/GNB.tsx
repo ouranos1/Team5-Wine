@@ -34,6 +34,8 @@ const GNB: React.FC<GNBProps> = () => {
   const session = useSession();
   const userData = session.data?.user.user;
 
+  console.log(session);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -58,7 +60,13 @@ const GNB: React.FC<GNBProps> = () => {
           )}
         </div>
       ) : (
-        <Link href="/login" className="gnb-login">
+        <Link
+          href="/login"
+          className="gnb-login"
+          style={{
+            color: 'white',
+          }}
+        >
           로그인
         </Link>
       )}

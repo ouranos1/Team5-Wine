@@ -29,6 +29,7 @@ export default function PriceSlider({ minPrice, setMinPrice, maxPrice, setMaxPri
         <div>₩ {maxPrice.toLocaleString()}</div>
       </div>
       <div className="slider">
+        {/* TODO: https://www.npmjs.com/package/rc-slider 도 고려해볼것 */}
         <input
           type="range"
           min={priceRange.min}

@@ -21,20 +21,11 @@ function MyProfile() {
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // const [userData, setUserData] = useState();
-  const localData = localStorage.getItem('User');
-
-  const userData = useMemo(() => {
-    if (localData) {
-      return JSON.parse(localData);
-    }
-  }, [localData]);
-
-  const reviewData = myWineAPI();
+  const { data: session } = useSession();
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    const token = localStorage.getItem('accessToken');
+    const token = session?.user?.user?.accessToken as string;
     if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
@@ -48,25 +39,21 @@ function MyProfile() {
     }
   };
 
-  console.log(userData);
-  console.log(reviewData);
-
-  // const currentImage = selectedImage || userData.image || defaultprofile;
-  const currentImage = selectedImage || defaultprofile;
+  const currentImage = selectedImage || session?.user.user.image || defaultprofile;
 
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
       <button onClick={openModal}>test</button>
+      {/* TODO: reviewData 값 전달 필요 */}
       <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" />
       <div className="user-profile-data">
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} alt="유저프로필" />
-            <input type="file" className="user-image-input" onChange={handleFileChange}>
-              <label>+</label>
-            </input>
+            <Image src={currentImage} alt="유저프로필" width={100} height={100} />
+            <label>+</label>
+            <input type="file" className="user-image-input" onChange={handleFileChange} />
           </div>
           <p className="user-nickname">유저 닉네임</p>
           <p className="user-email">유저 이메일</p>

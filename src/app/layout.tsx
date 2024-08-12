@@ -20,9 +20,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const isAuthPage = pathname === '/login' || pathname === '/signup';
-
   return (
     <html lang="en">
       <body className={inter.className}>

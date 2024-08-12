@@ -60,7 +60,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
 
   const patchReview = useCallback(() => {
     console.log('리뷰수정실행');
-    console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
+    console.log(ReviewData, slideValue, reviewContent, rating, slideValue, selectedAromas, reviewContent, wineId);
     if (ReviewData?.id && slideValue && reviewContent) {
       const requestBody = {
         rating: rating,
@@ -83,7 +83,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         title={ReviewData ? '수정하기' : '리뷰 등록'}
         closeButton={true}
         footerButtons={[
-          <button key="1" onClick={ReviewData ? postReview : patchReview}>
+          <button key="1" onClick={ReviewData ? patchReview : postReview}>
             {ReviewData ? '수정하기' : '리뷰 남기기'}
           </button>,
         ]}
@@ -91,8 +91,8 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         <div className="review-content">
           <div className="review-title">
             {/* <p>와인이름과 별점 후기용</p> */}
-            <div className='a'>
-              <div className='b'>
+            <div className="a">
+              <div className="b">
                 <Image src={wineIcon} alt="와인아이콘" className="wine-icon" />
                 <div className="name-and-star">
                   <p>{wineName}</p>
