@@ -11,9 +11,7 @@ import defaultprofile from '@/assets/icon/defaultprofile.webp';
 import { ImageAPI } from '@/api/Image';
 import { useSession } from 'next-auth/react';
 
-function changeNickName() {
-  console.log('닉네임변경');
-}
+function changeNickName() {}
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,9 +30,7 @@ function MyProfile() {
 
   console.log(userData);
 
-  // const session = useSession();
-
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     const token = localStorage.getItem('accessToken');
@@ -58,19 +54,17 @@ function MyProfile() {
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-            <label>
-              +
-              <input id="" type="file" className="user-image-input" onChange={handleFileChange} />
-            </label>
+            <Image src={currentImage} alt="유저프로필" />
+            <input type="file" className="user-image-input" onChange={handleFileChange}>
+              <label>+</label>
+            </input>
           </div>
           <p className="user-nickname">{userData.nickname}</p>
           <p className="user-email">{userData.email}</p>
           <div className="user-edit">
-            <Input className="edit-input" size="S" inputname="닉네임" placeholder={userData.nickname} defaultValue="" />
-            <div>
-              <Button text="변경하기" onClick={changeNickName} />
-            </div>
+            <p className="edit-nickname">닉네임</p>
+            <input />
+            <Button text="변경하기" onClick={changeNickName} />
           </div>
         </div>
       </div>

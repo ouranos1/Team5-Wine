@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './GNB.scss';
 import Logo from '@/assets/icon/logo_wine.svg';
 import Image from 'next/image';
@@ -8,29 +8,40 @@ import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
-import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 
 interface GNBProps {
   userImage?: string;
 }
 
-const GNB: React.FC = () => {
-  const items = [
-    { name: '마이페이지', path: '/myprofile' },
-    { name: '로그아웃', path: '/' },
-  ];
+// const GNB: React.FC = () => {
+//   const items = [
+//     { name: '마이페이지', path: '/myprofile' },
+//     { name: '로그아웃', path: '/' },
+//   ];
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   const toggleDropdown = () => {
+//     setIsOpen(!isOpen);
+//   };
+//   return (
+//     <div>
+//       <Dropdown items={items} />
+//     </div>
+//   );
+// };
+
+const GNB: React.FC<GNBProps> = () => {
+  const session = useSession();
+  const userData = session.data?.user.user;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  return (
-    <div>
-      <Dropdown items={items} />
-    </div>
-  );
-};
 
+<<<<<<< HEAD
 const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
@@ -44,6 +55,12 @@ const GNB: React.FC<GNBProps> = () => {
       }
     }
   }, [userString]);
+=======
+  const items = [
+    { name: '마이페이지', path: '/myprofile' },
+    { name: '로그아웃', path: '/' },
+  ];
+>>>>>>> upstream/feedback-0811
 
   return (
     <nav className="gnb">
