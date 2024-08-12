@@ -2,12 +2,14 @@
 import './page.scss';
 import { ModalFilter } from '@/components/modal/modalfilter/ModalFilter';
 import Input from '@/components/inputComponent/Input';
+import SearchBar from '@/components/searchbarcomponent/SearchBar';
+import useWindowWidth from '@/hook/useWindowWidth';
 interface PageProps {
   params: { id: string };
   modal: boolean;
 }
 const WineListPage: React.FC<PageProps>=({params})=>{
-  const condition1=1;
+  const condition1=(useWindowWidth()>1024);
   const condition2=1;
   return(
     <div className='page'>
@@ -20,13 +22,13 @@ const WineListPage: React.FC<PageProps>=({params})=>{
       </div>
       {condition1&&(
         <div className='모달'>
-          <ModalFilter />
+          <ModalFilter isModalOpen closeModal showButton={false}/>
         </div>
       )}
       <div className='페이지하단'>
         <div className='인풋'>
           {!condition1&&(<img className='필터버튼'/>)}
-          <Input />
+          <SearchBar placeholder=''/>
           {!condition1&&condition2&&()}
         </div>
         <div className='카드와인들'></div>
