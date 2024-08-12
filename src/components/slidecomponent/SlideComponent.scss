@@ -48,11 +48,7 @@
     border-radius: 50px;
     border: 1px solid $Grayscale-200;
     width: 100%;
-    // flex-grow: 1;
-
-    &::shadow {
-      box-shadow: 0px 2px 20px 0px #0000000a;
-    }
+    box-shadow: 0px 2px 20px 0px #0000000a;
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none; /* 기본 스타일 제거 (웹킷 브라우저) */
@@ -60,13 +56,11 @@
       background: $Primary-Purple-100;
     }
     &::-moz-range-thumb {
-      -webkit-appearance: none; /* 기본 스타일 제거 (웹킷 브라우저) */
       appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
       background: $Primary-Purple-100;
     }
     &::-ms-thumb {
-      -webkit-appearance: none; /* 기본 스타일 제거 (웹킷 브라우저) */
-      appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
+      // appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
       background: $Primary-Purple-100;
     }
   }

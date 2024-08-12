@@ -55,8 +55,8 @@ const LoginForm: React.FC = () => {
         <div className="signin-header">
           <Image src={Logo} alt="wine" width={104} height={30} />
         </div>
-        <Input type="email" size="L" placeholder="이메일 입력" inputname="이메일" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
-        <Input type="password" size="L" placeholder="비밀번호 입력" inputname="비밀번호" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
+        <Input type="email" placeholder="이메일 입력" inputname="이메일" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
+        <Input type="password" placeholder="비밀번호 입력" inputname="비밀번호" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
         <p className="fake-pw-finder">비밀번호를 잊으셨나요?</p>
         <Button text="로그인" type="submit" />
 
