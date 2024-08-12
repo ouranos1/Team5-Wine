@@ -9,11 +9,11 @@ import Button from '@/components/button/Button';
 import Image from 'next/image';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
 import { ImageAPI } from '@/api/Image';
+import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
+import { myReviewsAPI, myWineAPI } from '@/api/User';
 
-function changeNickName() {
-  console.log('닉네임변경');
-}
+function changeNickName() {}
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,53 +21,57 @@ function MyProfile() {
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  // const [userData, setUserData] = useState();
+  const localData = localStorage.getItem('User');
+
   const userData = useMemo(() => {
-    const userString = localStorage.getItem('User');
-    try {
-      return userString ? JSON.parse(userString) : null;
-    } catch (e) {
-      console.log('로컬스토리지의 유저데이터 불러오기 에러');
+    if (localData) {
+      return JSON.parse(localData);
     }
-  }, []);
+  }, [localData]);
 
-  console.log(userData);
-
-  // const session = useSession();
+  const reviewData = myWineAPI();
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-
     const token = localStorage.getItem('accessToken');
     if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await ImageAPI(formData);
-      setSelectedImage(response.url);
+      try {
+        const response = await ImageAPI(formData);
+        setSelectedImage(response.url);
+      } catch (error) {
+        console.error('이미지 업로드 실패:', error);
+      }
     }
   };
 
-  const currentImage = selectedImage || userData.image || defaultprofile;
+  console.log(userData);
+  console.log(reviewData);
+
+  // const currentImage = selectedImage || userData.image || defaultprofile;
+  const currentImage = selectedImage || defaultprofile;
 
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
-      {/* <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" /> */}
+      <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" />
       <div className="user-profile-data">
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-            <label>
-              +
-              <input id="" type="file" className="user-image-input" onChange={handleFileChange} />
-            </label>
+            <Image src={currentImage} alt="유저프로필" />
+            <input type="file" className="user-image-input" onChange={handleFileChange}>
+              <label>+</label>
+            </input>
           </div>
-          <p className="user-nickname">{userData.nickname}</p>
-          <p className="user-email">{userData.email}</p>
+          <p className="user-nickname">유저 닉네임</p>
+          <p className="user-email">유저 이메일</p>
           <div className="user-edit">
-            <Input className="edit-input" size="S" inputname="닉네임" placeholder={userData.nickname} defaultValue="" />
+            <Input className="edit-input" inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
             <div>
               <Button text="변경하기" onClick={changeNickName} />
             </div>
