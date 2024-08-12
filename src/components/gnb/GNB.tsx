@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './GNB.scss';
 import Logo from '@/assets/icon/logo_wine.svg';
 import Image from 'next/image';
@@ -8,6 +8,11 @@ import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
+import { useState, useEffect } from 'react';
+
+interface GNBProps {
+  userImage?: string;
+}
 
 const GNB: React.FC = () => {
   const items = [
@@ -19,9 +24,17 @@ const GNB: React.FC = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  return (
+    <div>
+      <Dropdown items={items} />
+    </div>
+  );
+};
 
+const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
+
   useEffect(() => {
     if (userString) {
       try {

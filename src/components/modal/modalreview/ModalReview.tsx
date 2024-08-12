@@ -19,10 +19,7 @@ interface ModalReviewProps extends ModalProps {
 }
 
 export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: ModalReviewProps) {
-  // const aromaList = createAromaList(ReviewData?.aroma.name);
-
   const aromatest: AromaName[] = ['CHERRY', 'OAK'];
-
   const aromaList = createAromaList(aromatest);
 
   return (
@@ -37,7 +34,6 @@ export function ModalReview({ isModalOpen, closeModal, wineName, ReviewData }: M
             {ReviewData ? '수정하기' : '리뷰 남기기'}
           </button>,
         ]}
-        role="review"
       >
         <div className="review-content">
           <div className="review-title">

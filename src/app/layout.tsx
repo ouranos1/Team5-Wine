@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.scss';
 import './reset.scss';
-import '@/styles/Font-Mixins.scss';
 import Provider from '@/components/provider/Provider';
 import GNB from '@/components/gnb/GNB';
 
@@ -21,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Provider>
         <GNB />
-        <Provider>{children}</Provider>
+        {children}
+        </Provider>
       </body>
     </html>
   );

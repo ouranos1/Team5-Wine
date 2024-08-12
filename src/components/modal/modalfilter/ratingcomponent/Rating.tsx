@@ -10,10 +10,11 @@ interface RatingProps {
 export default function Rating({ selectedRating, setSelectedRating }: RatingProps) {
   const ratingOptions = [
     { label: '전체', value: null },
-    { label: '4.8 - 5.0', value: 4.8 },
-    { label: '4.5 - 4.8', value: 4.5 },
-    { label: '4.0 - 4.5', value: 4.0 },
-    { label: '3.0 - 4.0', value: 3.0 },
+    { label: '5', value: 5 },
+    { label: '4', value: 4 },
+    { label: '3', value: 3 },
+    { label: '2', value: 2 },
+    { label: '1', value: 1 },
   ];
 
   const handleRatingChange = (value: null | number) => {
