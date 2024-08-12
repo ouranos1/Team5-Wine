@@ -25,7 +25,6 @@
             .rating {
                 @include font-settings(18, bold, 26);
                 color: $Primary-Purple-100;
-                background-color: #f3e8ff;
                 display: flex;
                 align-items: center;
                 justify-content: center;
