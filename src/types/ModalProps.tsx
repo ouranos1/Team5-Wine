@@ -8,3 +8,9 @@ export interface ModalProps {
 export interface ModalFilterProps extends ModalProps {
   setWines: React.Dispatch<React.SetStateAction<wine[]>>;
 }
+
+export interface ModalDeleteProps extends ModalProps {
+  id: number;
+  setWines: React.Dispatch<React.SetStateAction<wine[] | undefined>>;
+  wines: wine[];
+}

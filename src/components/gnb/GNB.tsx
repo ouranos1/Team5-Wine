@@ -20,7 +20,6 @@ interface GNBProps {
 //     { name: '로그아웃', path: '/' },
 //   ];
 //   const [isOpen, setIsOpen] = useState(false);
-
 //   const toggleDropdown = () => {
 //     setIsOpen(!isOpen);
 //   };

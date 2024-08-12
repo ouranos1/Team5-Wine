@@ -25,8 +25,8 @@ export default function SignUp() {
       <OAuthButton logo={googleLogo} text={session ? '로그아웃' : 'google로 시작하기'} onClick={session ? signOut : () => signIn('google')} />
       <OAuthButton logo={kakaoLogo} text={session ? '로그아웃' : 'kakao로 시작하기'} onClick={session ? signOut : () => signIn('kakao')} /> */}
       <button onClick={openModal}>모달열기</button>
-      <ModalFilter isModalOpen={isModalOpen} closeModal={closeModal} />
-      {/* <ModalWine isModalOpen={isModalOpen} closeModal={closeModal} /> */}
+      {/* <ModalFilter isModalOpen={isModalOpen} closeModal={closeModal} /> */}
+      <ModalWine isModalOpen={isModalOpen} closeModal={closeModal} />
       <SignupForm />
     </>
   );
