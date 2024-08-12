@@ -106,7 +106,9 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
                     <div className="soohyun-taste">
                         <WineTasteSlide tasteValue={[detail.lightBold, detail.smoothTannic, detail.drySweet, detail.softAcidic]} SlideMode={SlideMode.VIEW} />
                     </div>
-                    {dropdown && <SHDropdown items={items} />}
+                    <div className="soohyun-dropdown">
+                        {dropdown && <SHDropdown items={items} />}
+                    </div>
                     <ModalReview
                         isModalOpen={isModalOpen}
                         closeModal={handleCloseModal}
