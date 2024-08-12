@@ -52,8 +52,8 @@ function MyProfile() {
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
-      {/* <button onClick={openModal}>test</button>
-      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" /> */}
+      <button onClick={openModal}>test</button>
+      <ModalReview isModalOpen={isModalOpen} closeModal={closeModal} wineName="test와인" />
       <div className="user-profile-data">
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">

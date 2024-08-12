@@ -14,26 +14,41 @@ interface GNBProps {
   userImage?: string;
 }
 
-const GNB: React.FC = () => {
-  const items = [
-    { name: '마이페이지', path: '/myprofile' },
-    { name: '로그아웃', path: '/' },
-  ];
-  const [isOpen, setIsOpen] = useState(false);
+// const GNB: React.FC = () => {
+//   const items = [
+//     { name: '마이페이지', path: '/myprofile' },
+//     { name: '로그아웃', path: '/' },
+//   ];
+//   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-  return (
-    <div>
-      <Dropdown items={items} />
-    </div>
-  );
-};
+//   const toggleDropdown = () => {
+//     setIsOpen(!isOpen);
+//   };
+//   return (
+//     <div>
+//       <Dropdown items={items} />
+//     </div>
+//   );
+// };
+
+const items = [
+  { name: '마이페이지', path: '/myprofile' },
+  { name: '로그아웃', path: '/' },
+];
 
 const GNB: React.FC<GNBProps> = () => {
   const [userData, setUserData] = useState<user>();
   const userString = localStorage.getItem('User');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    return (
+      <div>
+        <Dropdown items={items} />
+      </div>
+    );
+  };
 
   useEffect(() => {
     if (userString) {
@@ -51,7 +66,7 @@ const GNB: React.FC<GNBProps> = () => {
       {userData ? (
         <>
           <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={toggleDropdown} />
-          <Dropdown items={items} />
+          {/* <Dropdown items={items} /> */}
         </>
       ) : (
         <Link href="/login" className="gnb-login">
