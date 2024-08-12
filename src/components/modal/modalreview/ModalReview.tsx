@@ -72,7 +72,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
 
   const patchReview = useCallback(() => {
     console.log('리뷰수정실행');
-    console.log(rating, slideValue, selectedAromas, reviewContent);
+
     if (ReviewData?.id && slideValue && reviewContent) {
       const requestBody = {
         rating: rating,
@@ -112,7 +112,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
                     <p>{wineName}</p>
                     <Stars stars={ReviewData.rating} isEvent={true} onRatingChange={handleRatingChange} />
                   </div>
-                </div>
+               </div>
                 <Input type="email" defaultValue={ReviewData.content} inputname="" onChange={(e) => setReviewContent(e.target.value)} />
               </div>
             </div>

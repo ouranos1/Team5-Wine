@@ -39,7 +39,7 @@ function MyProfile() {
     console.log('파일선택옴');
     const token = session?.user.user.accessToken;
     console.log(token);
-    if (file && token) {
+   if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
       console.log('파일url받음');
@@ -88,7 +88,7 @@ function MyProfile() {
         <div className="user-data">
           <div className="user-image-layer">
             <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-            <label>+</label>
+           <label>+</label>
             <input type="file" className="user-image-input" onChange={handleFileChange} />
           </div>
           <p className="user-nickname">{user?.user.nickname}</p>

@@ -48,7 +48,6 @@ const LoginForm: React.FC = () => {
         onSubmit={(event) => {
           event.preventDefault();
           event.stopPropagation();
-
           handleSignIn();
         }}
       >
@@ -59,14 +58,13 @@ const LoginForm: React.FC = () => {
         <Input type="password" placeholder="비밀번호 입력" inputname="비밀번호" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
         <p className="fake-pw-finder">비밀번호를 잊으셨나요?</p>
         <Button text="로그인" type="submit" />
-
-        <OAuthButton logo={googleLogo} text="google로 시작하기" onClick={() => signIn('google')} />
-        <OAuthButton logo={kakaoLogo} text="Kakao로 시작하기" onClick={() => signIn('kakao')} />
-
-        <p className="signup-link">
-          계정이 없으신가요? <Link href="/SignUp">회원가입하기</Link>
-        </p>
       </form>
+      <OAuthButton logo={googleLogo} text="google로 시작하기" onClick={() => signIn('google')} />
+      <OAuthButton logo={kakaoLogo} text="Kakao로 시작하기" onClick={() => signIn('kakao')} />
+
+      <p className="signup-link">
+        계정이 없으신가요? <Link href="/SignUp">회원가입하기</Link>
+      </p>
     </div>
   );
 };

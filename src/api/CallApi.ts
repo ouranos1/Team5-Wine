@@ -47,7 +47,6 @@ apiInstance.interceptors.response.use(
         const newAccessToken = refreshTokenResponse.accessToken;
 
         // TODO: session 에 있는 값을 수정하도록 처리. 
-        
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
         return apiInstance(originalRequest);

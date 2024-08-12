@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
      const pathname = usePathname();
   const isAuthPage = pathname === '/login' || pathname === '/signup';
-  return (
+ return (
     <html lang="en">
       <body className={inter.className}>
         <Provider>
