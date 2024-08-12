@@ -7,8 +7,6 @@
     flex-direction: column;
     justify-content: space-between;
     width: 280px;
-    background-color: aliceblue;
-    position: relative;
 
     .allSubContainer {
         margin-bottom: 20px;
@@ -40,7 +38,6 @@
 
     @include tablet {
         flex-direction: row;
-        background-color: rgb(207, 231, 253);
         width: 80%;
 
         .allSubContainer {
@@ -82,7 +79,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background-color: rgb(73, 171, 250);
 
             .allSubContainer {
                 display: flex;
