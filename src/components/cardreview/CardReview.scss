@@ -1,16 +1,41 @@
-@import '@/styles/ColorList.scss';
-@import '@/styles/Font-Mixins.scss';
+@import '../../styles/ColorList.scss';
+@import '../../styles/Font-Mixins.scss';
 @import '../../app/globals.scss';
 
 .soohyun-card {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    border: 1px $Grayscale-200 solid;
+    border-radius: 16px;
+    padding: 16px 40px 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-    .soohyun-header {}
+    .soohyun-header {
+        height: 64px;
+
+        .soohyun-image {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border: 1px $Grayscale-100 solid;
+            border-radius: 9999999999px;
+        }
+
+        .soohyun-nickname {}
+
+        .soohyun-date {}
+    }
+
 
     .soohyun-aroma {}
 
     .soohyun-content {}
 
-    .soohyun-taste {}
+    .soohyun-taste {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
 }
