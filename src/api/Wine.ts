@@ -45,6 +45,7 @@ export async function wineListAPI(limit: number | null = null, cursor: number | 
   const query = `/wines?${queryParams.toString()}`;
   const apiName = 'winelist';
   const body = null;
+  console.log(query);
 
   return await CallAPI({ method, query, body, apiName });
 }

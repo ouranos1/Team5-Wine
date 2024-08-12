@@ -1,4 +1,4 @@
-import "@/app/page.scss";
+'use client';
 
 export default function Home() {
     return (
