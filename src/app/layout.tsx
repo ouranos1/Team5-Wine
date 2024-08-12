@@ -23,7 +23,7 @@ export default function RootLayout({
           {!isAuthPage && <GNB />}
           {children}
         </Provider>
-      </body>
+     </body>
     </html>
   );
 }

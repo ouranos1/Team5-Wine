@@ -2,7 +2,7 @@
 
 import BaseModal from '../modalbase/BaseModal';
 import { ModalProps } from '@/types/ModalProps';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import ImageUpload from './imagecomponent/ImageUpload';
 import { useState } from 'react';
 import { ImageAPI } from '@/api/Image';
