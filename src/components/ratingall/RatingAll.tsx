@@ -5,7 +5,7 @@ import './RatingAll.scss';
 import { wineDetail } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
 import Button from '@/components/button/Button';
-import RatingBar from '@/components/ratingbar/RatingBar';
+import RatingBar from '@/components/ratingbar/ratingBar';
 import RatingStart from '@/components/ratingstart/RatingStart';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
 
@@ -24,19 +24,6 @@ interface RatingAllProps {
 
 const RatingAll: React.FC<RatingAllProps> = ({ score, avgRating, avgRatings, reviewCount }) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-    useEffect(() => {
-        const handleResize = () => {
-        };
-
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     const handleOpenModal = () => {
         setIsModalOpen(true);

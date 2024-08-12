@@ -5,7 +5,6 @@
   @media screen and (min-width: 1025px) {
     @content;
   }
-}
 
 @mixin tablet {
   @media screen and (max-width: 1024px) {
@@ -32,3 +31,4 @@ body {
     padding-right: 16px;
   }
 }
+  
