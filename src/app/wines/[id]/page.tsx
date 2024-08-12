@@ -22,6 +22,7 @@ const App: React.FC<PageProps> = ({ params }) => {
             try {
                 const response = await wineDetail(id);
                 setDetail(response);
+                console.log(response);
             } catch (error) {
                 console.error('Error fetching wine details:', error);
             }
@@ -36,12 +37,11 @@ const App: React.FC<PageProps> = ({ params }) => {
                     <Card image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
                     <RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} />
                     {detail.reviews.map((review) => (
-                        <CardReview key={review.id} aromas={review.aroma} />
+                        <CardReview key={review.id} reviewId={review.id} />
                     ))}
                 </>
             )}
         </div>
     );
 };
-
 export default App;
