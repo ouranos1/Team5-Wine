@@ -4,6 +4,7 @@ import './globals.scss';
 import './reset.scss';
 import Provider from '@/components/provider/Provider';
 import GNB from '@/components/gnb/GNB';
+import { getServerSession } from 'next-auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,10 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>
-          <GNB />
-          {children}
-        </Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
