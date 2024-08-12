@@ -2,15 +2,17 @@
 
 .myprofile-layer {
   margin-top: 37px;
+  display: flex;
+  gap: 60px;
   .user-profile-data {
     padding: 39px 20px;
     border: 1px solid $Grayscale-200;
     display: flex;
-    position: fixed;
+    // position: fixed;
     flex-direction: column;
     align-items: center;
     width: 280px;
-    height: 530px;
+    height: 555px;
     border-radius: 16px;
     .user-data {
       display: flex;
@@ -36,14 +38,48 @@
         .edit-input {
           margin-bottom: 8px;
         }
-        div {
-          width: 100%;
+        .edit-button-layer {
           display: flex;
           justify-content: flex-end;
           button {
+            border-radius: 12px;
             max-width: 96px;
+            max-height: 42px;
           }
         }
+      }
+    }
+  }
+  .my-content {
+    width: 100%;
+    .content-layer {
+      display: flex;
+      .content-menu {
+        display: flex;
+        gap: 32px;
+        width: 100%;
+        .content-menu-title {
+          @include font-settings(20, bold, 32);
+          color: $Grayscale-400;
+
+          &.unactive {
+            color: $Grayscale-300;
+          }
+        }
+      }
+      .total-count {
+        @include font-settings(14, regular, 24);
+        color: $Primary-Purple-100;
+        width: 100%;
+        max-width: fit-content;
+      }
+      margin-bottom: 22px;
+    }
+    .content {
+      .content-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
     }
   }

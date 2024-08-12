@@ -29,14 +29,15 @@ export default function PriceSlider({ minPrice, setMinPrice, maxPrice, setMaxPri
         <div>₩ {maxPrice.toLocaleString()}</div>
       </div>
       <div className="slider">
+        {/* TODO: https://www.npmjs.com/package/rc-slider 도 고려해볼것 */}
         <input
           type="range"
           min={priceRange.min}
           max={priceRange.max}
           value={minPrice}
-          className="slider-thumb"
+          className="input-slider"
           style={{
-            '--value': `${((minPrice - priceRange.min) / (priceRange.max - priceRange.min)) * 100}%`,
+            '--value': `${((minPrice - priceRange.min) / (maxPrice - priceRange.min)) * 100}%`,
           }}
           onChange={handleMinChange}
         />
@@ -45,7 +46,7 @@ export default function PriceSlider({ minPrice, setMinPrice, maxPrice, setMaxPri
           min={priceRange.min}
           max={priceRange.max}
           value={maxPrice}
-          className="slider-thumb"
+          className="input-slider"
           style={{
             '--value': `${((maxPrice - priceRange.min) / (priceRange.max - priceRange.min)) * 100}%`,
           }}

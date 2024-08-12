@@ -27,6 +27,12 @@ export interface wineDetailType {
   avgRatings: avgratings;
 }
 
+export interface wineMyListType extends wineDetailType {
+  totalCount: number;
+  nextCursor: number;
+  list: wineDetailType[];
+}
+
 export interface winListType {
   id: id;
   name: string;
