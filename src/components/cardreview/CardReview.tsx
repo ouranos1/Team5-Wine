@@ -11,7 +11,7 @@ import { createAromaList } from '@/utils/aromautils';
 import { SlideMode } from '@/types/SlideOption';
 import { id } from '@/types/Id';
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
-mport { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review'
+import { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review'
 import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
@@ -19,10 +19,10 @@ import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
 import { useSession } from 'next-auth/react';
 
 interface ReviewProps {
-  reviewId: id;
+    reviewId: id;
 }
 
-unction convertReviewListToResponseBody(review: reviewDetailType, wineId: number): responseReviewBody {
+function convertReviewListToResponseBody(review: reviewDetailType, wineId: number): responseReviewBody {
     return {
         id: review.id,
         rating: review.rating,
@@ -44,13 +44,13 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     const session = useSession();
     const userData = session.data?.user.user;
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
-  const toggleDropdown = () => {
-    setDropdown(!dropdown);
-  };
+    const toggleDropdown = () => {
+        setDropdown(!dropdown);
+    };
 
     const onClickEdit = (reviewId: id) => {
         console.log(reviewId + " 수정하기");
@@ -71,10 +71,10 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
         }
     }
 
-  const items = [
-    { name: '수정하기', func: onClickEdit },
-    { name: '삭제하기', func: onClickDelete },
-  ];
+    const items = [
+        { name: '수정하기', func: onClickEdit },
+        { name: '삭제하기', func: onClickDelete },
+    ];
 
     useEffect(() => {
         const fetchWineDetail = async () => {
