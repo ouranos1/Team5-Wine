@@ -21,39 +21,33 @@ function MyProfile() {
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // const [userData, setUserData] = useState();
-  const localData = localStorage.getItem('User');
-
-  const userData = useMemo(() => {
-    if (localData) {
-      return JSON.parse(localData);
-    }
-  }, [localData]);
-
-  const reviewData = myWineAPI();
+  const { data: session } = useSession();
+  const user = session?.user.user; // 세션에서 사용자 데이터 가져오기
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    const token = localStorage.getItem('accessToken');
+    console.log('파일선택옴');
+    const token = session?.user.user.accessToken;
+    console.log(token);
     if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
-
+      console.log('파일url받음');
       try {
         const response = await ImageAPI(formData);
+        console.log(response);
         setSelectedImage(response.url);
+        console.log('셋완료');
       } catch (error) {
         console.error('이미지 업로드 실패:', error);
       }
     }
   };
-
-  console.log(userData);
-  console.log(reviewData);
-
-  // const currentImage = selectedImage || userData.image || defaultprofile;
-  const currentImage = selectedImage || defaultprofile;
-
+  const currentImage = selectedImage || session?.user.user.image || defaultprofile;
+  // const currentImage = selectedImage || defaultprofile;
+  //
+  // console.log(currentImage);
+  console.log(user);
   return (
     <div className="myprofile-layer">
       {/* 전체 데이터 */}
@@ -63,13 +57,12 @@ function MyProfile() {
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} alt="유저프로필" />
-            <input type="file" className="user-image-input" onChange={handleFileChange}>
-              <label>+</label>
-            </input>
+            <Image src={currentImage} width={100} height={100} alt="유저프로필" />
+            <label>+</label>
+            <input type="file" className="user-image-input" onChange={handleFileChange} />
           </div>
-          <p className="user-nickname">유저 닉네임</p>
-          <p className="user-email">유저 이메일</p>
+          <p className="user-nickname">{user?.user.nickname}</p>
+          <p className="user-email">{user?.user.email}</p>
           <div className="user-edit">
             <Input className="edit-input" inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
             <div>

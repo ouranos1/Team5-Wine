@@ -1,18 +1,34 @@
 import axios from 'axios';
-import { getSession } from 'next-auth/react';
+import { getSession, signIn } from 'next-auth/react';
 
+// 세션 및 토큰 갱신 함수
 export async function refreshSession() {
   try {
-    const response = await axios.post('/api/update-session');
-    const { accessToken, refreshToken } = response.data;
+    // 현재 세션에서 리프레시 토큰 가져오기
+    const session = await getSession();
+    const refreshToken = session?.user.user.refreshToken;
+    // console.log(session?.user.user.refreshToken);
 
-    // 세션을 강제로 갱신하기 위해 다음과 같이 처리할 수 있습니다.
-    await getSession(); // getSession() 호출을 통해 세션 업데이트를 시도합니다.
+    if (!refreshToken) {
+      throw new Error('No refresh token available');
+    }
 
-    // 필요한 경우, 새로 갱신된 토큰을 Axios 인스턴스에 설정할 수 있습니다.
-    // 예: apiInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    // 서버에 새 토큰 요청
+    const response = await axios.post('/update-session', { refreshToken });
+    const { accessToken, refreshToken: newRefreshToken } = response.data;
 
-    return { accessToken, refreshToken };
+    // 세션을 강제로 갱신하여 새로운 토큰 저장
+    await signIn('credentials', {
+      redirect: false,
+      accessToken,
+      refreshToken: newRefreshToken,
+    });
+
+    // 갱신된 세션 확인
+    const updatedSession = await getSession();
+    console.log('Updated Session:', updatedSession);
+
+    return updatedSession;
   } catch (error) {
     console.error('Failed to refresh session:', error);
     throw error;
