@@ -50,7 +50,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
         setDropdown(!dropdown);
     };
 
-    const onClickEdit = () => {
+    const onClickEdit = (reviewId: id) => {
         console.log(reviewId + " 수정하기");
         setIsModalOpen(true);
         toggleDropdown();
@@ -115,7 +115,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
                         <WineTasteSlide tasteValue={[detail.lightBold, detail.smoothTannic, detail.drySweet, detail.softAcidic]} SlideMode={SlideMode.VIEW} />
                     </div>
                     <div className="soohyun-dropdown">
-                        {dropdown && <SHDropdown items={items} />}
+                        {dropdown && <SHDropdown items={items} reviewId={reviewId} />}
                     </div>
                     <ModalReview
                         isModalOpen={isModalOpen}
