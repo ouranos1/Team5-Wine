@@ -13,9 +13,7 @@ import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
 
-function changeNickName() {
-  console.log('닉네임변경');
-}
+function changeNickName() {}
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,11 +63,10 @@ function MyProfile() {
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-            <label>
-              +
-              <input id="" type="file" className="user-image-input" onChange={handleFileChange} />
-            </label>
+            <Image src={currentImage} alt="유저프로필" />
+            <input type="file" className="user-image-input" onChange={handleFileChange}>
+              <label>+</label>
+            </input>
           </div>
           <p className="user-nickname">유저 닉네임</p>
           <p className="user-email">유저 이메일</p>

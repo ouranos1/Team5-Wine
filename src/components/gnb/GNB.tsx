@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './GNB.scss';
 import Logo from '@/assets/icon/logo_wine.svg';
 import Image from 'next/image';
@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { user } from '@/types/UserProps';
 import Dropdown from '../dropdown/DropDown';
 import defaultprofile from '@/assets/icon/defaultprofile.webp';
-import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 
 interface GNBProps {
   userImage?: string;
@@ -31,43 +31,33 @@ interface GNBProps {
 //   );
 // };
 
-const items = [
-  { name: '마이페이지', path: '/myprofile' },
-  { name: '로그아웃', path: '/' },
-];
-
 const GNB: React.FC<GNBProps> = () => {
-  const [userData, setUserData] = useState<user>();
-  const userString = localStorage.getItem('User');
+  const session = useSession();
+  const userData = session.data?.user.user;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-    return (
-      <div>
-        <Dropdown items={items} />
-      </div>
-    );
   };
 
-  useEffect(() => {
-    if (userString) {
-      try {
-        setUserData(JSON.parse(userString));
-      } catch (e) {
-        console.error('Failed to parse user data from localStorage:', e);
-      }
-    }
-  }, [userString]);
+  const items = [
+    { name: '마이페이지', path: '/myprofile' },
+    { name: '로그아웃', path: '/' },
+  ];
 
   return (
     <nav className="gnb">
       <Image src={Logo} alt="Logo" className="logo" />
       {userData ? (
-        <>
+        <div className="gnb-right">
           <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={toggleDropdown} />
-          {/* <Dropdown items={items} /> */}
-        </>
+          {isOpen && ( // isOpen이 true일 때만 드롭다운을 렌더링
+            <div className="dropdown-container">
+              <Dropdown items={items} />
+            </div>
+          )}
+        </div>
       ) : (
         <Link href="/login" className="gnb-login">
           로그인
