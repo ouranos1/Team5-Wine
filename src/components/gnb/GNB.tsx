@@ -12,6 +12,7 @@ import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 
 const GNB: React.FC = () => {
+
   const session = useSession();
   const userData = session.data?.user.user;
 
@@ -45,7 +46,7 @@ const GNB: React.FC = () => {
           )}
         </div>
       ) : (
-        <div className="gnb-right">
+       <div className="gnb-right">
           <Link
             href="/login"
             className="gnb-login"

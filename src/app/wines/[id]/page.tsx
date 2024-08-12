@@ -9,13 +9,13 @@ import RatingAll from '@/components/ratingall/RatingAll';
 import CardReview from '@/components/cardreview/CardReview';
 
 interface PageProps {
-  params: { id: string };
+    params: { id: string };
 }
 
 const App: React.FC<PageProps> = ({ params }) => {
-  const id = parseInt(params.id, 10);
-  const [detail, setDetail] = useState<wineDetailType | null>(null);
-  const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
+    const id = parseInt(params.id, 10);
+    const [detail, setDetail] = useState<wineDetailType | null>(null);
+    const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   useEffect(() => {
     const fetchWineDetail = async () => {
@@ -29,21 +29,20 @@ const App: React.FC<PageProps> = ({ params }) => {
     };
     fetchWineDetail();
   }, [id]);
-
-  console.log(detail);
-
-  return (
-    <div className="page">
-      {detail && (
-        <>
-          <Card image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
-          <RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} />
-          {detail.reviews.map((review) => (
-            <CardReview key={review.id} reviewId={review.id} />
-          ))}
-        </>
-      )}
-    </div>
-  );
-};
+  
+    return (
+        <div className='page'>
+            {detail && (
+                <>
+                    <Card image={detail.image} wineName={detail.name} wineDesc={detail.region} winePrice={detail.price} />
+                    <RatingAll score={score} avgRating={detail.avgRating} avgRatings={detail.avgRatings} reviewCount={detail.reviewCount} />
+                    {detail.reviewCount > 0 ? detail.reviews.map((review) => (
+                        <CardReview key={review.id} reviewId={review.id} />
+                    )) :
+                        <div>리뷰 없음냥</div>}
+                </>
+            )}
+        </div>
+    );
+;
 export default App;

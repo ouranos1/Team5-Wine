@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ApiCallProps } from '@/types/ApiCallProps';
 import { refreshToken } from './Auth';
-import { getSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_URL;
 
@@ -14,7 +14,6 @@ const apiInstance = axios.create({
 apiInstance.interceptors.request.use(
   async (config) => {
     const session = await getSession();
-    console.log("session", session);
     const accessToken = session?.user.user.accessToken;
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
@@ -48,7 +47,6 @@ apiInstance.interceptors.response.use(
         const newAccessToken = refreshTokenResponse.accessToken;
 
         // TODO: session 에 있는 값을 수정하도록 처리. 
-        localStorage.setItem('accessToken', newAccessToken);
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
         return apiInstance(originalRequest);
