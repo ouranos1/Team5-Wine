@@ -67,8 +67,6 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
       type: type,
     };
 
-    console.log(wineData);
-
     try {
       await editWine(wineData, id);
       console.log('와인 정보 수정 성공');
