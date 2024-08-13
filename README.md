@@ -22,7 +22,7 @@
 
 #### 회원가입
 
-![회원가입창](https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8)
+<img ![회원가입창](https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8) width="200" height="400"/>
 
 #### 로그인
 
