@@ -39,11 +39,11 @@
       width: 800px;
       height: auto;
       display: flex;
-      flex-direction: column;
       .modal {
         width: 284px;
+        height: 628px;
         Button {
-          width: 100%;
+          width: 284px;
           height: 50px;
           border-radius: 16px;
           background-color: $Primary-Purple-100;

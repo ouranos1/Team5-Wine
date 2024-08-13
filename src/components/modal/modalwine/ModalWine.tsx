@@ -17,7 +17,7 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
   const [price, setPrice] = useState('');
   const [region, setRegion] = useState('');
   const [type, setType] = useState<wineTypeName>('RED');
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<imageProp>(null);
 
   const handleWineNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWineName(e.target.value);
@@ -35,7 +35,7 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
     setType(e.target.value as wineTypeName);
   };
 
-  const handleImageUpload = (file: File) => {
+  const handleImageUpload = (file: imageProp) => {
     setImageFile(file);
   };
 

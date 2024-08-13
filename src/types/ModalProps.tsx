@@ -1,4 +1,4 @@
-import { wine, wineTypeName } from './WineProps';
+import { wine, wineDetailType, wineTypeName } from './WineProps';
 
 export interface ModalProps {
   isModalOpen: boolean;
@@ -7,12 +7,12 @@ export interface ModalProps {
 }
 //푸터버튼 안보일 수 있게 프롭스 추가했습니다.
 export interface ModalFilterProps extends ModalProps {
-  setWines: React.Dispatch<React.SetStateAction<wine[]>>;
+  setWines?: React.Dispatch<React.SetStateAction<wine[]>>;
 }
 
 export interface ModalWineEditProps extends ModalProps {
   id: number;
-  wine: wine | null;
+  wine: wineDetailType | null;
 }
 
 export interface ModalWineDeleteProps extends ModalProps {

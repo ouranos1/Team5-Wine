@@ -12,18 +12,38 @@ import filterButton from '@/assets/icon/filter_button.svg';
 import Image from 'next/image';
 import cardmonthly from '@/components/cardmonthly/CardMonthly';
 import { wineListAPI, wineDetail, bestWine } from '@/api/Wine';
-import { winListType, wineDetailType } from '@/types/WineProps';
+import { wineListType, wineDetailType } from '@/types/WineProps';
+//import WineCarousel from '@/components/winecarousel/WineCarousel';
 
 const WineListPage: React.FC = () => {
   /*const [wineList, setWineList] = useState<winListType[]>([]);
   const condition1 = useWindowWidth() > 1024;
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [wines, setWines] = useState<wine[]>(newWines);
  
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
  */
+  useEffect(() => {
+    const fetchWineDetail = async () => {
+      try {
+        const responseTest = await bestWine();
+        //setWines(response);
+        //console.log('한글');
+        console.log(responseTest);
+      } catch (error) {
+        console.error('Error fetching wine details:', error);
+      }
+    };
+    fetchWineDetail();
+  }, []);
+
+  const [wines, setWines] = useState<wineListType>();
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const [nowFilter, setNowFilter] = useState({
     ranking: true,
     minPrice: false,
@@ -47,16 +67,16 @@ const WineListPage: React.FC = () => {
       {/*크게 up-page와 down-page로, CardMonthly 리스트와 CardWine 리스트로 나눔*/}
       <div className="up-page">
         <div className="recommend">이번 달 추천 와인</div>
-        <div className="wines">{/*베스트와인 10개 캐러셀로 */}</div>
+        <div className="wines">{/*<WineCarousel />*/}</div>
         <div className="circle">
           <Image src={rightIcon} alt="right-icon" width={24} height={24} />
         </div>
       </div>
       <div className="desktop-down-page">
-        {/*desktop일경우만 모달필터가 항상 활성화 되어 있음 */}
         {condition1 && (
           <div className="modal">
             {/* <ModalFilter /> */}
+            {/*<ModalFilter isModalOpen={isModalOpen} closeModal={handleCloseModal} setWines={} showButton={false} />*/}
             {/*아래 버튼 비활성화되게 수정한 모달 필터  */}
             <Button type="submit" text="와인 등록하기" />
           </div>
@@ -64,16 +84,16 @@ const WineListPage: React.FC = () => {
         <div className="down-page">
           <div className="search">
             <SearchBar placeholder="와인을 검색해 보세요" />
-            {condition2 && (
+            {!condition2 && (
               <div className="wine-filter">
                 <p className={`wine-filter-by ${nowFilter.ranking ? '' : 'unactive'}`} onClick={() => handleFilter('ranking')}>
                   추천순
                 </p>
                 <p className={`wine-filter-by ${nowFilter.maxPrice ? '' : 'unactive'}`} onClick={() => handleFilter('maxPrice')}>
-                  추천순
+                  높은가격순
                 </p>
                 <p className={`wine-filter-by ${nowFilter.minPrice ? '' : 'unactive'}`} onClick={() => handleFilter('minPrice')}>
-                  추천순
+                  낮은가격순
                 </p>
               </div>
             )}

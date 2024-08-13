@@ -19,6 +19,7 @@ import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
 import { useSession } from 'next-auth/react';
 
 interface ReviewProps {
+    wineName : string;
     reviewId: id;
     handleIsChanged: () => void;
 }
@@ -39,7 +40,7 @@ function convertReviewListToResponseBody(review: reviewDetailType, wineId: numbe
 }
 
 
-const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged }) => {
+const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged, wineName }) => {
     const [detail, setDetail] = useState<reviewDetailType>();
     const [dropdown, setDropdown] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -85,13 +86,11 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged }) => {
             try {
                 const response = await searchReviewsAPI(reviewId);
                 setDetail(response);
-                console.log(response);
             } catch (error) {
                 console.error('Error fetching wine details:', error);
             }
         };
         fetchWineDetail();
-        console.log(userData);
     }, [reviewId, isModalOpen]);
 
     return (
@@ -127,7 +126,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged }) => {
                     <ModalReview
                         isModalOpen={isModalOpen}
                         closeModal={handleCloseModal}
-                        wineName="와인 이름"
+                        wineName={wineName}
                         wineId={detail?.wineId}
                         ReviewData={convertReviewListToResponseBody(detail, detail?.wineId)}
                         showButton={true}
