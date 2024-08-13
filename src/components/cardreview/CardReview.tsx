@@ -56,7 +56,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged }) => {
 
     const onClickEdit = (reviewId: id) => {
         console.log(reviewId + " 수정하기");
-        // handleIsChanged();
+        handleIsChanged();
         setIsModalOpen(true);
         toggleDropdown();
     }

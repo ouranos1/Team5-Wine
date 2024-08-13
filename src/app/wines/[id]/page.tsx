@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Card from '@/components/carddetail/Card';
 import './page.scss';
+import Image from 'next/image';
 import { wineDetail } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
+import noreview from '@/assets/icon/noreview.svg';
 import RatingAll from '@/components/ratingall/RatingAll';
 import CardReview from '@/components/cardreview/CardReview';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
@@ -54,7 +56,11 @@ const App: React.FC<PageProps> = ({ params }) => {
                             <div> {detail.reviewCount > 0 ? detail.reviews.map((review) => (
                                 <CardReview key={review.id} reviewId={review.id} handleIsChanged={handleIsChanged} />
                             )) :
-                                <div className='no-reviews'>리뷰 없음냥</div>}</div>
+                                <div className='no-reviews'>
+                                    <Image src={noreview} alt="Wine bottle" />
+                                    <span className='no-reviews-explain'>작성된 리뷰가 없어요</span>
+                                </div>}
+                            </div>
 
                             <div className='modal-review'>
                                 <ModalReview
