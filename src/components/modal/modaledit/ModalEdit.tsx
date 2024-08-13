@@ -5,13 +5,11 @@ import { ModalWineEditProps } from '@/types/ModalProps';
 import Input from '@/components/inputcomponent/Input';
 import ImageUpload from '@/components/modal/modalwine/imagecomponent/ImageUpload';
 import { useEffect, useState } from 'react';
-import { ImageAPI } from '@/api/Image';
 import { editWine } from '@/api/Wine';
 import { imageProp } from '@/types/Image';
-import { createWineBody } from '@/types/WineProps';
+import { createWineBody, wineDetailType } from '@/types/WineProps';
 import { wineTypeName } from '@/types/WineProps';
 import './ModalEdit.scss';
-import { set } from 'react-hook-form';
 
 export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWineEditProps) {
   const [wineName, setWineName] = useState('');
@@ -61,21 +59,10 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
     const formData = new FormData();
     formData.append('image', imageFile);
 
-    let imageUrl: imageProp = null;
-
-    try {
-      const { url } = await ImageAPI(formData);
-      imageUrl = url;
-    } catch (error) {
-      console.error('이미지 업로드 오류:', error);
-      alert('이미지 업로드에 실패했습니다.');
-      return;
-    }
-
     const wineData: createWineBody = {
       name: wineName,
       region: region,
-      image: imageUrl,
+      image: imageFile,
       price: parseFloat(price),
       type: type,
     };
@@ -119,7 +106,7 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
           <option value="SPARKLING">SPARKLING</option>
         </select>
 
-        <ImageUpload onImageUpload={handleImageUpload} />
+        <ImageUpload onImageUpload={handleImageUpload} wineImage={wine?.image ? wine.image : null}/>
       </form>
     </BaseModal>
   );
