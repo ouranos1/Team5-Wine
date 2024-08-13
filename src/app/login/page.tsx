@@ -1,6 +1,6 @@
 'use client';
 
-import React, {  } from 'react';
+import React from 'react';
 import LoginForm from '@/components/loginform/loginform';
 import '../globals.scss';
 import './page.scss';
@@ -14,9 +14,9 @@ const Home: React.FC = () => {
   }
 
   return (
-    <>
+    <div className="login-container">
       <LoginForm />
-    </>
+    </div>
   );
 };
 

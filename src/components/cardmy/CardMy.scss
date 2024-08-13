@@ -11,82 +11,6 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
-
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .rating-container {
-      display: flex;
-      align-items: center;
-      height: 42px;
-
-      .rating {
-        @include font-settings(18, bold, 26);
-        color: $Primary-Purple-100;
-        background-color: #f3e8ff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
-        height: 100%;
-        border-radius: 12px;
-        margin-right: 15px;
-      }
-    }
-
-       .rating-container {
-            display: flex;
-            align-items: center;
-            height: 42px;
-
-            .rating {
-                @include font-settings(18, bold, 26);
-                color: $Primary-Purple-100;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 80px;
-                height: 100%;
-                border-radius: 12px;
-                margin-right: 15px;
-            }
-        }
-
-        .time {
-            @include font-settings(16, regular, 26);
-            color: $Grayscale-300;
-        }
-
-        .options {
-            font-size: 26px;
-            color: $Grayscale-300;
-            cursor: pointer;
-        }
-    }
-
-    .options {
-      font-size: 26px;
-      color: $Grayscale-300;
-      cursor: pointer;
-    }
-  }
-
-  .review-body {
-    .title {
-      @include font-settings(16, medium, 26);
-      color: $Grayscale-300;
-      margin-bottom: 10px;
-    }
-
-    .description {
-      @include font-settings(16, regular, 26);
-      color: $Grayscale-400;
-      line-height: 26px;
-    }
-  }
-
   @include mobile {
     background-color: rgb(255, 240, 232);
     padding: 16px 20px;
@@ -118,5 +42,78 @@
       @include font-settings(14, regular, 24);
       line-height: 24px;
     }
+  }
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .rating-container {
+      display: flex;
+      align-items: center;
+      height: 42px;
+
+      .rating {
+        @include font-settings(18, bold, 26);
+        color: $Primary-Purple-100;
+        background-color: #f3e8ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 100%;
+        border-radius: 12px;
+        margin-right: 15px;
+      }
+    }
+
+    .rating-container {
+      display: flex;
+      align-items: center;
+      height: 42px;
+
+      .rating {
+        @include font-settings(18, bold, 26);
+        color: $Primary-Purple-100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 100%;
+        border-radius: 12px;
+        margin-right: 15px;
+      }
+    }
+
+    .time {
+      @include font-settings(16, regular, 26);
+      color: $Grayscale-300;
+    }
+
+    .options {
+      font-size: 26px;
+      color: $Grayscale-300;
+      cursor: pointer;
+    }
+  }
+
+  .options {
+    font-size: 26px;
+    color: $Grayscale-300;
+    cursor: pointer;
+  }
+}
+
+.review-body {
+  .title {
+    @include font-settings(16, medium, 26);
+    color: $Grayscale-300;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    @include font-settings(16, regular, 26);
+    color: $Grayscale-400;
+    line-height: 26px;
   }
 }
