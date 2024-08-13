@@ -1,6 +1,6 @@
 'use client';
 
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
 import { useEffect, useState, useMemo } from 'react';
 import '@/app/myprofile/page.scss';
@@ -89,13 +89,13 @@ function MyProfile() {
               <input type="file" className="user-image-input" onChange={handleFileChange} />
             </div>
             <div className="user-data-layer">
-              <p className="user-nickname">{user?.user.nickname}</p>
-              <p className="user-email">{user?.user.email}</p>
+              <p className="user-nickname">{user?.nickname}</p>
+              <p className="user-email">{user?.email}</p>
             </div>
           </div>
           <div className="user-edit">
             <div className="edit-input">
-              <Input inputname="닉네임" placeholder={user?.user.nickname} defaultValue="" />
+              <Input inputname="닉네임" placeholder={user?.nickname} defaultValue="" />
             </div>
             <div className="edit-button-layer">
               <Button text="변경하기" onClick={changeNickName} />

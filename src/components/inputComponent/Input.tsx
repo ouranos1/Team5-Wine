@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import '@/components/inputComponent/Input.scss';
+import '@/components/inputcomponent/Input.scss';
 import { InputProps } from '@/types/Input';
 
 const Input: React.FC<InputProps> = ({ placeholder = '입력하시오.', inputname = '입력하시오.', defaultValue = '', ...rest }) => {

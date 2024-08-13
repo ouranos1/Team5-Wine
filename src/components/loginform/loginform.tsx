@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import Button from '@/components/button/Button';
 import OAuthButton from '../oauthbuttoncomponent/OAuthButton';
 import Logo from '@/assets/icon/wineLogo.svg';

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import wineLogo from '@/assets/icon/wineLogo.svg';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import Button from '@/components/button/Button';
 import { signUpAPI, signInAPI } from '@/api/Auth';
 import { loginAndStoreTokens } from '@/utils/authutils';

@@ -54,7 +54,7 @@ const App: React.FC<PageProps> = ({ params }) => {
 
                             <div className='review-title-sh'>리뷰 목록</div>
                             <div> {detail.reviewCount > 0 ? detail.reviews.map((review) => (
-                                <CardReview key={review.id} reviewId={review.id} handleIsChanged={handleIsChanged} />
+                                <CardReview key={review.id} reviewId={review.id} handleIsChanged={handleIsChanged} wineName={detail.name}/>
                             )) :
                                 <div className='no-reviews'>
                                     <Image src={noreview} alt="Wine bottle" />
@@ -66,7 +66,7 @@ const App: React.FC<PageProps> = ({ params }) => {
                                 <ModalReview
                                     isModalOpen={isModalOpen}
                                     closeModal={handleOpenModal}
-                                    wineName="와인 이름"
+                                    wineName={detail.name}
                                     wineId={id}
                                     showButton={true}
                                 />

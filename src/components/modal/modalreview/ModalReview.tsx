@@ -2,7 +2,7 @@ import BaseModal from '../modalbase/BaseModal';
 import { ModalProps } from '@/types/ModalProps';
 import Image from 'next/image';
 import wineIcon from '@/assets/icon/wineIcon.svg';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import '@/components/modal/modalreview/ModalReview.scss';
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { AromaTag } from '@/components/aromatag/AromaTag';
@@ -22,11 +22,15 @@ interface ModalReviewProps extends ModalProps {
 
 export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewData }: ModalReviewProps) {
   const [rating, setRating] = useState(ReviewData?.rating || 0);
-  const [slideValue, setSlideValue] = useState<number[]>(ReviewData ? [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : [0, 0, 0, 0]);
+  const [slideValue, setSlideValue] = useState<number[]>(ReviewData ? 
+    [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : 
+    [0, 0, 0, 0]);
   const [selectedAromas, setSelectedAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const [reviewContent, setReviewContent] = useState(ReviewData?.content || '');
   const [aromas, setAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const aromaList = createAromaList(aromas);
+
+  console.log(slideValue);
 
   const handleRatingChange = useCallback((newRating: number) => {
     setRating(newRating);
@@ -42,7 +46,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
 
   const postReview = useCallback(() => {
     console.log('리뷰등록실행');
-    console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
+    // console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
     if (slideValue && reviewContent) {
       const requestBody = {
         rating: rating,
@@ -54,6 +58,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         content: reviewContent,
         wineId: wineId,
       };
+      console.log(requestBody);
       addReviewsAPI(requestBody);
     }
     closeModal();
@@ -72,6 +77,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         aroma: selectedAromas,
         content: reviewContent,
       };
+      console.log(requestBody);
       editReviewsAPI(requestBody, ReviewData.id);
     }
     closeModal();

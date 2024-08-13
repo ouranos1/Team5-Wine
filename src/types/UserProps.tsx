@@ -10,3 +10,9 @@ export interface user {
     nickname : nickName;
     email : string | null;
 }
+
+export interface reviewUser {
+    id : number;
+    nickname : string;
+    image : imageProp;
+}
