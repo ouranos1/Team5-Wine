@@ -27,10 +27,12 @@
 ### 랜딩페이지
 
 <img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650" />
+<br><br>
 
 ### 회원가입
 
 <img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400"/>
+<br><br>
 
 ### 로그인
 - 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
@@ -38,18 +40,21 @@
 - 로그인에 성공하였을 경우 로그인된 상태로 루트페이지 '/'로 이동합니다.
 - 상단의 WINE로고를 클릭했을 때 루트페이지 '/'로 이동합니다.
 - '회원가입하기'를 클릭하면 회원가입페이지 'signup'으로 이동합니다.
+<br>
 
 #### 이메일 로그인
 
 <img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900"/>
+<br>
 
 #### 소셜 로그인
 
 <img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900"/>
+<br>
 
 ### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
 <br>
-
+<br>
 <br>
 
 ### 와인디테일 - 직관적인 리뷰 시스템
@@ -67,6 +72,9 @@
 <br><br>
 
 #### 수정하기/삭제하기 DropDown
+<br>
+본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
+
 - 수정하기 <br>
 <img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="600"/>
 <br><br>
@@ -82,7 +90,7 @@
 - 사용자 프로필 데이터를 제공하고 프로필사진을 선택해 이미지 변경이 가능하다
 - 사용자 닉네임을 작성해 변경 가능하다
 - 자신이 작성한 리뷰와 와인을 수정하거나 삭제할 수 있다.
-<br>
+<br><br>
 
 ### 🍷 개발환경
 - Front : TypeScript, Next.js, SCSS, Axios, next.auth
