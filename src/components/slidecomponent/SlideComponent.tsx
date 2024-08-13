@@ -13,7 +13,6 @@ function SlideComponent(props: SlideComponentProps) {
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
     props.onValueChange(newValue); // 슬라이더 값 변경 시 부모로 값 전달
-    console.log(newValue);
   };
 
 

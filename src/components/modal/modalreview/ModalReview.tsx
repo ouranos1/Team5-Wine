@@ -22,15 +22,11 @@ interface ModalReviewProps extends ModalProps {
 
 export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewData }: ModalReviewProps) {
   const [rating, setRating] = useState(ReviewData?.rating || 0);
-  const [slideValue, setSlideValue] = useState<number[]>(ReviewData ? 
-    [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : 
-    [0, 0, 0, 0]);
+  const [slideValue, setSlideValue] = useState<number[]>(ReviewData ? [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : [0, 0, 0, 0]);
   const [selectedAromas, setSelectedAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const [reviewContent, setReviewContent] = useState(ReviewData?.content || '');
   const [aromas, setAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const aromaList = createAromaList(aromas);
-
-  console.log(slideValue);
 
   const handleRatingChange = useCallback((newRating: number) => {
     setRating(newRating);
@@ -115,7 +111,11 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
             </div>
             <div className="wine-taste">
               <p className="taste-title">와인의 맛은 어땠나요?</p>
-              <WineTasteSlide SlideMode={ReviewData ? SlideMode.CREATE : SlideMode.EDIT} tasteValue={[ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic]} />
+              <WineTasteSlide
+                SlideMode={ReviewData ? SlideMode.CREATE : SlideMode.EDIT}
+                tasteValue={slideValue} // 슬라이더 값을 전달
+                onSlideChange={handleSlideValueChange} // 슬라이더 값 변경 콜백
+              />
             </div>
             <div className="wine-aroma">
               <p className="wine-aroma-title">기억에 남는 향이 있나요?</p>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Card from '@/components/carddetail/Card';
 import './page.scss';
 import Image from 'next/image';
-import { wineDetail } from '@/api/Wine';
+import { bestWine, wineDetail } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
 import noreview from '@/assets/icon/noreview.svg';
 import RatingAll from '@/components/ratingall/RatingAll';
@@ -26,8 +26,9 @@ const App: React.FC<PageProps> = ({ params }) => {
         const fetchWineDetail = async () => {
             try {
                 const response = await wineDetail(id);
+
                 setDetail(response);
-                console.log(response);
+                // console.log(response);
             } catch (error) {
                 console.error('Error fetching wine details:', error);
             }

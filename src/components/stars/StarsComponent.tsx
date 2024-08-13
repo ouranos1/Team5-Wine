@@ -20,7 +20,7 @@ const Stars: React.FC<StarsProps> = ({ stars, isEvent = false, onRatingChange })
   const starElements = useMemo(() => {
     return [...Array(5)].map((_, index) => (
       <span key={index} className={`star ${index < rating ? 'filled' : 'empty'}`} onClick={() => handleStarClick(index)}>
-        <Image src={index < rating ? star_filled : star_empty} alt="star" />
+        <Image src={index+1 <= rating ? star_filled : star_empty} alt="star" />
       </span>
     ));
   }, [rating]);

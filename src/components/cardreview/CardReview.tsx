@@ -86,13 +86,11 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged, wineName
             try {
                 const response = await searchReviewsAPI(reviewId);
                 setDetail(response);
-                console.log(response);
             } catch (error) {
                 console.error('Error fetching wine details:', error);
             }
         };
         fetchWineDetail();
-        console.log(userData);
     }, [reviewId, isModalOpen]);
 
     return (

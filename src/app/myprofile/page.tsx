@@ -12,7 +12,7 @@ import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
-import { wineDetailType, winListType } from '@/types/WineProps';
+import { wineDetailType } from '@/types/WineProps';
 import Card from '@/components/cardmylist/card';
 
 function changeNickName() {}
@@ -73,7 +73,7 @@ function MyProfile() {
       }
     };
     fetchData();
-    console.log(myReviews);
+    // console.log(myReviews);
   }, []);
 
   return (
