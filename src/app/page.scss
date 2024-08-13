@@ -1,0 +1,40 @@
+@import '@/app/globals.scss';
+@import '@/styles/Font-Mixins.scss';
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 109px;
+
+  .section {
+    margin-bottom: 96px;
+  }
+
+  .header {
+    margin: 80px 0px 160px 0px;
+
+    img {
+      height: 535px;
+    }
+  }
+
+  .button-container {
+    .button-more {
+      width: 279px;
+      height: 50px;
+      border-radius: 100px;
+      padding: 16px 96px;
+      gap: 10px;
+      background-color: $Primary-Purple-100;
+      @include font-settings(16, bold, 26);
+      color: $White;
+      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

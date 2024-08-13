@@ -84,7 +84,7 @@ function MyProfile() {
         <div className="user-data">
           <div className="user-image-layer">
             <div className="user-image-edit">
-              <Image src={currentImage} className="user-image"  width={100} height={100}v alt="유저프로필" />
+              <Image src={currentImage} className="user-image"  width={100} height={100} alt="유저프로필" />
               <label>+</label>
               <input type="file" className="user-image-input" onChange={handleFileChange} />
             </div>
