@@ -19,11 +19,11 @@ const Dropdown: React.FC<DropdownProps> = ({ items }) => {
     <div className="dropdown-wrapper">
       <ul className="dropdown">
         {items.map((item, index) => (
-          <li key={index} className="dropdown-item">
-            <Link href={item.path} passHref>
-              <div onClick={() => handleItemClick(item)}>{item.name}</div>
-            </Link>
-          </li>
+          <Link href={item.path} passHref>
+            <li onClick={() => handleItemClick(item)} key={index} className="dropdown-item">
+              {item.name}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

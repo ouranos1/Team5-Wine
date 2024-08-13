@@ -11,52 +11,103 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  position: relative;
+  .soohyun-dropdown {
+    position: absolute;
+    top: 76px;
+    right: 40px;
+  }
 
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  @include mobile {
+    background-color: rgb(255, 240, 232);
+    padding: 16px 20px;
+    gap: 17px;
 
-    .rating-container {
-      display: flex;
-      align-items: center;
-      height: 42px;
+    .review-header .rating-container {
+      height: 32px;
 
       .rating {
-        @include font-settings(18, bold, 26);
-        color: $Primary-Purple-100;
-        background-color: #f3e8ff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
+        @include font-settings(14, bold, 24);
+        width: 60px;
         height: 100%;
-        border-radius: 12px;
-        margin-right: 15px;
+      }
+
+      .time {
+        @include font-settings(14, regular, 24);
       }
     }
 
-    .rating-container {
-      display: flex;
-      align-items: center;
-      height: 42px;
-
-      .rating {
-        @include font-settings(18, bold, 26);
-        color: $Primary-Purple-100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80px;
-        height: 100%;
-        border-radius: 12px;
-        margin-right: 15px;
-      }
+    .review-header .options {
+      font-size: 24px;
+    }
+    .review-body .title {
+      @include font-settings(14, medium, 24);
     }
 
-    .time {
+    .review-body .description {
+      @include font-settings(14, regular, 24);
+      line-height: 24px;
+    }
+  }
+
+    .description {
       @include font-settings(16, regular, 26);
-      color: $Grayscale-300;
+      color: $Grayscale-400;
+      line-height: 26px;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .rating-container {
+        display: flex;
+        align-items: center;
+        height: 42px;
+
+        .rating {
+          @include font-settings(18, bold, 26);
+          color: $Primary-Purple-100;
+          background-color: #f3e8ff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 80px;
+          height: 100%;
+          border-radius: 12px;
+          margin-right: 15px;
+        }
+      }
+
+      .rating-container {
+        display: flex;
+        align-items: center;
+        height: 42px;
+
+        .rating {
+          @include font-settings(18, bold, 26);
+          color: $Primary-Purple-100;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 80px;
+          height: 100%;
+          border-radius: 12px;
+          margin-right: 15px;
+        }
+      }
+
+      .time {
+        @include font-settings(16, regular, 26);
+        color: $Grayscale-300;
+      }
+
+      .options {
+        font-size: 26px;
+        color: $Grayscale-300;
+        cursor: pointer;
+      }
     }
 
     .options {
@@ -66,56 +117,16 @@
     }
   }
 
-  .options {
-    font-size: 26px;
-    color: $Grayscale-300;
-    cursor: pointer;
-  }
-}
-
-.review-body {
-  .title {
-    @include font-settings(16, medium, 26);
-    color: $Grayscale-300;
-    margin-bottom: 10px;
-  }
-
-  .description {
-    @include font-settings(16, regular, 26);
-    color: $Grayscale-400;
-    line-height: 26px;
-  }
-}
-
-@include mobile {
-  background-color: rgb(255, 240, 232);
-  padding: 16px 20px;
-  gap: 17px;
-
-  .review-header .rating-container {
-    height: 32px;
-
-    .rating {
-      @include font-settings(14, bold, 24);
-      width: 60px;
-      height: 100%;
+  .review-body {
+    .title {
+      @include font-settings(16, medium, 26);
+      color: $Grayscale-300;
+      margin-bottom: 10px;
     }
 
-    .time {
-      @include font-settings(14, regular, 24);
+    .description {
+      @include font-settings(16, regular, 26);
+      color: $Grayscale-400;
+      line-height: 26px;
     }
   }
-
-  .review-header .options {
-    font-size: 24px;
-  }
-
-  .review-body .title {
-    @include font-settings(14, medium, 24);
-  }
-
-  .review-body .description {
-    @include font-settings(14, regular, 24);
-    line-height: 24px;
-  }
-}

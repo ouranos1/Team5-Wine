@@ -11,6 +11,12 @@
   margin-top: 20px;
   display: flex;
 
+  .soohyun-dropdown {
+    position: absolute;
+    top: 76px;
+    right: 40px;
+  }
+
   // Large Size
   @include desktop {
     width: 800px;
@@ -89,7 +95,7 @@
     }
 
     .wine {
-      width: 300px;
+      width: 400px;
       height: 168px;
       margin-top: 30px;
       margin-bottom: 30px;

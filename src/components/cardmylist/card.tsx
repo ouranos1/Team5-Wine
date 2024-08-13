@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import './Card.scss';
+import '@/components/cardmylist/card.scss';
 import { useState } from 'react';
 import { CardProps } from '@/types/Card';
 import CardCommon from '@/components/cardcommon/cardcommon';
-import ModalWine from '@/components/modal/modalwine/ModalWine';
+import ModalEdit from '@/components/modal/modaledit/ModalEdit';
 import SHDropdown from '../shdropdown/SHDropDown';
 
 interface cardMylistProps extends CardProps {
@@ -44,10 +44,12 @@ const Card: React.FC<cardMylistProps> = ({ image, wineName, wineDesc, winePrice,
     //<div className="hidden-card">
     <div className="card">
       <CardCommon image={image} wineName={wineName} wineDesc={wineDesc} winePrice={winePrice} />
-      {/* <span className="options" onClick={toggleDropdown}>⋮</span> */}
-      {/* <div className="soohyun-dropdown">{dropdown && <SHDropdown items={items} />}</div>
-          <ModalWine isModalOpen={isModalOpen} closeModal={handleCloseModal}/>
-    </div> */}
+      <span className="options" onClick={toggleDropdown}>
+        {' '}
+        ⋮{' '}
+      </span>
+      <div className="soohyun-dropdown">{dropdown && <SHDropdown items={items} reviewId={wineId} />}</div>
+      <ModalEdit isModalOpen={isModalOpen} closeModal={handleCloseModal} id={wineId} />
     </div>
   );
 };

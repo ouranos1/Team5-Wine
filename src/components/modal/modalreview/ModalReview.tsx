@@ -27,17 +27,6 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
   const [reviewContent, setReviewContent] = useState(ReviewData?.content || '');
   const [aromas, setAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const aromaList = createAromaList(aromas);
-  // console.log(ReviewData);
-
-  // useEffect(() => {
-  //   // console.log('rating' + ReviewData?.rating);
-  //   setRating(ReviewData?.rating || 0);
-  //   setReviewContent(ReviewData?.content || '');
-  //   setSlideValue(ReviewData ? [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : [0, 0, 0, 0]);
-  //   setSelectedAromas(ReviewData?.aroma || []);
-  //   const aromatest: AromaName[] = ReviewData?.aroma || [];
-  //   const aromaList = createAromaList(aromatest);
-  // }, [ReviewData]);
 
   const handleRatingChange = useCallback((newRating: number) => {
     setRating(newRating);
@@ -53,7 +42,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
 
   const postReview = useCallback(() => {
     console.log('리뷰등록실행');
-    console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
+    // console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
     if (slideValue && reviewContent) {
       const requestBody = {
         rating: rating,
@@ -65,9 +54,10 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         content: reviewContent,
         wineId: wineId,
       };
+      console.log(requestBody);
       addReviewsAPI(requestBody);
     }
-    closeModal;
+    closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas, wineId]);
 
   const patchReview = useCallback(() => {
@@ -83,9 +73,10 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         aroma: selectedAromas,
         content: reviewContent,
       };
+      console.log(requestBody);
       editReviewsAPI(requestBody, ReviewData.id);
     }
-    closeModal;
+    closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas]);
 
   return (
@@ -120,7 +111,11 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
             </div>
             <div className="wine-taste">
               <p className="taste-title">와인의 맛은 어땠나요?</p>
-              <WineTasteSlide SlideMode={ReviewData ? SlideMode.CREATE : SlideMode.EDIT} tasteValue={[ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic]} />
+              <WineTasteSlide
+                SlideMode={ReviewData ? SlideMode.CREATE : SlideMode.EDIT}
+                tasteValue={slideValue} // 슬라이더 값을 전달
+                onSlideChange={handleSlideValueChange} // 슬라이더 값 변경 콜백
+              />
             </div>
             <div className="wine-aroma">
               <p className="wine-aroma-title">기억에 남는 향이 있나요?</p>

@@ -10,28 +10,6 @@ export async function addWineAPI(props: createWineBody) {
   await CallAPI({ method, query, body, apiName });
 }
 
-// export async function wineListAPI(limit: number | null = null, cursor: number | null = null, minPrice: number | null = null, maxPrice: number | null = null, rating: number | null = null) {
-//   //여기도 리미트 값을 설정하기 위한 방식이 필요
-//   // let count = 5;
-//   const method = 'get';
-//   let query = `/wines`;
-//   if (limit) {
-//     query = query + `?limit=${limit}`;
-//   } else if (cursor) {
-//     query = query + `&cursor=${cursor}`;
-//   } else if (minPrice) {
-//     query = query + `&minPrice=${minPrice}`;
-//   } else if (maxPrice) {
-//     query = query + `&maxPrice=${maxPrice}`;
-//   } else if (rating) {
-//     query = query + `&rating=${rating}`;
-//   }
-//   // let query = `/wines?limit=${count}&cursor=${}&minPrice=${}&maxPrice=${}&rating=${}`;
-//   const apiName = 'winelist';
-//   const body = null;
-//   return await CallAPI({ method, query, body, apiName });
-// }
-
 export async function wineListAPI(limit: number | null = null, cursor: number | null = null, minPrice: number | null = null, maxPrice: number | null = null, rating: number | null = null) {
   const method = 'get';
   const queryParams = new URLSearchParams();

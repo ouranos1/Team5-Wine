@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import wineLogo from '@/assets/icon/wineLogo.svg';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import Button from '@/components/button/Button';
 import { signUpAPI, signInAPI } from '@/api/Auth';
 import { loginAndStoreTokens } from '@/utils/authutils';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import './SignUpForm.scss';
-
+import { getSession, signIn, useSession } from 'next-auth/react';
 export default function SignupForm() {
   const router = useRouter();
 
@@ -19,6 +19,7 @@ export default function SignupForm() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const session = useSession();
 
   const validateEmail = (value: string) => {
     if (!value) return '이메일은 필수 입력입니다.';
@@ -84,14 +85,31 @@ export default function SignupForm() {
         };
         console.log('전송할 데이터:', userData);
 
-        await signUpAPI(userData);
+        const response = await signUpAPI(userData);
+
+        if (response.status === 400) {
+          alert('중복된 이메일입니다.');
+          return;
+        }
+
         alert('회원가입이 완료되었습니다');
 
-        await loginAndStoreTokens({ email, password });
+        const signInResponse = await signIn('Credentials', { email: encodeURIComponent(email), password, redirect: false });
 
-        router.push('/');
+        if (signInResponse?.error) {
+          alert('로그인 중 오류가 발생했습니다.');
+          return;
+        }
+
+        const session2 = await getSession();
+        console.log('출력', session2);
+
+        if (session2?.user.user) {
+          router.push('/');
+        }
       } catch (error) {
         console.error('회원가입 중 오류가 발생했습니다:', error);
+        alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
       }
     } else {
       alert('입력값을 다시 확인해주세요');
@@ -104,13 +122,13 @@ export default function SignupForm() {
         <div className="signup-header">
           <Image src={wineLogo} alt="와인 로고" width={104} height={30} />
         </div>
-        <Input type="email" size="L" placeholder="whyne@email.com" inputname="이메일" defaultValue={email} onBlur={(e) => handleEmailChange(e.target.value)} />
+        <Input type="email" placeholder="whyne@email.com" inputname="이메일" defaultValue={email} onBlur={(e) => handleEmailChange(e.target.value)} />
         {errors.email && <p className="error-message">{errors.email}</p>}
-        <Input type="text" size="L" placeholder="whyne" inputname="닉네임" defaultValue={nickname} onBlur={(e) => handleNicknameChange(e.target.value)} />
+        <Input type="text" placeholder="whyne" inputname="닉네임" defaultValue={nickname} onBlur={(e) => handleNicknameChange(e.target.value)} />
         {errors.nickname && <p className="error-message">{errors.nickname}</p>}
-        <Input type="password" size="L" placeholder="비밀번호" inputname="비밀번호" defaultValue={password} onBlur={(e) => handlePasswordChange(e.target.value)} />
+        <Input type="password" placeholder="비밀번호" inputname="비밀번호" defaultValue={password} onBlur={(e) => handlePasswordChange(e.target.value)} />
         {errors.password && <p className="error-message">{errors.password}</p>}
-        <Input type="password" size="L" placeholder="비밀번호 확인" inputname="비밀번호 확인" defaultValue={passwordConfirmation} onBlur={(e) => handleConfirmPasswordChange(e.target.value)} />
+        <Input type="password" placeholder="비밀번호 확인" inputname="비밀번호 확인" defaultValue={passwordConfirmation} onBlur={(e) => handleConfirmPasswordChange(e.target.value)} />
         {errors.passwordConfirmation && <p className="error-message">{errors.passwordConfirmation}</p>}
         <Button text="가입하기" type="submit" />
       </form>

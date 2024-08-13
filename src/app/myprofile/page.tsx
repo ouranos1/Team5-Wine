@@ -1,8 +1,7 @@
 'use client';
 
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
-import { ModalReview } from '@/components/modal/modalreview/ModalReview';
 import { useEffect, useState, useMemo } from 'react';
 import '@/app/myprofile/page.scss';
 import Button from '@/components/button/Button';
@@ -13,8 +12,7 @@ import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
-import CardReview from '@/components/cardreview/CardReview';
-import { wineDetailType, winListType } from '@/types/WineProps';
+import { wineDetailType } from '@/types/WineProps';
 import Card from '@/components/cardmylist/card';
 
 function changeNickName() {}
@@ -37,15 +35,13 @@ function MyProfile() {
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     console.log('파일선택옴');
-    const token = session?.user.user.accessToken;
-    console.log(token);
-   if (file && token) {
+    const token = session?.user.user.accessToken as string;
+    if (file && token) {
       const formData = new FormData();
       formData.append('image', file);
       console.log('파일url받음');
       try {
         const response = await ImageAPI(formData);
-        console.log(response);
         setSelectedImage(response.url);
         console.log('셋완료');
       } catch (error) {
@@ -77,7 +73,7 @@ function MyProfile() {
       }
     };
     fetchData();
-    console.log(myReviews);
+    // console.log(myReviews);
   }, []);
 
   return (
@@ -87,15 +83,19 @@ function MyProfile() {
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <Image src={currentImage} width={164} height={164} alt="유저프로필" />
-           <label>+</label>
-            <input type="file" className="user-image-input" onChange={handleFileChange} />
+            <div className="user-image-edit">
+              <Image src={currentImage} className="user-image"  width={100} height={100} alt="유저프로필" />
+              <label>+</label>
+              <input type="file" className="user-image-input" onChange={handleFileChange} />
+            </div>
+            <div className="user-data-layer">
+              <p className="user-nickname">{user?.nickname}</p>
+              <p className="user-email">{user?.email}</p>
+            </div>
           </div>
-          <p className="user-nickname">{user?.user.nickname}</p>
-          <p className="user-email">{user?.user.email}</p>
           <div className="user-edit">
             <div className="edit-input">
-              <Input inputname="닉네임" placeholder="유저 닉네임이다" defaultValue="" />
+              <Input inputname="닉네임" placeholder={user?.nickname} defaultValue="" />
             </div>
             <div className="edit-button-layer">
               <Button text="변경하기" onClick={changeNickName} />
@@ -122,7 +122,7 @@ function MyProfile() {
             myReviews.length > 0 ? (
               <div className="content-item">
                 {myReviews.map((review) => (
-                  <Cardmy key={review.id} rating={review.rating} createdAt={review.createdAt} name={review.wine.name} content={review.content} />
+                  <Cardmy key={review.id} {...review} />
                 ))}
               </div>
             ) : (
