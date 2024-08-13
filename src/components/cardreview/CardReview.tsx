@@ -11,12 +11,12 @@ import { createAromaList } from '@/utils/aromautils';
 import { SlideMode } from '@/types/SlideOption';
 import { id } from '@/types/Id'
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
-import { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review';
-import defaultprofile from '@/assets/icon/defaultprofile.webp';
+import { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review'
+import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
-import { ReviewListType, responseReviewBody } from '@/types/ReviewProps';
-import { useSession } from 'next-auth/react';
+import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
+import { useSession } from 'next-auth/react'; 3
 
 interface ReviewProps {
     reviewId: id;
@@ -74,69 +74,68 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged }) => {
             alert("리뷰 삭제 중 문제가 발생했습니다.");
         }
     }
-};
 
-const items = [
-    { name: "수정하기", func: onClickEdit },
-    { name: "삭제하기", func: onClickDelete }
-];
+    const items = [
+        { name: "수정하기", func: onClickEdit },
+        { name: "삭제하기", func: onClickDelete }
+    ];
 
-useEffect(() => {
-    const fetchWineDetail = async () => {
-        try {
-            const response = await searchReviewsAPI(reviewId);
-            setDetail(response);
-            console.log(response);
-        } catch (error) {
-            console.error('Error fetching wine details:', error);
-        }
-    };
-    fetchWineDetail();
-    console.log(userData);
-}, [reviewId, isModalOpen]);
+    useEffect(() => {
+        const fetchWineDetail = async () => {
+            try {
+                const response = await searchReviewsAPI(reviewId);
+                setDetail(response);
+                console.log(response);
+            } catch (error) {
+                console.error('Error fetching wine details:', error);
+            }
+        };
+        fetchWineDetail();
+        console.log(userData);
+    }, [reviewId, isModalOpen]);
 
-return (
-    <>
-        {detail &&
-            <div className="soohyun-card">
-                <div className="soohyun-header">
-                    <div className="soohyun-profile">
-                        {detail.user.image ?
-                            <img src={detail.user.image} className="soohyun-image" /> :
-                            <Image src={defaultprofile} alt="와인아이콘" className="soohyun-image" />
-                        }
-                        <span className="soohyun-nickname-date">
-                            <span className="soohyun-nickname">{detail.user.nickname}</span>
-                            <span className="soohyun-date">{new Date(detail.createdAt).toISOString().split('T')[0]}</span>
-                        </span>
+    return (
+        <>
+            {detail &&
+                <div className="soohyun-card">
+                    <div className="soohyun-header">
+                        <div className="soohyun-profile">
+                            {detail.user.image ?
+                                <img src={detail.user.image} className="soohyun-image" /> :
+                                <Image src={defaultprofile} alt="와인아이콘" className="soohyun-image" />
+                            }
+                            <span className="soohyun-nickname-date">
+                                <span className="soohyun-nickname">{detail.user.nickname}</span>
+                                <span className="soohyun-date">{new Date(detail.createdAt).toISOString().split('T')[0]}</span>
+                            </span>
+                        </div>
+                        <div>
+                            {userData && userData.user.id === detail.user.id && < span className="options" onClick={toggleDropdown}> ⋮ </span>}
+                        </div>
                     </div>
-                    <div>
-                        {userData && userData.user.id === detail.user.id && < span className="options" onClick={toggleDropdown}> ⋮ </span>}
+                    <div className="soohyun-aroma">
+                        <AromaTag option="view" list={createAromaList(detail.aroma)} /></div>
+                    <div className="soohyun-content">
+                        {detail.content}
                     </div>
+                    <div className="soohyun-taste">
+                        <WineTasteSlide tasteValue={[detail.lightBold, detail.smoothTannic, detail.drySweet, detail.softAcidic]} SlideMode={SlideMode.VIEW} />
+                    </div>
+                    <div className="soohyun-dropdown">
+                        {dropdown && <SHDropdown items={items} reviewId={reviewId} />}
+                    </div>
+                    <ModalReview
+                        isModalOpen={isModalOpen}
+                        closeModal={handleCloseModal}
+                        wineName="와인 이름"
+                        wineId={detail?.wineId}
+                        ReviewData={convertReviewListToResponseBody(detail, detail?.wineId)}
+                        showButton={true}
+                    />
                 </div>
-                <div className="soohyun-aroma">
-                    <AromaTag option="view" list={createAromaList(detail.aroma)} /></div>
-                <div className="soohyun-content">
-                    {detail.content}
-                </div>
-                <div className="soohyun-taste">
-                    <WineTasteSlide tasteValue={[detail.lightBold, detail.smoothTannic, detail.drySweet, detail.softAcidic]} SlideMode={SlideMode.VIEW} />
-                </div>
-                <div className="soohyun-dropdown">
-                    {dropdown && <SHDropdown items={items} reviewId={reviewId} />}
-                </div>
-                <ModalReview
-                    isModalOpen={isModalOpen}
-                    closeModal={handleCloseModal}
-                    wineName="와인 이름"
-                    wineId={detail?.wineId}
-                    ReviewData={convertReviewListToResponseBody(detail, detail?.wineId)}
-                    showButton={true}
-                />
-            </div>
-        }
-    </>
-);
+            }
+        </>
+    );
 };
 
 export default CardReview;
