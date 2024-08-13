@@ -1,12 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import '@/components/cardmylist/card.scss';
 import { useState } from 'react';
 import { CardProps } from '@/types/Card';
-import CardCommon from '@/components/cardcommon/cardcommon';
+import CardCommon from '../cardcommon/Cardcommon';
 import ModalEdit from '@/components/modal/modaledit/ModalEdit';
 import SHDropdown from '../shdropdown/SHDropDown';
+import { id } from '@/types/Id';
+import { wineDetailType } from '@/types/WineProps';
+import { wineDetail } from '@/api/Wine';
 
 interface cardMylistProps extends CardProps {
   wineId: number;
@@ -15,6 +18,7 @@ interface cardMylistProps extends CardProps {
 const Card: React.FC<cardMylistProps> = ({ image, wineName, wineDesc, winePrice, wineId }) => {
   const [dropdown, setDropdown] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [wineData, setWineData] = useState<wineDetailType>();
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -24,14 +28,12 @@ const Card: React.FC<cardMylistProps> = ({ image, wineName, wineDesc, winePrice,
     setDropdown(!dropdown);
   };
 
-  const onClickEdit = () => {
-    // console.log(reviewId + ' 수정하기');
+  const onClickEdit = (wineId: id) => {
     setIsModalOpen(true);
     toggleDropdown();
   };
 
-  const onClickDelete = () => {
-    // console.log(reviewId + ' 삭제하기');
+  const onClickDelete = (wineId: id) => {
     toggleDropdown();
   };
 
@@ -40,8 +42,16 @@ const Card: React.FC<cardMylistProps> = ({ image, wineName, wineDesc, winePrice,
     { name: '삭제하기', func: onClickDelete },
   ];
 
+  useEffect(() => {
+    const fetchWineData = async() => {
+      const response = await wineDetail(wineId);
+      setWineData(response);
+    }
+
+    fetchWineData();
+  }, [])
+
   return (
-    //<div className="hidden-card">
     <div className="card">
       <CardCommon image={image} wineName={wineName} wineDesc={wineDesc} winePrice={winePrice} />
       <span className="options" onClick={toggleDropdown}>
@@ -49,7 +59,7 @@ const Card: React.FC<cardMylistProps> = ({ image, wineName, wineDesc, winePrice,
         ⋮{' '}
       </span>
       <div className="soohyun-dropdown">{dropdown && <SHDropdown items={items} reviewId={wineId} />}</div>
-      <ModalEdit isModalOpen={isModalOpen} closeModal={handleCloseModal} id={wineId} />
+      <ModalEdit isModalOpen={isModalOpen} closeModal={handleCloseModal} id={wineId} wine={wineData as wineDetailType} showButton={true}/>
     </div>
   );
 };
