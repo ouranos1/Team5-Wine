@@ -14,16 +14,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-     const pathname = usePathname();
+  const pathname = usePathname();
   const isAuthPage = pathname === '/login' || pathname === '/signup';
- return (
+  return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${isAuthPage ? 'auth-background' : ''}`}>
         <Provider>
           {!isAuthPage && <GNB />}
           {children}
         </Provider>
-     </body>
+      </body>
     </html>
   );
 }

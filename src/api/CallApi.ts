@@ -34,19 +34,19 @@ apiInstance.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const session = await getSession();
-        const { refreshToken: rToken } =  session?.user.user || {};
+        const { refreshToken: rToken } = session?.user.user || {};
         if (!refreshToken) {
           return Promise.reject(error);
         }
 
         const refreshTokenResponse = await refreshToken({
-          refreshToken: rToken || ''
+          refreshToken: rToken || '',
         });
-        console.log("리프레쉬토큰동작함");
+        console.log('리프레쉬토큰동작함');
         console.log(refreshTokenResponse);
         const newAccessToken = refreshTokenResponse.accessToken;
 
-        // TODO: session 에 있는 값을 수정하도록 처리. 
+        // TODO: session 에 있는 값을 수정하도록 처리.
         apiInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
         originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
         return apiInstance(originalRequest);
