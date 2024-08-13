@@ -67,7 +67,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
       };
       addReviewsAPI(requestBody);
     }
-    closeModal;
+    closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas, wineId]);
 
   const patchReview = useCallback(() => {
@@ -85,7 +85,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
       };
       editReviewsAPI(requestBody, ReviewData.id);
     }
-    closeModal;
+    closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas]);
 
   return (

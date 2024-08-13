@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -6,17 +6,17 @@ import './CardReview.scss';
 import Image from 'next/image';
 import { AromaTag } from '@/components/aromatag/AromaTag';
 import { Aroma, AromaName } from '@/types/Aroma';
-import { reviewDetailType } from '@/types/ReviewProps';
+import { reviewDetailType } from '@/types/ReviewProps'
 import { createAromaList } from '@/utils/aromautils';
 import { SlideMode } from '@/types/SlideOption';
-import { id } from '@/types/Id';
+import { id } from '@/types/Id'
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review'
 import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
 import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
-import { useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react'; 3
 
 interface ReviewProps {
     reviewId: id;
@@ -37,12 +37,13 @@ function convertReviewListToResponseBody(review: reviewDetailType, wineId: numbe
     };
 }
 
+
 const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     const [detail, setDetail] = useState<reviewDetailType>();
     const [dropdown, setDropdown] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const session = useSession();
-    const userData = session.data?.user;
+    const userData = session.data?.user.user;
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -72,8 +73,8 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     }
 
     const items = [
-        { name: '수정하기', func: onClickEdit },
-        { name: '삭제하기', func: onClickDelete },
+        { name: "수정하기", func: onClickEdit },
+        { name: "삭제하기", func: onClickDelete }
     ];
 
     useEffect(() => {
