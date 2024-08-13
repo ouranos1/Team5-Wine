@@ -1,6 +1,6 @@
 'use client';
 
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
 import { useEffect, useState, useMemo } from 'react';
 import '@/app/myprofile/page.scss';
@@ -12,7 +12,7 @@ import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
-import { wineDetailType, winListType } from '@/types/WineProps';
+import { wineDetailType } from '@/types/WineProps';
 import Card from '@/components/cardmylist/card';
 
 function changeNickName() {}
@@ -73,7 +73,7 @@ function MyProfile() {
       }
     };
     fetchData();
-    console.log(myReviews);
+    // console.log(myReviews);
   }, []);
 
   return (
@@ -84,18 +84,18 @@ function MyProfile() {
         <div className="user-data">
           <div className="user-image-layer">
             <div className="user-image-edit">
-              <Image src={currentImage} className="user-image" alt="유저프로필" />
+              <Image src={currentImage} className="user-image"  width={100} height={100} alt="유저프로필" />
               <label>+</label>
-              {/* <input type="file" className="user-image-input" onChange={handleFileChange} /> */}
+              <input type="file" className="user-image-input" onChange={handleFileChange} />
             </div>
             <div className="user-data-layer">
-              <p className="user-nickname">{user?.user.nickname}</p>
-              <p className="user-email">{user?.user.email}</p>
+              <p className="user-nickname">{user?.nickname}</p>
+              <p className="user-email">{user?.email}</p>
             </div>
           </div>
           <div className="user-edit">
             <div className="edit-input">
-              <Input inputname="닉네임" placeholder={user?.user.nickname} defaultValue="" />
+              <Input inputname="닉네임" placeholder={user?.nickname} defaultValue="" />
             </div>
             <div className="edit-button-layer">
               <Button text="변경하기" onClick={changeNickName} />

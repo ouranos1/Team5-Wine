@@ -6,7 +6,7 @@ export async function signUpAPI(user: signUpRequestBody) {
   let query = '/auth/signUp';
   const apiName = 'signUp';
   const body = user;
-  await CallAPI({ method, query, body, apiName });
+  return await CallAPI({ method, query, body, apiName });
 }
 
 export async function signInAPI(user: signInRequestBody) {
