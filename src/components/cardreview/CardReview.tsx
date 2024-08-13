@@ -20,6 +20,7 @@ import { useSession } from 'next-auth/react'; 3
 
 interface ReviewProps {
     reviewId: id;
+    handleIsChanged: () => void;
 }
 
 function convertReviewListToResponseBody(review: reviewDetailType, wineId: number): responseReviewBody {
@@ -38,7 +39,7 @@ function convertReviewListToResponseBody(review: reviewDetailType, wineId: numbe
 }
 
 
-const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
+const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged }) => {
     const [detail, setDetail] = useState<reviewDetailType>();
     const [dropdown, setDropdown] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -55,6 +56,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
 
     const onClickEdit = (reviewId: id) => {
         console.log(reviewId + " 수정하기");
+        // handleIsChanged();
         setIsModalOpen(true);
         toggleDropdown();
     }
@@ -64,6 +66,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
         try {
             await deleteReviewsAPI(reviewId);
             console.log(reviewId + " 삭제 성공");
+            handleIsChanged();
             setDetail(undefined);
             toggleDropdown();
         } catch (error) {

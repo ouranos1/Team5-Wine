@@ -18,6 +18,7 @@ const App: React.FC<PageProps> = ({ params }) => {
     const [detail, setDetail] = useState<wineDetailType | null>(null);
     const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(1);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [isChanged, setIsChanged] = React.useState(false);
 
     useEffect(() => {
         const fetchWineDetail = async () => {
@@ -30,10 +31,14 @@ const App: React.FC<PageProps> = ({ params }) => {
             }
         };
         fetchWineDetail();
-    }, [id, isModalOpen]);
+    }, [id, isModalOpen, isChanged]);
 
     const handleOpenModal = () => {
         setIsModalOpen(!isModalOpen);
+    };
+
+    const handleIsChanged = () => {
+        setIsChanged(!isChanged);
     };
 
     return (
@@ -47,7 +52,7 @@ const App: React.FC<PageProps> = ({ params }) => {
 
                             <div className='review-title-sh'>리뷰 목록</div>
                             <div> {detail.reviewCount > 0 ? detail.reviews.map((review) => (
-                                <CardReview key={review.id} reviewId={review.id} />
+                                <CardReview key={review.id} reviewId={review.id} handleIsChanged={handleIsChanged} />
                             )) :
                                 <div className='no-reviews'>리뷰 없음냥</div>}</div>
 
