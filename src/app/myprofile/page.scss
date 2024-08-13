@@ -4,35 +4,54 @@
   margin-top: 37px;
   display: flex;
   gap: 60px;
+  @include tablet {
+    flex-direction: column;
+  }
   .user-profile-data {
     padding: 39px 20px;
     border: 1px solid $Grayscale-200;
     display: flex;
-    // position: fixed;
     flex-direction: column;
     align-items: center;
     width: 280px;
     height: 555px;
     border-radius: 16px;
+    @include tablet {
+      width: 100%;
+      align-items: flex-start;
+    }
     .user-data {
       display: flex;
       flex-direction: column;
       align-items: center;
+      @include tablet {
+        flex-direction: column;
+        justify-content: space-between;
+      }
       .user-image-layer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 32px;
-      }
-      .user-nickname {
-        @include font-settings(24, bold, 32);
-        color: $Grayscale-400;
-        margin-bottom: 16px;
-      }
-      .user-email {
-        @include font-settings(16, regular, 26);
-        color: $Grayscale-300;
-        margin-bottom: 48px;
+        @include tablet {
+          flex-direction: row;
+        }
+        .user-image-edit {
+          .user-image-input {
+            margin-bottom: 32px;
+          }
+        }
+        .user-data-layer {
+          .user-nickname {
+            @include font-settings(24, bold, 32);
+            color: $Grayscale-400;
+            margin-bottom: 16px;
+          }
+          .user-email {
+            @include font-settings(16, regular, 26);
+            color: $Grayscale-300;
+            margin-bottom: 48px;
+          }
+        }
       }
       .user-edit {
         .edit-input {

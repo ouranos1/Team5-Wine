@@ -1,6 +1,5 @@
 'use client';
 
-import { SlideMode } from '@/types/SlideOption';
 import '@/components/slidecomponent/SlideComponent.scss';
 import { SildeOptionProps, SlideMode } from '@/types/SlideOption';
 import { useState } from 'react';
