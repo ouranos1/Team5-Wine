@@ -24,14 +24,18 @@
 
 <img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="350" height="500"/>
 
-#### 로그인
+#### 이메일 로그인
 - 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
 - 간편 회원가입 버튼을 통해 구글과 카카오톡으로 로그인할 수 있습니다.
 - 로그인에 성공하였을 경우 로그인된 상태로 루트페이지 '/'로 이동합니다.
 - 상단의 WINE로고를 클릭했을 때 루트페이지 '/'로 이동합니다.
 - '회원가입하기'를 클릭하면 회원가입페이지 'signup'으로 이동합니다.
 
-<br>
+<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="350" height="500"/>
+
+#### 소셜 로그인
+
+<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="350" height="500"/>
 
 #### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
 
