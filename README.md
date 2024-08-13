@@ -24,17 +24,17 @@
 
 ### 🍷 프로젝트 내용은 뭔가요?
 
-### 랜딩페이지
+### 🧀 랜딩페이지
 
 <img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650" />
 <br><br>
 
-### 회원가입
+### 🧀 회원가입
 
 <img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400"/>
 <br><br>
 
-### 로그인
+### 🧀 로그인
 - 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
 - 간편 회원가입 버튼을 통해 구글과 카카오톡으로 로그인할 수 있습니다.
 - 로그인에 성공하였을 경우 로그인된 상태로 루트페이지 '/'로 이동합니다.
@@ -57,7 +57,7 @@
 <br>
 <br>
 
-### 와인디테일 - 직관적인 리뷰 시스템
+### 🧀 와인디테일 - 직관적인 리뷰 시스템
 #### 반응형 구현 <br>
 - 모바일 사이즈
 <img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250"/>
@@ -83,10 +83,15 @@
 <br><br>
 <img src="https://github.com/user-attachments/assets/9173e094-25d3-4f1d-94fe-f76197269a1d" width="800"/> <br>
 
+#### 리뷰가 없는 경우
+리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
+<br><br>
+<img src="https://github.com/user-attachments/assets/c4b9097e-b33b-47a0-acb3-447208b7e9cd" width="800"/> <br>
+
 
 <br><br>
 
-### 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
+### 🧀 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
 - 사용자를 구분해 사용자마다 작성한 와인과 리뷰를 검색할 수 있다.
 - 사용자 프로필 데이터를 제공하고 프로필사진을 선택해 이미지 변경이 가능하다
 - 사용자 닉네임을 작성해 변경 가능하다
