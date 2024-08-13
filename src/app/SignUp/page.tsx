@@ -28,10 +28,12 @@ export default function SignUp() {
       <OAuthButton logo={kakaoLogo} text={session ? '로그아웃' : 'kakao로 시작하기'} onClick={session ? signOut : () => signIn('kakao')} /> */}
       {/* <button onClick={openModal}>모달열기</button> */}
       {/* <ModalFilter isModalOpen={isModalOpen} closeModal={closeModal} setWines={setWines} /> */}
-      <ModalWine isModalOpen={isModalOpen} closeModal={closeModal} />
+      {/* <ModalWine isModalOpen={isModalOpen} closeModal={closeModal} showButton={true} /> */}
       {/* <ModalEdit isModalOpen={isModalOpen} closeModal={closeModal} /> */}
       {/* <ModalReview isModalOpen={isModalOpen} wineId={35} closeModal={closeModal} wineName="test와인" /> */}
-      <SignupForm />
+      <div className="signup-form">
+        <SignupForm />
+      </div>
     </>
   );
 }

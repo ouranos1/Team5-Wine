@@ -27,6 +27,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
   const [reviewContent, setReviewContent] = useState(ReviewData?.content || '');
   const [aromas, setAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const aromaList = createAromaList(aromas);
+
   // console.log(ReviewData);
 
   // useEffect(() => {
@@ -67,7 +68,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
       };
       addReviewsAPI(requestBody);
     }
-    closeModal;
+    closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas, wineId]);
 
   const patchReview = useCallback(() => {
@@ -85,7 +86,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
       };
       editReviewsAPI(requestBody, ReviewData.id);
     }
-    closeModal;
+    closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas]);
 
   return (
@@ -113,7 +114,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
                     <Stars stars={ReviewData.rating} isEvent={true} onRatingChange={handleRatingChange} />
                   </div>
                 </div>
-                <div className='input-width'>
+                <div className="input-width">
                   <Input type="email" defaultValue={ReviewData.content} inputname="" onChange={(e) => setReviewContent(e.target.value)} />
                 </div>
               </div>

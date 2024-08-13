@@ -1,5 +1,5 @@
-@import "../styles/ColorList.scss";
-@import "@/styles/Font-Mixins.scss";
+@import '../styles/ColorList.scss';
+@import '@/styles/Font-Mixins.scss';
 
 @mixin desktop {
   @media screen and (min-width: 1025px) {
@@ -34,4 +34,7 @@ body {
     padding-left: 16px;
     padding-right: 16px;
   }
+}
+.auth-background {
+  background-color: $Grayscale-100;
 }
