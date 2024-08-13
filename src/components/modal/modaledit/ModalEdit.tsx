@@ -67,8 +67,6 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
       type: type,
     };
 
-    console.log(wineData);
-
     try {
       await editWine(wineData, id);
       console.log('와인 정보 수정 성공');
@@ -106,7 +104,7 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
           <option value="SPARKLING">SPARKLING</option>
         </select>
 
-        <ImageUpload onImageUpload={handleImageUpload} wineImage={wine?.image ? wine.image : null}/>
+        <ImageUpload onImageUpload={handleImageUpload} wineImage={wine?.image ? wine.image : null} />
       </form>
     </BaseModal>
   );
