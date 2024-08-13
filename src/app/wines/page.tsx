@@ -70,10 +70,10 @@ const WineListPage: React.FC = () => {
                   추천순
                 </p>
                 <p className={`wine-filter-by ${nowFilter.maxPrice ? '' : 'unactive'}`} onClick={() => handleFilter('maxPrice')}>
-                  추천순
+                  높은가격순
                 </p>
                 <p className={`wine-filter-by ${nowFilter.minPrice ? '' : 'unactive'}`} onClick={() => handleFilter('minPrice')}>
-                  추천순
+                  낮은가격순
                 </p>
               </div>
             )}
