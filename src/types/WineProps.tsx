@@ -10,7 +10,7 @@ export interface wine {
   image: imageProp;
   price: number;
   avgRating: number;
-  type: wineType;
+  type: wineTypeName;
 }
 
 export interface wineDetailType {

@@ -4,20 +4,31 @@ import BaseModal from '../modalbase/BaseModal';
 import { ModalWineEditProps } from '@/types/ModalProps';
 import Input from '@/components/inputComponent/Input';
 import ImageUpload from '@/components/modal/modalwine/imagecomponent/ImageUpload';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ImageAPI } from '@/api/Image';
 import { editWine } from '@/api/Wine';
 import { imageProp } from '@/types/Image';
 import { createWineBody } from '@/types/WineProps';
 import { wineTypeName } from '@/types/WineProps';
 import './ModalEdit.scss';
+import { set } from 'react-hook-form';
 
-export default function ModalEdit({ isModalOpen, closeModal, id }: ModalWineEditProps) {
+export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWineEditProps) {
   const [wineName, setWineName] = useState('');
   const [price, setPrice] = useState('');
   const [region, setRegion] = useState('');
   const [type, setType] = useState<wineTypeName>('RED');
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<imageProp>(null);
+
+  useEffect(() => {
+    if (wine) {
+      setWineName(wine.name);
+      setPrice(wine.price.toString());
+      setRegion(wine.region);
+      setType(wine.type);
+      setImageFile(wine.image);
+    }
+  }, [wine]);
 
   const handleWineNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWineName(e.target.value);
@@ -35,7 +46,7 @@ export default function ModalEdit({ isModalOpen, closeModal, id }: ModalWineEdit
     setType(e.target.value as wineTypeName);
   };
 
-  const handleImageUpload = (file: File) => {
+  const handleImageUpload = (file: imageProp) => {
     setImageFile(file);
   };
 
@@ -73,11 +84,11 @@ export default function ModalEdit({ isModalOpen, closeModal, id }: ModalWineEdit
 
     try {
       await editWine(wineData, id);
-      console.log('와인 등록 성공');
+      console.log('와인 정보 수정 성공');
       closeModal();
     } catch (error) {
-      console.error('와인 등록 오류:', error);
-      alert('와인 등록에 실패했습니다.');
+      console.error('와인 수정 오류:', error);
+      alert('와인 정보 수정에 실패했습니다.');
     }
   };
 

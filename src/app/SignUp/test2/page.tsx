@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { wineListAPI } from '@/api/Wine';
 import { wineDetailType } from '@/types/WineProps';
 import ModalDeleteReview from '@/components/modal/modaldelete/reviewdelete/ModalReviewDelete';
+import ModalWine from '@/components/modal/modalwine/ModalWine';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);

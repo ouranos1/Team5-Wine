@@ -51,6 +51,39 @@
     }
   }
 
+  @include mobile {
+    background-color: rgb(255, 240, 232);
+    padding: 16px 20px;
+    gap: 17px;
+
+    .review-header .rating-container {
+      height: 32px;
+
+      .rating {
+        @include font-settings(14, bold, 24);
+        width: 60px;
+        height: 100%;
+      }
+
+      .time {
+        @include font-settings(14, regular, 24);
+      }
+    }
+
+    .review-header .options {
+      font-size: 24px;
+    }
+
+    .review-body .title {
+      @include font-settings(14, medium, 24);
+    }
+
+    .review-body .description {
+      @include font-settings(14, regular, 24);
+      line-height: 24px;
+    }
+  }
+
   .review-header {
     display: flex;
     justify-content: space-between;
