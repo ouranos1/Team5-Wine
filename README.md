@@ -1,4 +1,6 @@
 # Wine 🍷
+<img src="https://github.com/user-attachments/assets/6ae4de0e-414e-4ced-b7e4-be241d29e3f6" width="900px" align-items="center" />
+
 **와인 리뷰 플랫폼 - 와인** 은 와인을 등록하고, 코드잇 부트캠프 와인의 별점을 매겨 사용자들 세계 각국의 다양한 와인을 등록하고 소개하여, 사용자들이 와인을 쉽게 접할 수 있도록 돕는 것을 목표로 합니다.
 
 
