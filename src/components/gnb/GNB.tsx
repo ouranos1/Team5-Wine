@@ -30,6 +30,7 @@ const GNB: React.FC = () => {
     { name: '로그아웃', path: '/' },
   ];
 
+  console.log(userData);
   // useEffect로 전역 클릭 이벤트 감지
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
