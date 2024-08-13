@@ -13,7 +13,7 @@ import { usePathname } from 'next/navigation';
 
 const GNB: React.FC = () => {
   const session = useSession();
-  const userData = session.data?.user.user;
+  const userData = session.data?.user.user.user;
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null); // 드롭다운과 아이콘을 감싸는 div를 참조
@@ -30,7 +30,6 @@ const GNB: React.FC = () => {
     { name: '로그아웃', path: '/' },
   ];
 
-  console.log(userData);
   // useEffect로 전역 클릭 이벤트 감지
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,7 +51,7 @@ const GNB: React.FC = () => {
       </Link>
       {userData ? (
         <div className="gnb-right" ref={dropdownRef}>
-          <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" onClick={toggleDropdown} />
+          <Image src={userData.image ? userData.image : defaultprofile} alt="User" className="user-image" width={20} height={20} onClick={toggleDropdown} />
           {isOpen && ( // isOpen이 true일 때만 드롭다운을 렌더링
             <div className="dropdown-container" onClick={toggleDropdown}>
               <Dropdown items={items} />
