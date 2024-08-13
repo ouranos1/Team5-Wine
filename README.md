@@ -103,7 +103,7 @@
 <br>
 
 ### [컨밴션](https://github.com/Y00nS00Hyun/Team5-Wine.wiki.git)
-  - 브랜치 전략
+  - [브랜치 전략](https://github.com/Y00nS00Hyun/Team5-Wine/wiki/branch#%EA%B0%9C%EC%9D%B8-%EA%B0%9C%EB%B0%9C-%EB%B8%8C%EB%9E%9C%EC%B9%98)
   - 코드 컨밴션
   - 커밋 컨밴션
 
