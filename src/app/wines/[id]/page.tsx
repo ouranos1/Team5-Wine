@@ -57,6 +57,7 @@ const App: React.FC<PageProps> = ({ params }) => {
                                     closeModal={handleOpenModal}
                                     wineName="와인 이름"
                                     wineId={id}
+                                    showButton={true}
                                 />
                             </div>
                         </div>

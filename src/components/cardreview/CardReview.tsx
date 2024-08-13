@@ -42,7 +42,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
     const [dropdown, setDropdown] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const session = useSession();
-    const userData = session.data?.user.user;
+    const userData = session.data?.user;
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -106,7 +106,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
                             </span>
                         </div>
                         <div>
-                            {userData.user.id === detail.user.id && < span className="options" onClick={toggleDropdown}> ⋮ </span>}
+                            {userData && userData.user.id === detail.user.id && < span className="options" onClick={toggleDropdown}> ⋮ </span>}
                         </div>
                     </div>
                     <div className="soohyun-aroma">
@@ -126,6 +126,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId }) => {
                         wineName="와인 이름"
                         wineId={detail?.wineId}
                         ReviewData={convertReviewListToResponseBody(detail, detail?.wineId)}
+                        showButton={true}
                     />
                 </div>
             }
