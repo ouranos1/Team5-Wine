@@ -6,17 +6,46 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 109px;
-
-  .section {
-    margin-bottom: 96px;
-  }
+  width: auto;
+  margin: 0 20px;
 
   .header {
     margin: 80px 0px 160px 0px;
 
     img {
       height: 535px;
+    }
+  }
+
+  .wine-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+    }
+
+    @include mobile {
+      .recommended-wines {
+        background-image: url('../assets/png/sm_02.png');
+        background-size: cover;
+      }
+
+      .wine-details {
+        background-image: url('../assets/png/sm_03.png');
+        background-size: cover;
+      }
+
+      .reviews {
+        background-image: url('../assets/png/sm_04.png');
+        background-size: cover;
+      }
+    }
+
+    .section {
+      margin-bottom: 96px;
+      width: 100%;
     }
   }
 

@@ -18,7 +18,7 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
   const [price, setPrice] = useState('');
   const [region, setRegion] = useState('');
   const [type, setType] = useState<wineTypeName>('RED');
-  const [imageFile, setImageFile] = useState<imageProp>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (wine) {
@@ -46,7 +46,7 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
     setType(e.target.value as wineTypeName);
   };
 
-  const handleImageUpload = (file: imageProp) => {
+  const handleImageUpload = (file: File | null) => {
     setImageFile(file);
   };
 
