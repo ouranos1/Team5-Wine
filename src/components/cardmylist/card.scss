@@ -11,6 +11,12 @@
   margin-top: 20px;
   display: flex;
 
+  .soohyun-dropdown {
+    position: absolute;
+    top: 76px;
+    right: 40px;
+  }
+
   // Large Size
   @include desktop {
     width: 800px;
