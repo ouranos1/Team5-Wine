@@ -1,5 +1,9 @@
-@import "../styles/ColorList.scss";
-@import "@/styles/Font-Mixins.scss";
+@import '../styles/ColorList.scss';
+@import '@/styles/Font-Mixins.scss';
+
+.auth-background {
+  background-color: $Grayscale-100;
+}
 
 @mixin desktop {
   @media screen and (min-width: 1025px) {

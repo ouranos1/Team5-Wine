@@ -52,7 +52,9 @@ const LoginForm: React.FC = () => {
         }}
       >
         <div className="signin-header">
-          <Image src={Logo} alt="wine" width={104} height={30} />
+          <Link href="/">
+            <Image src={Logo} alt="wine" width={104} height={30} />
+          </Link>
         </div>
         <Input type="email" placeholder="이메일 입력" inputname="이메일" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" placeholder="비밀번호 입력" inputname="비밀번호" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
@@ -63,7 +65,7 @@ const LoginForm: React.FC = () => {
       <OAuthButton logo={kakaoLogo} text="Kakao로 시작하기" onClick={() => signIn('kakao')} />
 
       <p className="signup-link">
-        계정이 없으신가요? <Link href="/SignUp">회원가입하기</Link>
+        계정이 없으신가요? <Link href="/signup">회원가입하기</Link>
       </p>
     </div>
   );

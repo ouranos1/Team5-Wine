@@ -19,15 +19,21 @@
       margin-bottom: 30px;
     }
 
-    .input {
-      margin-top: 10px;
+    .inputname {
+      margin-top: 25px;
     }
 
     .button {
-      margin: 30px 0px 40px 0px;
+      margin-top: 56px;
     }
   }
-  .signin-link {
+  .fake-pw-finder {
+    @include font-settings(14, regular, 24);
+    margin-top: 10px;
+    color: $Primary-Purple-200;
+  }
+  .signup-link {
+    margin-top: 32px;
     @include font-settings(16, 'regular', 19.09);
     color: $Grayscale-300;
 
