@@ -73,7 +73,6 @@ function MyProfile() {
       }
     };
     fetchData();
-    // console.log(myReviews);
   }, []);
 
   return (
@@ -115,7 +114,7 @@ function MyProfile() {
               내가 등록한 와인
             </p>
           </div>
-          <p className="total-count">{`총 ${totalReviewCount}개`}</p>
+          <p className="total-count">{`총 ${(nowMenu === "review" ? totalReviewCount : totalWineCount)}개`}</p>
         </div>
         <div className="content">
           {nowMenu === 'review' ? (

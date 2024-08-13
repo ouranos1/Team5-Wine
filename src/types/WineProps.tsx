@@ -23,6 +23,7 @@ export interface wineDetailType {
   avgRating: number;
   reviewCount: number;
   recentReview: recentReview | null;
+  type : wineTypeName
   userId: id;
   reviews: [ReviewListType];
   avgRatings: avgratings;
