@@ -11,17 +11,16 @@ import defaultprofile from '@/assets/icon/defaultprofile.webp';
 import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
-import { myReviewsAPI, myWineAPI } from '@/api/User';
+import { editmyDataAPI, myReviewsAPI, myWineAPI } from '@/api/User';
 import { wineDetailType } from '@/types/WineProps';
 import Card from '@/components/cardmylist/card';
-
-function changeNickName() {}
 
 function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [inputNickName, setInputName] = useState<string>("");
   const [totalReviewCount, setTotalReviewCount] = useState<number>(0);
   const [totalWineCount, setTotalWineCount] = useState<number>(0);
 
@@ -30,7 +29,9 @@ function MyProfile() {
   const [nowMenu, setNowMenu] = useState<'wine' | 'review'>('review');
 
   const { data: session } = useSession();
-  const user = session?.user.user; // 세션에서 사용자 데이터 가져오기
+  const userdata = session?.user.user.user; // 세션에서 사용자 데이터 가져오기
+
+  console.log(userdata);
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -49,7 +50,6 @@ function MyProfile() {
       }
     }
   };
-  const currentImage = selectedImage || session?.user.user.image || defaultprofile;
 
   const handleMenu = () => {
     if (nowMenu === 'review') {
@@ -58,6 +58,25 @@ function MyProfile() {
       setNowMenu('review');
     }
   };
+
+function changeNickName() {
+  if(session?.user.user.user.image) {
+    const reqbody = {
+      image : selectedImage || userdata.image,
+      nickname : inputNickName || userdata.nickname,
+    }
+    return async() => {
+      console.log("프로필수정");
+      try {
+        await editmyDataAPI(reqbody);
+      }
+      catch (error) {
+        console.log(error);
+      }
+  }
+}
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -82,22 +101,32 @@ function MyProfile() {
         {/* 사용자 프로필 및 닉네임 수정 창 */}
         <div className="user-data">
           <div className="user-image-layer">
-            <div className="user-image-edit">
-              <Image src={currentImage} className="user-image"  width={100} height={100} alt="유저프로필" />
-              <label>+</label>
-              <input type="file" className="user-image-input" onChange={handleFileChange} />
-            </div>
+            <label className="user-image-edit" htmlFor="user-image-input">
+              {
+                userdata?.image ? (
+                  <Image src={selectedImage ? selectedImage : userdata.image} 
+                  className="user-image" alt="유저프로필" width={164} height={164}  />
+                ) :
+                (
+                  <Image src={defaultprofile} className="user-image"  width={164} height={164} 
+                  alt="유저프로필" />
+                )
+              }
+              <input id="user-image-input" type="file" className="user-image-input" 
+              accept='image/*' onChange={handleFileChange} style={{display: "none"}} />
+            </label>
             <div className="user-data-layer">
-              <p className="user-nickname">{user?.nickname}</p>
-              <p className="user-email">{user?.email}</p>
+              <p className="user-nickname">{userdata?.nickname}</p>
+              <p className="user-email">{userdata?.email}</p>
             </div>
           </div>
           <div className="user-edit">
             <div className="edit-input">
-              <Input inputname="닉네임" placeholder={user?.nickname} defaultValue="" />
+              <Input inputname="닉네임" placeholder={userdata?.nickname} defaultValue="" 
+              onChange={(e) => setInputName(e.target.value)} />
             </div>
             <div className="edit-button-layer">
-              <Button text="변경하기" onClick={changeNickName} />
+              <Button text="변경하기" onClick={changeNickName()} />
             </div>
           </div>
         </div>
@@ -107,14 +136,17 @@ function MyProfile() {
         <div className="content-layer">
           {/* 내가 쓴 후기, 내가 등록한 와인 */}
           <div className="content-menu">
-            <p className={`content-menu-title ${nowMenu === 'review' ? '' : 'unactive'}`} onClick={handleMenu}>
+            <p className={`content-menu-title ${nowMenu === 'review' ? '' : 'unactive'}`} 
+            onClick={handleMenu}>
               내가 쓴 후기
             </p>
-            <p className={`content-menu-title ${nowMenu === 'wine' ? '' : 'unactive'}`} onClick={handleMenu}>
+            <p className={`content-menu-title ${nowMenu === 'wine' ? '' : 'unactive'}`} 
+            onClick={handleMenu}>
               내가 등록한 와인
             </p>
           </div>
-          <p className="total-count">{`총 ${(nowMenu === "review" ? totalReviewCount : totalWineCount)}개`}</p>
+          <p className="total-count">{`총 ${(nowMenu === "review" ? totalReviewCount : 
+            totalWineCount)}개`}</p>
         </div>
         <div className="content">
           {nowMenu === 'review' ? (
