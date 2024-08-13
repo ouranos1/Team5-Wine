@@ -1,3 +1,4 @@
+import { editUser } from "@/types/UserProps";
 import CallAPI from "./CallApi";
 
 export async function myDataAPI() {
@@ -8,11 +9,11 @@ export async function myDataAPI() {
     return await CallAPI({method, query, body, apiName});
 }
 
-export async function editmyDataAPI() {
-    const method = "post";
+export async function editmyDataAPI(userData : editUser) {
+    const method = "patch";
     let query = "/users/me";
     const apiName = "mydata";
-    const body = null;
+    const body = userData;
     await CallAPI({method, query, body, apiName});
 }
 
