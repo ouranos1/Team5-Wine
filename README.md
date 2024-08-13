@@ -1,7 +1,7 @@
 # Wine 🍷
 **와인 리뷰 플랫폼 - 와인** 은 와인을 등록하고, 코드잇 부트캠프 와인의 별점을 매겨 사용자들 세계 각국의 다양한 와인을 등록하고 소개하여, 사용자들이 와인을 쉽게 접할 수 있도록 돕는 것을 목표로 합니다.
 
-![image](https://github.com/user-attachments/assets/bb8345c2-b26d-4c34-a1e3-9daafcfbfc60)
+
 
 <br>
 
@@ -18,11 +18,11 @@
 
 #### 랜딩페이지
 
-<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="550" height="500" />
+<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650" />
 
 #### 회원가입
 
-<img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="350" height="500"/>
+<img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400"/>
 
 #### 로그인
 - 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
@@ -33,11 +33,11 @@
 
 ##### 이메일 로그인
 
-<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="600" height="500"/>
+<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900"/>
 
 ##### 소셜 로그인
 
-<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="600" height="500"/>
+<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900"/>
 
 #### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
 
