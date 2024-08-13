@@ -16,7 +16,7 @@ import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
 import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
-import { useSession } from 'next-auth/react'; 3
+import { useSession } from 'next-auth/react';
 
 interface ReviewProps {
     reviewId: id;
