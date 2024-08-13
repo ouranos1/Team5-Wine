@@ -18,7 +18,7 @@
 
 #### 랜딩페이지
 
-<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="350" height="500" />
+<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="550" height="500" />
 
 #### 회원가입
 
