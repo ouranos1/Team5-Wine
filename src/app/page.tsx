@@ -15,16 +15,18 @@ export default function Home() {
           <Image src={Header} alt="헤더 이미지" />
         </div>
 
-        <div className="section recommended-wines">
-          <Image src={WineRecommended} alt="추천와인 이미지" />
-        </div>
+        <div className="wine-container">
+          <div className="section recommended-wines">
+            <Image src={WineRecommended} alt="추천와인 이미지" />
+          </div>
 
-        <div className="section wine-details">
-          <Image src={wineDetails} alt="추천상세 이미지" />
-        </div>
+          <div className="section wine-details">
+            <Image src={wineDetails} alt="추천상세 이미지" />
+          </div>
 
-        <div className="section reviews">
-          <Image src={wineReviews} alt="와인리뷰 이미지" />
+          <div className="section reviews">
+            <Image src={wineReviews} alt="와인리뷰 이미지" />
+          </div>
         </div>
 
         <div className="button-container">

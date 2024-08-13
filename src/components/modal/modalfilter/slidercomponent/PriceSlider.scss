@@ -30,10 +30,10 @@
       position: absolute;
 
       &::-webkit-slider-thumb {
-        // appearance: none;
+        appearance: none;
         width: 20px;
         height: 20px;
-        background: $White;
+        background: $Primary-Purple-100;
         border: 1px solid $Grayscale-200;
         border-radius: 50%;
         cursor: pointer;
@@ -47,7 +47,7 @@
         appearance: none;
         width: 20px;
         height: 20px;
-        background: $White;
+        background: $Primary-Purple-100;
         border: 1px solid $Grayscale-200;
         border-radius: 50%;
         cursor: pointer;
