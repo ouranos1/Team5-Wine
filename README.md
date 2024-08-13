@@ -16,38 +16,55 @@
 
 ### 🍷 프로젝트 내용은 뭔가요?
 
-#### 랜딩페이지
+### 랜딩페이지
 
 <img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650" />
 
-#### 회원가입
+### 회원가입
 
 <img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400"/>
 
-#### 로그인
+### 로그인
 - 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
 - 간편 회원가입 버튼을 통해 구글과 카카오톡으로 로그인할 수 있습니다.
 - 로그인에 성공하였을 경우 로그인된 상태로 루트페이지 '/'로 이동합니다.
 - 상단의 WINE로고를 클릭했을 때 루트페이지 '/'로 이동합니다.
 - '회원가입하기'를 클릭하면 회원가입페이지 'signup'으로 이동합니다.
 
-##### 이메일 로그인
+#### 이메일 로그인
 
 <img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900"/>
 
-##### 소셜 로그인
+#### 소셜 로그인
 
 <img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900"/>
 
-#### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
+### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
+<br>
+
+### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
 
 <br>
 
-#### 와인디테일 - 직관적인 리뷰 시스템
+### 와인디테일 - 직관적인 리뷰 시스템
+#### 반응형 구현 <br>
+- 모바일 사이즈
+<img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250"/>
+<br><br>
+
+- 타블렛 사이즈
+<img src="https://github.com/user-attachments/assets/68cb1347-92f8-4b2f-a833-b24b1c927073" width="350"/>
+<br><br>
+
+- 데스크탑 사이즈
+<img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800"/>
+<br><br>
 
 <br>
 
-#### 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
+<br>
+
+### 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
 - 사용자를 구분해 사용자마다 작성한 와인과 리뷰를 검색할 수 있다.
 - 사용자 프로필 데이터를 제공하고 프로필사진을 선택해 이미지 변경이 가능하다
 - 사용자 닉네임을 작성해 변경 가능하다
