@@ -2,7 +2,6 @@
 
 import Input from '@/components/inputComponent/Input';
 import '@/components/slidecomponent/SlideComponent.scss';
-import { ModalReview } from '@/components/modal/modalreview/ModalReview';
 import { useEffect, useState, useMemo } from 'react';
 import '@/app/myprofile/page.scss';
 import Button from '@/components/button/Button';
@@ -13,7 +12,6 @@ import { ImageAPI } from '@/api/Image';
 import { ReviewListType } from '@/types/ReviewProps';
 import { useSession } from 'next-auth/react';
 import { myReviewsAPI, myWineAPI } from '@/api/User';
-import CardReview from '@/components/cardreview/CardReview';
 import { wineDetailType, winListType } from '@/types/WineProps';
 import Card from '@/components/cardmylist/card';
 
@@ -44,7 +42,6 @@ function MyProfile() {
       console.log('파일url받음');
       try {
         const response = await ImageAPI(formData);
-        // console.log(response);
         setSelectedImage(response.url);
         console.log('셋완료');
       } catch (error) {
@@ -87,9 +84,9 @@ function MyProfile() {
         <div className="user-data">
           <div className="user-image-layer">
             <div className="user-image-edit">
-              <Image src={currentImage} width={164} height={164} alt="유저프로필" />
+              <Image src={currentImage} className="user-image" alt="유저프로필" />
               <label>+</label>
-              <input type="file" className="user-image-input" onChange={handleFileChange} />
+              {/* <input type="file" className="user-image-input" onChange={handleFileChange} /> */}
             </div>
             <div className="user-data-layer">
               <p className="user-nickname">{user?.user.nickname}</p>
