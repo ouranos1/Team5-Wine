@@ -52,7 +52,7 @@
 
 <br>
 
-### 컨밴션{https://github.com/Y00nS00Hyun/Team5-Wine.wiki.git}
+### [컨밴션](https://github.com/Y00nS00Hyun/Team5-Wine.wiki.git)
   - 브랜치 전략
   - 코드 컨밴션
   - 커밋 컨밴션
