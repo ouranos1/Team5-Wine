@@ -72,7 +72,7 @@ const GNB: React.FC = () => {
           </Link>
           {isRoot && (
             <Link
-              href="/SignUp"
+              href="/signup"
               className="gnb-login"
               style={{
                 color: 'white',

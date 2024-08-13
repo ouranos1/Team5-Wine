@@ -106,7 +106,7 @@ export default function ModalEdit({ isModalOpen, closeModal, id, wine }: ModalWi
           <option value="SPARKLING">SPARKLING</option>
         </select>
 
-        <ImageUpload onImageUpload={handleImageUpload} wineImage={wine?.image ? wine.image : null}/>
+        <ImageUpload onImageUpload={handleImageUpload} wineImage={wine?.image ? wine.image : null} />
       </form>
     </BaseModal>
   );
