@@ -33,11 +33,11 @@
 
 ##### 이메일 로그인
 
-<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="550" height="500"/>
+<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="600" height="500"/>
 
 ##### 소셜 로그인
 
-<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="550" height="500"/>
+<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="600" height="500"/>
 
 #### 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
 
