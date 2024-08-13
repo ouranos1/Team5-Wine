@@ -52,7 +52,9 @@ const LoginForm: React.FC = () => {
         }}
       >
         <div className="signin-header">
-          <Image src={Logo} alt="wine" width={104} height={30} />
+          <Link href="/">
+            <Image src={Logo} alt="wine" width={104} height={30} />
+          </Link>
         </div>
         <Input type="email" placeholder="이메일 입력" inputname="이메일" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" placeholder="비밀번호 입력" inputname="비밀번호" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />

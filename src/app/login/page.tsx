@@ -14,11 +14,9 @@ const Home: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="login-container">
-        <LoginForm />
-      </div>
-    </>
+    <div className="login-container">
+      <LoginForm />
+    </div>
   );
 };
 
