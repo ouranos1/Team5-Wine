@@ -2,7 +2,7 @@ import BaseModal from '../modalbase/BaseModal';
 import { ModalProps } from '@/types/ModalProps';
 import Image from 'next/image';
 import wineIcon from '@/assets/icon/wineIcon.svg';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import '@/components/modal/modalreview/ModalReview.scss';
 import WineTasteSlide from '@/components/wineTaste/WineTasteSlide';
 import { AromaTag } from '@/components/aromatag/AromaTag';
@@ -113,7 +113,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
                     <Stars stars={ReviewData.rating} isEvent={true} onRatingChange={handleRatingChange} />
                   </div>
                 </div>
-                <div className='input-width'>
+                <div className="input-width">
                   <Input type="email" defaultValue={ReviewData.content} inputname="" onChange={(e) => setReviewContent(e.target.value)} />
                 </div>
               </div>
