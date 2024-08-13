@@ -28,18 +28,6 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
   const [aromas, setAromas] = useState<AromaName[]>(ReviewData?.aroma || []);
   const aromaList = createAromaList(aromas);
 
-  // console.log(ReviewData);
-
-  // useEffect(() => {
-  //   // console.log('rating' + ReviewData?.rating);
-  //   setRating(ReviewData?.rating || 0);
-  //   setReviewContent(ReviewData?.content || '');
-  //   setSlideValue(ReviewData ? [ReviewData.lightBold, ReviewData.smoothTannic, ReviewData.drySweet, ReviewData.softAcidic] : [0, 0, 0, 0]);
-  //   setSelectedAromas(ReviewData?.aroma || []);
-  //   const aromatest: AromaName[] = ReviewData?.aroma || [];
-  //   const aromaList = createAromaList(aromatest);
-  // }, [ReviewData]);
-
   const handleRatingChange = useCallback((newRating: number) => {
     setRating(newRating);
   }, []);
