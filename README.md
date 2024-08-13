@@ -78,7 +78,7 @@
 <img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="600"/>
 <br><br>
 
-- 삭제하기
+- 삭제하기 <br>
 삭제하기 버튼을 누르면 즉시 데이터가 다시 불러와져서, 평균 점수가 변경되는 것을 확인할 수 있습니다.
 <br><br>
 <img src="https://github.com/user-attachments/assets/9173e094-25d3-4f1d-94fe-f76197269a1d" width="800"/> <br>
