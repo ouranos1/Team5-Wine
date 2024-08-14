@@ -10,7 +10,6 @@
 **와인 리뷰 플랫폼 - 와인** 은 와인을 등록하고, 코드잇 부트캠프 와인의 별점을 매겨 사용자들 세계 각국의 다양한 와인을 등록하고 소개하여, 사용자들이 와인을 쉽게 접할 수 있도록 돕는 것을 목표로 합니다.
 
 
-
 <br>
 
 ## 1) 프로젝트 개요
@@ -21,90 +20,6 @@
 와인 프로젝트는 리뷰 작성, 별점 평가, 다양한 모달 같은 여러 컴포넌트를 직접 구현해볼 수 있는 좋은 기회를 제공합니다. 뿐만 아니라, 단순한 로그인 기능을 넘어 구글과 카카오 간편 로그인 기능도 손쉽게 추가해볼 수 있어서, 실제 서비스에 필요한 기술을 배우고 활용할 수 있습니다. 사이트 디자인도 예쁘고 고급스러운 느낌을 주어, 사용자 경험을 한층 더 개선할 수 있다는 점이 이 프로젝트를 선택한 중요한 이유 중 하나였습니다.
 
 <br>
-
-### 🍷 프로젝트 내용은 뭔가요?
-
-### 🧀 랜딩페이지
-
-<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650px" />
-<br><br>
-
-### 🧀 회원가입
-
-<img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400px"/>
-
-- 사용자에게 이메일과 닉네임, 비밀번호를 입력받는다.
-- 이메일과 비밀번호는 각각 정해진 규격에 부합해야한다.
-- 회원가입이 정상적으로 로그인 처리를 같이 해준다.
-- 로그인 후 랜딩 페이지로 이동한다.
-<br><br>
-
-### 🧀 로그인
-- 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
-- 간편 회원가입 버튼을 통해 구글과 카카오톡으로 로그인할 수 있습니다.
-- 로그인에 성공하였을 경우 로그인된 상태로 루트페이지 '/'로 이동합니다.
-- 상단의 WINE로고를 클릭했을 때 루트페이지 '/'로 이동합니다.
-- '회원가입하기'를 클릭하면 회원가입페이지 'signup'으로 이동합니다.
-
-#### 이메일 로그인
-
-<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900px"/>
-<br>
-
-#### 소셜 로그인
-
-<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900px"/>
-<br>
-
-### 🧀 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
-- 추천 와인으로 전체 와인에서 평점 4.2 이상인 와인을 불러와 보여준다.
-
-<br>
-<br>
-<br>
-
-### 🧀 와인디테일 - 직관적인 리뷰 시스템
-#### 반응형 구현 <br>
-- 모바일 사이즈
-<img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250px"/>
-<br><br>
-
-- 타블렛 사이즈
-<img src="https://github.com/user-attachments/assets/68cb1347-92f8-4b2f-a833-b24b1c927073" width="350px"/>
-<br><br>
-
-- 데스크탑 사이즈
-<img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800px"/>
-<br><br>
-
-#### 수정하기/삭제하기 DropDown
-본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
-
-- 수정하기 <br>
-<img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="500px"/>
-
-- 각 데이터를 입력하고 저장하면 수치가 변경되고 해당 와인의 데이터에 즉각 영향을 준다.
-<br><br>
-
-- 삭제하기 <br>
-삭제하기 버튼을 누르면 즉시 데이터가 다시 불러와져서, 평균 점수가 변경되는 것을 확인할 수 있습니다.
-<br><br>
-<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/> <br>
-
-#### 리뷰가 없는 경우
-리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
-<br><br>
-<img src="https://github.com/user-attachments/assets/c4b9097e-b33b-47a0-acb3-447208b7e9cd" width="700px"/> <br>
-
-
-<br><br>
-
-### 🧀 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
-- 사용자를 구분해 사용자마다 작성한 와인과 리뷰를 검색할 수 있다.
-- 사용자 프로필 데이터를 제공하고 프로필사진을 선택해 이미지 변경이 가능하다
-- 사용자 닉네임을 작성해 변경 가능하다
-- 자신이 작성한 리뷰와 와인을 수정하거나 삭제할 수 있다.
-<br><br>
 
 ### 🍷 개발환경
 - Front : TypeScript, Next.js, SCSS, Axios, next.auth
@@ -187,7 +102,87 @@
     
 ## 4) 프로젝트 수행 경과
 
-시연영상
+### 🧀 랜딩페이지
+
+<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650px" />
+<br><br>
+
+### 🧀 회원가입
+
+<img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400px"/>
+
+- 사용자에게 이메일과 닉네임, 비밀번호를 입력받는다.
+- 이메일과 비밀번호는 각각 정해진 규격에 부합해야한다.
+- 회원가입이 정상적으로 로그인 처리를 같이 해준다.
+- 로그인 후 랜딩 페이지로 이동한다.
+<br><br>
+
+### 🧀 로그인
+- 이메일형식과 비밀번호형식을 맞춰야 로그인할 수 있다.
+- 간편 회원가입 버튼을 통해 구글과 카카오톡으로 로그인할 수 있습니다.
+- 로그인에 성공하였을 경우 로그인된 상태로 루트페이지 '/'로 이동합니다.
+- 상단의 WINE로고를 클릭했을 때 루트페이지 '/'로 이동합니다.
+- '회원가입하기'를 클릭하면 회원가입페이지 'signup'으로 이동합니다.
+
+#### 이메일 로그인
+
+<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900px"/>
+<br>
+
+#### 소셜 로그인
+
+<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900px"/>
+<br>
+
+### 🧀 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
+- 추천 와인으로 전체 와인에서 평점 4.2 이상인 와인을 불러와 보여준다.
+
+<br>
+<br>
+<br>
+
+### 🧀 와인디테일 - 직관적인 리뷰 시스템
+#### 반응형 구현 <br>
+- 모바일 사이즈
+<img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250px"/>
+<br><br>
+
+- 타블렛 사이즈
+<img src="https://github.com/user-attachments/assets/68cb1347-92f8-4b2f-a833-b24b1c927073" width="350px"/>
+<br><br>
+
+- 데스크탑 사이즈
+<img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800px"/>
+<br><br>
+
+#### 수정하기/삭제하기 DropDown
+본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
+
+- 수정하기 <br>
+<img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="500px"/>
+
+- 각 데이터를 입력하고 저장하면 수치가 변경되고 해당 와인의 데이터에 즉각 영향을 준다.
+<br><br>
+
+- 삭제하기 <br>
+삭제하기 버튼을 누르면 즉시 데이터가 다시 불러와져서, 평균 점수가 변경되는 것을 확인할 수 있습니다.
+<br><br>
+<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/> <br>
+
+#### 리뷰가 없는 경우
+리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
+<br><br>
+<img src="https://github.com/user-attachments/assets/c4b9097e-b33b-47a0-acb3-447208b7e9cd" width="700px"/> <br>
+
+
+<br><br>
+
+### 🧀 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
+- 사용자를 구분해 사용자마다 작성한 와인과 리뷰를 검색할 수 있다.
+- 사용자 프로필 데이터를 제공하고 프로필사진을 선택해 이미지 변경이 가능하다
+- 사용자 닉네임을 작성해 변경 가능하다
+- 자신이 작성한 리뷰와 와인을 수정하거나 삭제할 수 있다.
+<br><br>
 
 <br>
 
