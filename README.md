@@ -179,12 +179,16 @@
 
 ### 🧀 마이프로필 - 다양한 필터로 찾는 내 맞춤 와인
 - 사용자를 구분해 사용자마다 작성한 와인과 리뷰를 검색할 수 있다.
+  <img src="https://github.com/user-attachments/assets/98649631-b240-4cb2-9a95-8eeef88955bd" />
+- <br><br>
 - 사용자 프로필 데이터를 제공하고 프로필사진을 선택해 이미지 변경이 가능하다
-- 사용자 닉네임을 작성해 변경 가능하다
+  <img src="https://github.com/user-attachments/assets/eddace42-0c97-4ce7-919e-ce496744d239" /> <br>
+  <img src="https://github.com/user-attachments/assets/37ca700d-7aad-4f40-99fb-b34d2f3fc1a9" /> <br>
 - 자신이 작성한 리뷰와 와인을 수정하거나 삭제할 수 있다.
+  <img src="https://github.com/user-attachments/assets/65a2c681-ddd9-49b0-8c9f-e2841c92df6c" /> <br>
+  <img src="https://github.com/user-attachments/assets/16e336e1-ffef-40b6-8f3f-26792701ca5c" /> <br>
 <br><br>
 
-<br>
 
 ## 5) 자체 평가 의견
 
