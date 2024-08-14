@@ -74,13 +74,13 @@
 본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
 
 - 수정하기 <br>
-<img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="500px"/>
+<img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="400px"/>
 <br><br>
 
 - 삭제하기 <br>
 삭제하기 버튼을 누르면 즉시 데이터가 다시 불러와져서, 평균 점수가 변경되는 것을 확인할 수 있습니다.
 <br><br>
-<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/> <br>
+<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="400px"/> <br>
 
 #### 리뷰가 없는 경우
 리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
