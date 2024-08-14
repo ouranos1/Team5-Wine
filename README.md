@@ -26,12 +26,12 @@
 
 ### 🧀 랜딩페이지
 
-<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650" />
+<img src="https://github.com/user-attachments/assets/abdcb869-a11e-4d4f-ac2d-600fa687b61f" width="650px" />
 <br><br>
 
 ### 🧀 회원가입
 
-<img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400"/>
+<img src="https://github.com/user-attachments/assets/1e4ea665-c885-4bc2-8227-b03a650636b8" width="400px"/>
 <br><br>
 
 ### 🧀 로그인
@@ -43,12 +43,12 @@
 
 #### 이메일 로그인
 
-<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900"/>
+<img src="https://github.com/user-attachments/assets/54b7ba9d-48b0-499d-a741-4504c76f83c5" width="900px"/>
 <br>
 
 #### 소셜 로그인
 
-<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900"/>
+<img src="https://github.com/user-attachments/assets/94c6d0d4-a0d1-4cd4-9892-df7ba419c84a" width="900px"/>
 <br>
 
 ### 🧀 와인목록 - 매달 새롭게 만나는 와인 추천 콘텐츠
@@ -59,33 +59,33 @@
 ### 🧀 와인디테일 - 직관적인 리뷰 시스템
 #### 반응형 구현 <br>
 - 모바일 사이즈
-<img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250"/>
+<img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250px"/>
 <br><br>
 
 - 타블렛 사이즈
-<img src="https://github.com/user-attachments/assets/68cb1347-92f8-4b2f-a833-b24b1c927073" width="350"/>
+<img src="https://github.com/user-attachments/assets/68cb1347-92f8-4b2f-a833-b24b1c927073" width="350px"/>
 <br><br>
 
 - 데스크탑 사이즈
-<img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800"/>
+<img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800px"/>
 <br><br>
 
 #### 수정하기/삭제하기 DropDown
 본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
 
 - 수정하기 <br>
-<img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="600"/>
+<img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="500px"/>
 <br><br>
 
 - 삭제하기 <br>
 삭제하기 버튼을 누르면 즉시 데이터가 다시 불러와져서, 평균 점수가 변경되는 것을 확인할 수 있습니다.
 <br><br>
-<img src="https://github.com/user-attachments/assets/9173e094-25d3-4f1d-94fe-f76197269a1d" width="800"/> <br>
+<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/> <br>
 
 #### 리뷰가 없는 경우
 리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
 <br><br>
-<img src="https://github.com/user-attachments/assets/c4b9097e-b33b-47a0-acb3-447208b7e9cd" width="800"/> <br>
+<img src="https://github.com/user-attachments/assets/c4b9097e-b33b-47a0-acb3-447208b7e9cd" width="800px"/> <br>
 
 
 <br><br>
