@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import wineLogo from '@/assets/icon/wineLogo.svg';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import Button from '@/components/button/Button';
 import { signUpAPI, signInAPI } from '@/api/Auth';
 import { loginAndStoreTokens } from '@/utils/authutils';
@@ -85,19 +85,31 @@ export default function SignupForm() {
         };
         console.log('전송할 데이터:', userData);
 
-        await signUpAPI(userData);
+        const response = await signUpAPI(userData);
+
+        if (response.status === 400) {
+          alert('중복된 이메일입니다.');
+          return;
+        }
+
         alert('회원가입이 완료되었습니다');
 
-        signIn('Credentials', { email: encodeURIComponent(email), password });
+        const signInResponse = await signIn('Credentials', { email: encodeURIComponent(email), password, redirect: false });
+
+        if (signInResponse?.error) {
+          alert('로그인 중 오류가 발생했습니다.');
+          return;
+        }
 
         const session2 = await getSession();
-        console.log(session2);
+        console.log('출력', session2);
 
         if (session2?.user.user) {
-          redirect('/');
+          router.push('/');
         }
       } catch (error) {
         console.error('회원가입 중 오류가 발생했습니다:', error);
+        alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
       }
     } else {
       alert('입력값을 다시 확인해주세요');

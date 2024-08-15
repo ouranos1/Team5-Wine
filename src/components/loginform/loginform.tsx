@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
-import Input from '@/components/inputComponent/Input';
+import Input from '@/components/inputcomponent/Input';
 import Button from '@/components/button/Button';
 import OAuthButton from '../oauthbuttoncomponent/OAuthButton';
 import Logo from '@/assets/icon/wineLogo.svg';
@@ -44,13 +44,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className="signin-form-container">
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          handleSignIn();
-        }}
-      >
+      <div className="signin-form">
         <div className="signin-header">
           <Link href="/">
             <Image src={Logo} alt="wine" width={104} height={30} />
@@ -59,8 +53,13 @@ const LoginForm: React.FC = () => {
         <Input type="email" placeholder="이메일 입력" inputname="이메일" defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" placeholder="비밀번호 입력" inputname="비밀번호" defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
         <p className="fake-pw-finder">비밀번호를 잊으셨나요?</p>
-        <Button text="로그인" type="submit" />
-      </form>
+        <Button
+          text="로그인"
+          onClick={() => {
+            handleSignIn();
+          }}
+        />
+      </div>
       <OAuthButton logo={googleLogo} text="google로 시작하기" onClick={() => signIn('google')} />
       <OAuthButton logo={kakaoLogo} text="Kakao로 시작하기" onClick={() => signIn('kakao')} />
 

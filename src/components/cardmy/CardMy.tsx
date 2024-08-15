@@ -9,10 +9,6 @@ import { ModalReview } from '../modal/modalreview/ModalReview';
 import { ReviewListType } from '@/types/ReviewProps';
 import { id } from '@/types/Id';
 
-// interface ReviewCardProps extends responseReviewBody{
-
-// }
-
 const Cardmy: React.FC<ReviewListType> = (prop) => {
   const stars = Math.round(prop.rating);
   const formattedDate = new Date(prop.createdAt).toISOString().split('T')[0]; // 날짜를 YYYY-MM-DD 형식으로 변환
@@ -82,7 +78,14 @@ const Cardmy: React.FC<ReviewListType> = (prop) => {
       </div>
 
       <div className="soohyun-dropdown">{dropdown && <SHDropdown items={items} reviewId={prop.id} />}</div>
-      <ModalReview isModalOpen={isModalOpen} closeModal={handleCloseModal} wineName={prop.wine.name} wineId={prop.wine.id} ReviewData={reviewData} />
+      <ModalReview 
+      isModalOpen={isModalOpen} 
+      closeModal={handleCloseModal} 
+      wineName={prop.wine.name} 
+      wineId={prop.wine.id} 
+      ReviewData={reviewData} 
+      showButton={true}
+      />
     </div>
   );
 };
