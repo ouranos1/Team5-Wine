@@ -157,14 +157,16 @@
   
 <br>
 
-**반응형 구현** <br>
 #### 리뷰 남기기 모달 창 <br>
 - 별점, 후기, 와인 맛, 향을 리뷰로 남길 수 있습니다.
 - 정보를 입력 후 '리뷰 남기기' 버튼을 누르면 리뷰가 등록됩니다.
 - 등록이 되면 모달창이 꺼집니다.
 - X 버튼을 누르면 모달창이 꺼집니다.
-
-   <br> <br>
+  
+ <br><br>
+ 
+**반응형 구현**
+ <br>
    
 - 모바일 사이즈
 <img src="https://github.com/user-attachments/assets/d30292c9-b319-4441-af2f-d8960185969d" width="250px"/>
@@ -176,7 +178,8 @@
 
 - 데스크탑 사이즈
 <img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800px"/>
-<br><br>
+
+<br><br><br>
 
 **수정하기/삭제하기 DropDown** <br>
 본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
@@ -187,12 +190,15 @@
 각 데이터를 입력하고 저장하면 수치가 변경되고 해당 와인의 데이터에 즉각 영향을 줍니다.
 <img src="https://github.com/user-attachments/assets/4e796f98-b556-4fe2-ad31-1e0216a006e2" width="500px"/>
 
-<br><br>
+<br>
 
 - 삭제하기 <br>
 삭제하기 버튼을 누르면 즉시 데이터가 다시 불러와져서, 평균 점수가 변경되는 것을 확인할 수 있습니다.
 <br><br>
-<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/> <br>
+
+<img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/>
+
+<br><br>
 
 **리뷰가 없는 경우** <br>
 리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
