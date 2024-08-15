@@ -155,8 +155,8 @@
 - 리뷰 목록을 보여줍니다.
 - '리뷰 남기기' 버튼을 누르면 리뷰 모달창이 나타납니다.
 
-#### 반응형 구현 <br>
-**리뷰 남기기 보달 창** <br>
+**반응형 구현** <br>
+#### 리뷰 남기기 모모달 창 <br>
 - 별점, 후기, 와인 맛, 향을 리뷰로 남길 수 있습니다.
 - 정보를 입력 후 '리뷰 남기기' 버튼을 누르면 리뷰가 등록됩니다.
 - 등록이 되면 모달창이 꺼집니다.
@@ -174,7 +174,7 @@
 <img src="https://github.com/user-attachments/assets/65c09c43-ed70-4b26-9e7c-4f8065b5503b" width="800px"/>
 <br><br>
 
-#### 수정하기/삭제하기 DropDown
+**수정하기/삭제하기 DropDown** <br>
 본인 계정일 때만 수정 및 삭제가 가능하도록, 자신의 리뷰에만 드롭다운 버튼이 표시됩니다.
 
 - 수정하기 <br>
@@ -188,7 +188,7 @@
 <br><br>
 <img src="https://github.com/user-attachments/assets/579c5f9f-dd12-4796-90c1-8b85c2375459" width="500px"/> <br>
 
-#### 리뷰가 없는 경우
+**리뷰가 없는 경우** <br>
 리뷰가 없는 경우, 리뷰가 없음을 알리는 이미지를 표시했습니다.
 <br><br>
 <img src="https://github.com/user-attachments/assets/c4b9097e-b33b-47a0-acb3-447208b7e9cd" width="700px"/> <br>
