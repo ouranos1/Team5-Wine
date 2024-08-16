@@ -7,9 +7,9 @@ import CardCommon from '../cardcommon/Cardcommon';
 import RatingStart from '@/components/ratingstart/RatingStart';
 import Stars from '@/components/stars/StarsComponent';
 
-const Card: React.FC<CardProps> = ({ image, wineName, wineDesc, winePrice, review }) => {
-  const avgRating = 4.7;
-  const reviewCount = 47;
+const Card: React.FC<CardProps> = ({ image, wineName, wineDesc, winePrice, review = '', avgRating = 0, reviewCount = 0 }) => {
+  // const avgRating = 4.7;
+  // const reviewCount = 47;
 
   return (
     //<div className="hidden-card">

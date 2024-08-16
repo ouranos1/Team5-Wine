@@ -6,5 +6,7 @@ export interface CardProps {
   wineDesc: string;
   winePrice: number;
   childeren?: React.ReactNode;
-  review?: string;
+  review?: string | null;
+  avgRating?: number | null;
+  reviewCount?: number;
 }
