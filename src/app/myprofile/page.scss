@@ -53,6 +53,10 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          margin-bottom: 32px;
+          @include tablet {
+            margin-bottom: 0;
+          }
 
           @include tablet {
             align-items: flex-start;
@@ -63,6 +67,7 @@
           }
 
           .user-image {
+            border-radius: 100%;
             width: 164px;
             height: 164px;
             @include tablet {
@@ -80,6 +85,13 @@
           }
         }
         .user-data-layer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          @include tablet {
+            align-items:flex-start
+          }
           .user-nickname {
             @include font-settings(24, bold, 32);
             color: $Grayscale-400;

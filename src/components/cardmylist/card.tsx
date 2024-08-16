@@ -9,7 +9,7 @@ import ModalEdit from '@/components/modal/modaledit/ModalEdit';
 import SHDropdown from '../shdropdown/SHDropDown';
 import { id } from '@/types/Id';
 import { wineDetailType } from '@/types/WineProps';
-import { wineDetail } from '@/api/Wine';
+import { deleteWine, wineDetail } from '@/api/Wine';
 
 interface cardMylistProps extends CardProps {
   wineId: number;
@@ -34,6 +34,7 @@ const Card: React.FC<cardMylistProps> = ({ image, wineName, wineDesc, winePrice,
   };
 
   const onClickDelete = (wineId: id) => {
+    deleteWine(wineId);
     toggleDropdown();
   };
 
