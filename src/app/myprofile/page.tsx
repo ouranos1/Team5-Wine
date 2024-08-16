@@ -82,7 +82,7 @@ function changeNickName() {
       try {
         const reviewResoponse = await myReviewsAPI();
         const wineResopose = await myWineAPI();
-        console.log(reviewResoponse);
+        console.log(wineResopose);
         setMyReviews(reviewResoponse.list);
         setTotalReviewCount(reviewResoponse.totalCount);
         setMyWines(wineResopose.list);

@@ -32,7 +32,10 @@ const WineListPage: React.FC = () => {
         const response = await bestWine();
         setWines(response);
         const Response = await wineListAPI(5);
-        setWineList(Response);
+        if(Response) {
+          setWineList(Response.list);
+        }
+
         console.log(Response);
       } catch (error) {
         console.error('Error fetching wine details:', error);
@@ -124,12 +127,14 @@ const WineListPage: React.FC = () => {
             </div>
           )}
         </div>
-        <div className="card-wines"></div>
+        <div className="card-wines">
         {/*카드와인 무한스크롤 */}
-        <div>
-          {wineList.map((list) => (
-            <Card image={list.image} wineName={list.name} wineDesc={list.region} winePrice={list.price} review={list.recentReview || ''} avgRating={list.avgRating} reviewCount={list.reviewCount} />
-          ))}
+          {/* {wineList.map((list) => (
+            <Card key={list.id} image={list.image}
+             wineName={list.name} wineDesc={list.region}
+              winePrice={list.price} review={list.recentReview || ''}
+               avgRating={list.avgRating} reviewCount={list.reviewCount} />
+          ))} */}
         </div>
       </div>
     </div>
