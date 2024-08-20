@@ -14,7 +14,7 @@ const handler = NextAuth({
         password: { label: 'password', type: 'password' },
       },
       async authorize(credentials, req) {
-        console.log('credentials', credentials);
+        // console.log('credentials', credentials);
 
         const { email, password } = credentials || {};
         // TODO: 사용자 정보 가져와서 처리.
@@ -30,16 +30,16 @@ const handler = NextAuth({
         });
         const user = await res?.json();
 
-        console.log('response', user);
+        // console.log('response', user);
 
         // TODO: 나중에 변경 필요!
         // If no error and we have user data, return it
         if (res?.ok && user) {
-          console.log(1111111, user.user);
+          // console.log(1111111, user.user);
           return user;
         }
         // Return null if user data could not be retrieved
-        console.log(22222222);
+        // console.log(22222222);
         return null;
       },
     }),

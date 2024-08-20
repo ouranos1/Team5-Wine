@@ -3,7 +3,7 @@ import CallAPI from "./CallApi";
 import { id } from "@/types/Id";
 
 export async function addReviewsAPI(prop: createReviewBody) {
-    console.log(prop);
+    // console.log(prop);
     const method = "post";
     let query = "/reviews";
     const apiName = "addreview";

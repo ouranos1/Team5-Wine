@@ -11,7 +11,7 @@ const Card: React.FC<CardProps> = ({ image, wineName, wineDesc, winePrice, revie
   // const avgRating = 4.7;
   // const reviewCount = 47;
 
-  console.log(image, wineName, wineDesc, winePrice, review, avgRating, reviewCount)
+  // console.log(image, wineName, wineDesc, winePrice, review, avgRating, reviewCount)
 
   return (
     //<div className="hidden-card">

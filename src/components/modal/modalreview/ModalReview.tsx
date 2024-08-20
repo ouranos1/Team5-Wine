@@ -41,7 +41,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
   }, []);
 
   const postReview = useCallback(() => {
-    console.log('리뷰등록실행');
+    // console.log('리뷰등록실행');
     // console.log(rating, slideValue, selectedAromas, reviewContent, wineId);
     if (slideValue && reviewContent) {
       const requestBody = {
@@ -54,14 +54,14 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         content: reviewContent,
         wineId: wineId,
       };
-      console.log(requestBody);
+      // console.log(requestBody);
       addReviewsAPI(requestBody);
     }
     closeModal();
   }, [rating, slideValue, reviewContent, selectedAromas, wineId]);
 
   const patchReview = useCallback(() => {
-    console.log('리뷰수정실행');
+    // console.log('리뷰수정실행');
 
     if (ReviewData?.id && slideValue && reviewContent) {
       const requestBody = {
@@ -73,7 +73,7 @@ export function ModalReview({ isModalOpen, closeModal, wineName, wineId, ReviewD
         aroma: selectedAromas,
         content: reviewContent,
       };
-      console.log(requestBody);
+      // console.log(requestBody);
       editReviewsAPI(requestBody, ReviewData.id);
     }
     closeModal();

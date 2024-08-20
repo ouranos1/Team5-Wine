@@ -5,10 +5,10 @@ import Cardmonthly from '../../components/cardmonthly/CardMonthly';
 import Cardmy from '../../components/cardmy/CardMy';
 import AromaTag from '@/components/aromatag/AromaTag'
 import { wineListAPI, wineDetail } from "@/api/Wine";
-import { winListType, wineDetailType } from "@/types/WineProps";
+import { wineListType, wineDetailType } from "@/types/WineProps";
 
 const App: React.FC = () => {
-    const [wineList, setWineList] = useState<winListType[]>([]);
+    const [wineList, setWineList] = useState<wineListType[]>([]);
     const [detail, setDetail] = useState<wineDetailType>();
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const App: React.FC = () => {
             try {
                 const response = await wineListAPI(999999);
                 setWineList(response.list);
-                console.log(response.list);
+                // console.log(response.list);
             } catch (error) {
                 console.error("Error fetching wine list:", error);
             }
@@ -30,7 +30,7 @@ const App: React.FC = () => {
             try {
                 const response = await wineDetail(33);
                 setDetail(response);
-                console.log(response);
+                // console.log(response);
             } catch (error) {
                 console.error("Error fetching wine detail:", error);
             }

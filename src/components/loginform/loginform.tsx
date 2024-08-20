@@ -19,7 +19,7 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('12345678');
 
   const handleSignIn = () => {
-    console.log(email, password);
+    // console.log(email, password);
     // TODO: validation 코드 추가
 
     signIn('Credentials', { email: encodeURIComponent(email), password });

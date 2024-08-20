@@ -69,11 +69,11 @@ export default function ModalWine({ isModalOpen, closeModal }: ModalProps) {
       type: type,
     };
 
-    console.log(wineData);
+    // console.log(wineData);
 
     try {
       await addWineAPI(wineData);
-      console.log('와인 등록 성공');
+      // console.log('와인 등록 성공');
       closeModal();
     } catch (error) {
       console.error('와인 등록 오류:', error);

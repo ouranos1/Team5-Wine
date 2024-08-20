@@ -66,7 +66,7 @@ function changeNickName() {
       nickname : inputNickName || userdata.nickname,
     }
     return async() => {
-      console.log("프로필수정");
+      // console.log("프로필수정");
       try {
         await editmyDataAPI(reqbody);
       }

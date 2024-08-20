@@ -42,8 +42,8 @@ apiInstance.interceptors.response.use(
         const refreshTokenResponse = await refreshToken({
           refreshToken: rToken || '',
         });
-        console.log('리프레쉬토큰동작함');
-        console.log(refreshTokenResponse);
+        // console.log('리프레쉬토큰동작함');
+        // console.log(refreshTokenResponse);
         const newAccessToken = refreshTokenResponse.accessToken;
 
         // TODO: session 에 있는 값을 수정하도록 처리.

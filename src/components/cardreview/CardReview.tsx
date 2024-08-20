@@ -57,7 +57,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged, wineName
     };
 
     const onClickEdit = (reviewId: id) => {
-        console.log(reviewId + " 수정하기");
+        // console.log(reviewId + " 수정하기");
         handleIsChanged();
         wineListAPI(5)
         setIsModalOpen(true);
@@ -65,10 +65,10 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged, wineName
     }
 
     const onClickDelete = async (reviewId: id) => {
-        console.log(reviewId + " 삭제하기");
+        // console.log(reviewId + " 삭제하기");
         try {
             await deleteReviewsAPI(reviewId);
-            console.log(reviewId + " 삭제 성공");
+            // console.log(reviewId + " 삭제 성공");
             handleIsChanged();
             setDetail(undefined);
             toggleDropdown();

@@ -83,7 +83,7 @@ export default function SignupForm() {
           password: password,
           passwordConfirmation: passwordConfirmation,
         };
-        console.log('전송할 데이터:', userData);
+        // console.log('전송할 데이터:', userData);
 
         const response = await signUpAPI(userData);
 
@@ -102,7 +102,7 @@ export default function SignupForm() {
         }
 
         const session2 = await getSession();
-        console.log('출력', session2);
+        // console.log('출력', session2);
 
         if (session2?.user.user) {
           router.push('/');

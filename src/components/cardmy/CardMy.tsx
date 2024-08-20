@@ -38,16 +38,16 @@ const Cardmy: React.FC<ReviewListType> = (prop) => {
   };
 
   const onClickEdit = () => {
-    console.log(' 수정하기');
+    // console.log(' 수정하기');
     setIsModalOpen(true);
     toggleDropdown();
   };
 
   const onClickDelete = async () => {
-    console.log(' 삭제하기');
+    // console.log(' 삭제하기');
     try {
       await deleteReviewsAPI(prop.id);
-      console.log(' 삭제 성공');
+      // console.log(' 삭제 성공');
       toggleDropdown();
     } catch (error) {
       console.error('리뷰 삭제 중 오류 발생', error);

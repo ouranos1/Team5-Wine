@@ -22,7 +22,7 @@ function ImageUpload({ onImageUpload, wineImage }: { onImageUpload: (file: image
         onImageUpload(fileUrl.url);
       }
       catch (error) { 
-        console.log(error);
+        // console.log(error);
       }
     }
   };
