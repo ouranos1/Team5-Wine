@@ -1,4 +1,4 @@
-/*'use client';
+'use client';
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { bestWine } from '@/api/Wine';
@@ -13,7 +13,7 @@ interface CardProps {
   name: string;
 }
 const WineCarousel: React.FC = () => {
-  const [wines, setWines] = useState<CardProps>(CardProps);
+  const [wines, setWines] = useState<CardProps[]>([]);
 
   useEffect(() => {
     const fetchWines = async () => {
@@ -39,16 +39,10 @@ const WineCarousel: React.FC = () => {
   return (
     <Slider {...settings}>
       {wines.map((wine) => (
-        <Cardmonthly
-          key={wine.id} // 유일한 값을 key로 사용합니다. (여기서는 이름을 사용하지만 실제로는 ID 같은 유일한 값을 사용하는 것이 좋습니다.)
-          image={wine.image}
-          avgRating={wine.avgRating}
-          name={wine.name}
-        />
+        <Cardmonthly key={wine.id} image={wine.image} avgRating={wine.avgRating} name={wine.name} />
       ))}
     </Slider>
   );
 };
 
 export default WineCarousel;
-*/

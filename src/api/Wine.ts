@@ -10,7 +10,7 @@ export async function addWineAPI(props: createWineBody) {
   await CallAPI({ method, query, body, apiName });
 }
 
-export async function wineListAPI(limit: number | null = null, cursor: number | null = null, minPrice: number | null = null, maxPrice: number | null = null, rating: number | null = null) {
+export async function wineListAPI(limit: number, cursor: number | null = null, minPrice: number | null = null, maxPrice: number | null = null, rating: number | null = null) {
   const method = 'get';
   const queryParams = new URLSearchParams();
 

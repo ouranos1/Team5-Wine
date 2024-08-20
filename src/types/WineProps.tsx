@@ -22,8 +22,8 @@ export interface wineDetailType {
   price: number;
   avgRating: number;
   reviewCount: number;
-  recentReview: recentReview | null;
-  type : wineTypeName
+  recentReview: recentReview | string;
+  type: wineTypeName;
   userId: id;
   reviews: [ReviewListType];
   avgRatings: avgratings;
@@ -35,7 +35,7 @@ export interface wineMyListType extends wineDetailType {
   list: wineDetailType[];
 }
 
-export interface winLeistType {
+export interface wineListType {
   id: id;
   name: string;
   region: string;

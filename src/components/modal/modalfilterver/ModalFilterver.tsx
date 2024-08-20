@@ -1,8 +1,8 @@
 import BaseModal from '../modalbase/BaseModal';
-import './ModalFilter.scss';
-import PriceSlider from './slidercomponent/PriceSlider';
-import Rating from './ratingcomponent/Rating';
-import WineTypes from './typescomponent/WineTypes';
+import '@/components/modal/modalfilter/ModalFilter.scss';
+import PriceSlider from '../modalfilter/slidercomponent/PriceSlider';
+import Rating from '../modalfilter/ratingcomponent/Rating';
+import WineTypes from '../modalfilter/typescomponent/WineTypes';
 import { useState } from 'react';
 import { wineListAPI } from '@/api/Wine';
 import { ModalFilterProps } from '@/types/ModalProps';
@@ -10,7 +10,7 @@ import { ModalFilterProps } from '@/types/ModalProps';
 const INITIAL_MIN_PRICE = 0;
 const INITIAL_MAX_PRICE = 100000;
 //푸터버튼 안보일 수 있게 프롭스 추가했습니다.
-export function ModalFilter({ isModalOpen, closeModal, setWines = () => {}, showButton }: ModalFilterProps) {
+export function ModalFilterver({ setWines = () => {}, showButton }: ModalFilterProps) {
   const [selectedWineType, setSelectedWineType] = useState('');
   const [minPrice, setMinPrice] = useState(INITIAL_MIN_PRICE);
   const [maxPrice, setMaxPrice] = useState(INITIAL_MAX_PRICE);
@@ -29,8 +29,6 @@ export function ModalFilter({ isModalOpen, closeModal, setWines = () => {}, show
     if (response.nextCursor) {
       setCursor(response.nextCursor);
     }
-
-    closeModal();
   };
 
   const resetFilters = () => {
@@ -41,15 +39,10 @@ export function ModalFilter({ isModalOpen, closeModal, setWines = () => {}, show
     setCursor(null);
   };
 
-  const handleCloseModal = () => {
-    resetFilters();
-    closeModal();
-  };
-
   return (
     <BaseModal
-      isOpen={isModalOpen}
-      onClose={handleCloseModal}
+      isOpen={false}
+      onClose={() => {}}
       title="필터"
       closeButton={true}
       footerButtons={

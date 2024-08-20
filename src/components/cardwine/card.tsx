@@ -3,13 +3,15 @@
 import React from 'react';
 import './Card.scss';
 import { CardProps } from '@/types/Card';
-import CardCommon from '../cardcommon/Cardcommon';
+import CardCommon from '../cardcommon/cardcommon';
 import RatingStart from '@/components/ratingstart/RatingStart';
 import Stars from '@/components/stars/StarsComponent';
 
-const Card: React.FC<CardProps> = ({ image, wineName, wineDesc, winePrice, review }) => {
-  const avgRating = 4.7;
-  const reviewCount = 47;
+const Card: React.FC<CardProps> = ({ image, wineName, wineDesc, winePrice, review = '', avgRating=0, reviewCount = 0 }) => {
+  // const avgRating = 4.7;
+  // const reviewCount = 47;
+
+  console.log(image, wineName, wineDesc, winePrice, review, avgRating, reviewCount)
 
   return (
     //<div className="hidden-card">
