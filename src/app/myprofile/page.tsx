@@ -29,6 +29,7 @@ function MyProfile() {
   const [nowMenu, setNowMenu] = useState<'wine' | 'review'>('review');
 
   const { data: session } = useSession();
+  // console.log(session);
   const userdata = session?.user.user.user; // 세션에서 사용자 데이터 가져오기
 
   // console.log(userdata);
@@ -60,9 +61,9 @@ function MyProfile() {
   };
 
 function changeNickName() {
-  if(session?.user.user.user.image) {
+  if(userdata) {
     const reqbody = {
-      image : selectedImage || userdata.image,
+      image : selectedImage || (userdata.image ? userdata.image : defaultprofile),
       nickname : inputNickName || userdata.nickname,
     }
     return async() => {

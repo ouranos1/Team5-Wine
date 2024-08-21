@@ -10,9 +10,9 @@ import Image from 'next/image';
 //프롭스
 import { wineListType, wineDetailType, wineType, wine } from '@/types/WineProps';
 //컴포넌트
-import Card from '@/components/cardwine/Card';
+import Card from '@/components/cardwine/card';
 import Button from '@/components/button/Button';
-import cardwine from '@/components/cardwine/Card';
+import cardwine from '@/components/cardwine/card';
 import Cardmonthly from '@/components/cardmonthly/CardMonthly';
 import { ModalFilterver } from '@/components/modal/modalfilterver/ModalFilterver'; //ModalFilter를 복사하여 open과 close를 제거하고 새롭게 컴퍼넌트 만듦
 import Input from '@/components/inputcomponent/Input';
