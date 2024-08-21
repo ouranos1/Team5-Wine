@@ -15,7 +15,7 @@ import { searchReviewsAPI, deleteReviewsAPI } from '@/api/Review'
 import defaultprofile from '@/assets/icon/defaultprofile.webp'
 import SHDropdown from '@/components/shdropdown/SHDropDown';
 import { ModalReview } from '@/components/modal/modalreview/ModalReview';
-import { ReviewListType, responseReviewBody } from '@/types/ReviewProps'
+import { responseReviewBody } from '@/types/ReviewProps'
 import { useSession } from 'next-auth/react';
 import { wineListAPI } from '@/api/Wine';
 
@@ -57,7 +57,7 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged, wineName
     };
 
     const onClickEdit = (reviewId: id) => {
-        console.log(reviewId + " 수정하기");
+        // console.log(reviewId + " 수정하기");
         handleIsChanged();
         wineListAPI(5)
         setIsModalOpen(true);
@@ -65,10 +65,10 @@ const CardReview: React.FC<ReviewProps> = ({ reviewId, handleIsChanged, wineName
     }
 
     const onClickDelete = async (reviewId: id) => {
-        console.log(reviewId + " 삭제하기");
+        // console.log(reviewId + " 삭제하기");
         try {
             await deleteReviewsAPI(reviewId);
-            console.log(reviewId + " 삭제 성공");
+            // console.log(reviewId + " 삭제 성공");
             handleIsChanged();
             setDetail(undefined);
             toggleDropdown();
