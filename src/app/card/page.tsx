@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 //import Image from 'next/image';
-import Card from '@/components/cardwine/Card';
+// import Card from '@/components/cardwine/Card';
+import Card from "@/components/cardwine/card";
 
 export default function Cardpage() {
   const wineprice = 64990;
